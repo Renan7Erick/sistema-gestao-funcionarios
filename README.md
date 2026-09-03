@@ -33,6 +33,7 @@ O objetivo principal da aplicação é centralizar, padronizar e otimizar os flu
 O sistema divide-se em duas camadas principais de acesso:
 - **Área Pública:** Livremente acessível, destinada à apresentação institucional da empresa, catálogo de departamentos publicáveis e formulários de contato/acesso.
 - **Área Administrativa:** Protegida por credenciais de autenticação, permitindo o gerenciamento completo de colaboradores, cargos, departamentos, ponto, férias, documentos e métricas gerenciais.
+- **Área Funcionário:** Protegida por credenciais de autenticação, permitindo Visualizar seus próprios dados, Registrar entrada e saída no sistema de ponto, Consultar seu histórico de ponto; Solicitar férias e Consultar o status de suas solicitações de férias.
 
 ---
 
@@ -71,3 +72,219 @@ O sistema divide-se em duas camadas principais de acesso:
 |                       BANCO DE DADOS                        |
 |                         H2 Database                         |
 +-------------------------------------------------------------+
+```
+## 4. Estrutura do Banco de Dados
+
+O banco de dados será composto pelas seguintes entidades principais:
+
+### 4.1 DEPARTAMENTO
+
+Armazena os departamentos existentes na empresa.
+
+**Campos:**
+
+- `id` — chave primária;
+- `nome`.
+
+Exemplos:
+
+- Administrativo;
+- Financeiro;
+- TI;
+- RH;
+- Comercial;
+- Produção.
+
+---
+
+### 4.2 CARGO
+
+Armazena os cargos disponíveis na empresa.
+
+**Campos:**
+
+- `id` — chave primária;
+- `nome`;
+- `nivel`;
+- `departamento_id` — chave estrangeira.
+
+Exemplos de níveis:
+
+- Júnior;
+- Pleno;
+- Sênior.
+
+Um mesmo cargo pode estar associado a vários funcionários.
+
+---
+
+### 4.3 FUNCIONARIO
+
+Armazena os dados dos colaboradores.
+
+**Campos:**
+
+- `id` — chave primária;
+- `nome`;
+- `cpf`;
+- `email`;
+- `telefone`;
+- `data_nascimento`;
+- `data_contratacao`;
+- `status`;
+- `cargo_id` — chave estrangeira;
+- `departamento_id` — chave estrangeira.
+
+---
+
+### 4.4 PONTO
+
+Armazena os registros de entrada e saída dos funcionários.
+
+**Campos:**
+
+- `id` — chave primária;
+- `funcionario_id` — chave estrangeira;
+- `data`;
+- `entrada`;
+- `saida`.
+
+---
+
+### 4.5 FERIAS
+
+Armazena as solicitações de férias dos funcionários.
+
+**Campos:**
+
+- `id` — chave primária;
+- `funcionario_id` — chave estrangeira;
+- `data_inicio`;
+- `data_fim`;
+- `status`.
+
+Possíveis status:
+
+- Pendente;
+- Aprovada;
+- Rejeitada.
+
+### DER 
+
+
+## 6. Funcionalidades do Sistema
+
+### 6.1 Autenticação
+
+O sistema possuirá uma tela de login para acesso às áreas protegidas.
+
+O usuário será identificado pelo tipo de conta:
+
+```text
+ADMIN
+   |
+   +--> Área Administrativa
+
+FUNCIONARIO
+   |
+   +--> Área do Funcionário
+```
+
+---
+
+### 6.2 Funcionários
+
+O administrador poderá:
+
+- Cadastrar funcionário;
+- Consultar funcionários;
+- Editar funcionários;
+- Excluir funcionários;
+- Alterar status;
+- Associar funcionário a um departamento;
+- Associar funcionário a um cargo.
+
+---
+
+### 6.3 Departamentos
+
+O administrador poderá:
+
+- Cadastrar departamentos;
+- Consultar departamentos;
+- Editar departamentos;
+- Excluir departamentos.
+
+---
+
+### 6.4 Cargos
+
+O administrador poderá:
+
+- Cadastrar cargos;
+- Definir nível do cargo;
+- Associar cargo a um departamento;
+- Consultar cargos;
+- Editar cargos;
+- Excluir cargos.
+
+---
+
+### 6.5 Perfil do Funcionário
+
+O funcionário autenticado poderá visualizar seus próprios dados cadastrados.
+
+A consulta será limitada ao próprio funcionário, evitando que ele tenha acesso aos dados dos demais colaboradores.
+
+---
+
+### 6.6 Controle de Ponto
+
+O funcionário poderá registrar:
+
+- Entrada;
+- Saída.
+
+Também poderá consultar seu próprio histórico de registros.
+
+O administrador poderá consultar os registros de ponto dos funcionários.
+
+---
+
+### 6.7 Solicitação de Férias
+
+O funcionário poderá:
+
+- Informar a data de início;
+- Informar a data de término;
+- Enviar uma solicitação.
+
+A solicitação será inicialmente criada como:
+
+```text
+PENDENTE
+```
+
+O administrador poderá:
+
+- Aprovar;
+- Rejeitar;
+- Consultar solicitações.
+
+O funcionário poderá acompanhar o resultado da solicitação.
+
+---
+
+### 6.8 Dashboard Administrativo
+
+O administrador terá acesso a indicadores gerais do sistema, como:
+
+- Total de funcionários;
+- Funcionários ativos;
+- Funcionários por departamento;
+- Solicitações de férias pendentes;
+- Registros de ponto.
+
+O dashboard utilizará informações existentes no banco de dados.
+
+---
