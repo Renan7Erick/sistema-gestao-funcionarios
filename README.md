@@ -170,6 +170,7 @@ Possíveis status:
 - Rejeitada.
 
 ### DER 
+![Logo da Empresa](modeloRelacionamento.png "Logo Oficial")
 
 
 ## 6. Funcionalidades do Sistema
