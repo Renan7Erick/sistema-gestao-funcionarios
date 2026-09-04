@@ -73,6 +73,22 @@ O sistema divide-se em duas camadas principais de acesso:
 |                         H2 Database                         |
 +-------------------------------------------------------------+
 ```
+
+## 3.1 Protótipo do Projeto
+
+## Área pública do site:
+![modelo](PortalEmpresa.jpg)
+
+## Painel de Login:
+![modelo](LoginAdmin.jpg)
+
+## Área dos funcionários:
+![modelo](AreaFuncionario.jpg)
+
+## Painel de Administrador:
+![modelo](PainelAdmin.png)
+
+
 ## 4. Estrutura do Banco de Dados
 
 O banco de dados será composto pelas seguintes entidades principais:
@@ -170,7 +186,7 @@ Possíveis status:
 - Rejeitada.
 
 ### DER 
-![Logo da Empresa](modeloRelacionamento.png "Logo Oficial")
+![modelo](modeloRelacionamento.png)
 
 
 ## 6. Funcionalidades do Sistema
