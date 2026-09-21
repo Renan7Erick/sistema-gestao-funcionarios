@@ -77,16 +77,16 @@ O sistema divide-se em duas camadas principais de acesso:
 ## 3.1 Protótipo do Projeto
 
 ## Área pública do site:
-![modelo](PortalEmpresa.jpg)
+![modelo](layouts/PortalEmpresa.jpg)
 
 ## Painel de Login:
-![modelo](LoginAdmin.jpg)
+![modelo](layouts/LoginAdmin.jpg)
 
 ## Área dos funcionários:
-![modelo](AreaFuncionario.jpg)
+![modelo](layouts/AreaFuncionario.jpg)
 
 ## Painel de Administrador:
-![modelo](PainelAdmin.png)
+![modelo](layouts/PainelAdmin.png)
 
 
 ## 4. Estrutura do Banco de Dados
@@ -186,7 +186,7 @@ Possíveis status:
 - Rejeitada.
 
 ### DER 
-![modelo](modeloRelacionamento.png)
+![modelo](layouts/modeloRelacionamento.png)
 
 
 ## 6. Funcionalidades do Sistema
