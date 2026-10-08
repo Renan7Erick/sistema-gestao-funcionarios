@@ -1,14 +1,233 @@
-<html>
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>EMPRESA - Sistema Interno de Gestão</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
 <body>
-<h2>Create Employee</h2>
-<form action="/create-employee" method="post">
 
-    <label>Employee Name</label>
-    <input type="text" name="employee-name" id="employee-name">
+<!-- CABEÇALHO -->
+<header class="cabecalho">
+    <div class="logo-area">
+        <div class="logo-quadrado"></div>
+        <div class="logo-texto">
+            <p class="logo-titulo">EMPRESA</p>
+            <p class="logo-subtitulo">Sistema Interno de Gestão</p>
+        </div>
+    </div>
 
-    <button type="submit">Register</button>
+    <nav class="menu-navegacao">
+        <a href="#inicio">Início</a>
+        <a href="#sobre">Sobre</a>
+        <a href="#departamentos">Departamentos</a>
+    </nav>
 
-</form>
+    <div class="area-usuario">
+        <button class="botao-acesso-colaborador">Acesso Colaborador</button>
+        <div class="icone-usuario">
+            <svg class="icone-svg" viewBox="0 0 24 24">
+                <circle cx="12" cy="8" r="4"/>
+                <path d="M4 20c0-4 4-6 8-6s8 2 8 6"/>
+            </svg>
+        </div>
+    </div>
+</header>
+
+<!-- SEÇÃO INICIAL / HERO -->
+<section id="inicio" class="secao-inicial">
+
+    <h1 class="titulo-principal">Gestão de Funcionários de forma simples</h1>
+    <p class="descricao-principal">
+        Uma solução completa para organizar informações cadastrais, registro biométrico de
+        ponto e solicitações de férias dos colaboradores com precisão e segurança institucional.
+    </p>
+
+    <div class="botoes-inicial">
+        <button class="botao-acessar-sistema">
+            <svg class="icone-svg icone-svg-claro" viewBox="0 0 24 24">
+                <rect x="5" y="11" width="14" height="9" rx="2"/>
+                <path d="M8 11V7a4 4 0 0 1 8 0v4"/>
+            </svg>
+            Acessar Sistema &rarr;
+        </button>
+
+    </div>
+
+    <div class="cartoes-recursos">
+        <div class="cartao-recurso">
+            <p class="rotulo-cartao">FREQUÊNCIA</p>
+            <p class="titulo-cartao">Ponto Integrado</p>
+            <p class="texto-cartao">Sincronização em tempo real</p>
+        </div>
+        <div class="cartao-recurso">
+            <p class="rotulo-cartao">JORNADA</p>
+            <p class="titulo-cartao">Férias &amp; Ausências</p>
+            <p class="texto-cartao">Fluxo direto de aprovação</p>
+        </div>
+        <div class="cartao-recurso">
+            <p class="rotulo-cartao">AUTONOMIA</p>
+            <p class="titulo-cartao">Autoatendimento RH</p>
+            <p class="texto-cartao">Holerites e prontuários</p>
+        </div>
+    </div>
+</section>
+
+<!-- SEÇÃO SOBRE A EMPRESA -->
+<section id="sobre" class="secao-sobre">
+    <p class="subtitulo-secao">GOVERNANÇA &amp; PESSOAS</p>
+    <h2 class="titulo-secao">SOBRE A EMPRESA</h2>
+    <p class="descricao-secao">
+        Conheça nossa organização e nossa proposta de modernização da gestão de pessoas.
+        Desenvolvido sob medida para a EMPRESA, este portal unifica processos de Recursos Humanos,
+        gestão de talentos, registros de frequência e benefícios, garantindo transparência, agilidade e
+        segurança jurídica para colaboradores e gestores.
+    </p>
+
+    <div class="cartoes-sobre">
+        <div class="cartao-sobre">
+            <div class="icone-cartao-sobre">
+                <svg class="icone-svg icone-svg-claro" viewBox="0 0 24 24">
+                    <path d="M3 17l5-5 4 4 8-8"/>
+                    <path d="M14 8h7v7"/>
+                </svg>
+            </div>
+            <h3 class="titulo-cartao-sobre">Eficiência Operacional</h3>
+            <p class="texto-cartao-sobre">
+                Automatização de solicitações cotidianas, minimizando trâmites burocráticos e
+                acelerando emissões de recibos, certidões e comprovantes formais.
+            </p>
+        </div>
+        <div class="cartao-sobre">
+            <div class="icone-cartao-sobre">
+                <svg class="icone-svg icone-svg-claro" viewBox="0 0 24 24">
+                    <path d="M1 12s4-7 11-7 11 7 11 7-4 7-11 7-11-7-11-7z"/>
+                    <circle cx="12" cy="12" r="3"/>
+                </svg>
+            </div>
+            <h3 class="titulo-cartao-sobre">Transparência em RH</h3>
+            <p class="texto-cartao-sobre">
+                Acesso irrestrito e auditável ao espelho de ponto, saldo de banco de horas, holerites e
+                informes de rendimento de cada colaborador.
+            </p>
+        </div>
+        <div class="cartao-sobre">
+            <div class="icone-cartao-sobre">
+                <svg class="icone-svg icone-svg-claro" viewBox="0 0 24 24">
+                    <path d="M12 2l8 4v6c0 5-3.5 8.5-8 10-4.5-1.5-8-5-8-10V6l8-4z"/>
+                </svg>
+            </div>
+            <h3 class="titulo-cartao-sobre">Conformidade e Segurança de Dados</h3>
+            <p class="texto-cartao-sobre">
+                Rigorosa adequação à LGPD e à legislação trabalhista vigente, com criptografia de ponta
+                a ponta e perfis estritos de autorização hierárquica.
+            </p>
+        </div>
+    </div>
+</section>
+
+<!-- SEÇÃO DEPARTAMENTOS -->
+<section id="departamentos" class="secao-departamentos">
+    <p class="subtitulo-secao">ESTRUTURA FUNCIONAL</p>
+    <h2 class="titulo-secao">DEPARTAMENTOS</h2>
+    <p class="descricao-secao">
+        Navegue pelas áreas especializadas da companhia para gerenciar suas demandas funcionais, abrir
+        protocolos e solicitar suporte interno.
+    </p>
+
+    <div class="cartoes-departamentos">
+
+        <div class="cartao-departamento">
+            <div class="cabecalho-cartao-departamento">
+                <div class="icone-cartao-departamento">
+                    <svg class="icone-svg icone-svg-claro" viewBox="0 0 24 24">
+                        <rect x="2" y="4" width="20" height="16" rx="2"/>
+                        <polyline points="6 9 10 12 6 15"/>
+                        <line x1="12" y1="15" x2="16" y2="15"/>
+                    </svg>
+                </div>
+
+            </div>
+            <h3 class="titulo-departamento">TI</h3>
+            <p class="subtitulo-departamento">TECNOLOGIA DA INFORMAÇÃO</p>
+            <p class="texto-departamento">
+                Suporte técnico corporativo, credenciais de rede, acesso a sistemas integrados, abertura
+                de chamados técnicos e infraestrutura de estações de trabalho.
+            </p>
+            <ul class="lista-departamento">
+                <li><svg class="icone-svg icone-check" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg> Reset de credenciais &amp; 2FA</li>
+                <li><svg class="icone-svg icone-check" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg> Chamados de hardware e softwares</li>
+                <li><svg class="icone-svg icone-check" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg> Configuração de VPN institucional</li>
+            </ul>
+            <button class="botao-acessar-area">Acessar área &rarr;</button>
+        </div>
+
+        <div class="cartao-departamento">
+            <div class="cabecalho-cartao-departamento">
+                <div class="icone-cartao-departamento">
+                    <svg class="icone-svg icone-svg-claro" viewBox="0 0 24 24">
+                        <circle cx="9" cy="8" r="3"/>
+                        <path d="M2 20c0-3.5 3-6 7-6s7 2.5 7 6"/>
+                        <line x1="16" y1="6" x2="22" y2="6"/>
+                        <line x1="16" y1="10" x2="22" y2="10"/>
+                    </svg>
+                </div>
+
+            </div>
+            <h3 class="titulo-departamento">RH</h3>
+            <p class="subtitulo-departamento">RECURSOS HUMANOS</p>
+            <p class="texto-departamento">
+                Solicitação e agendamento de férias, folha de pagamento, gestão de benefícios
+                corporativos, envio de atestados médicos e circulares internas.
+            </p>
+            <ul class="lista-departamento">
+                <li><svg class="icone-svg icone-check" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg> Programação de férias regulamentares</li>
+                <li><svg class="icone-svg icone-check" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg> Gestão do plano de saúde e vales</li>
+                <li><svg class="icone-svg icone-check" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg> Upload de laudos e declarações</li>
+            </ul>
+            <button class="botao-acessar-area">Acessar área &rarr;</button>
+        </div>
+
+        <div class="cartao-departamento">
+            <div class="cabecalho-cartao-departamento">
+                <div class="icone-cartao-departamento">
+                    <svg class="icone-svg icone-svg-claro" viewBox="0 0 24 24">
+                        <polygon points="12 2 21 8 3 8"/>
+                        <line x1="3" y1="21" x2="21" y2="21"/>
+                        <line x1="5" y1="21" x2="5" y2="10"/>
+                        <line x1="9" y1="21" x2="9" y2="10"/>
+                        <line x1="15" y1="21" x2="15" y2="10"/>
+                        <line x1="19" y1="21" x2="19" y2="10"/>
+                    </svg>
+                </div>
+
+            </div>
+            <h3 class="titulo-departamento">Financeiro</h3>
+            <p class="subtitulo-departamento">CONTROLADORIA &amp; TESOURARIA</p>
+            <p class="texto-departamento">
+                Reembolsos de despesas em viagens corporativas, solicitações de adiantamento,
+                histórico consolidado de holerites e prestação de contas setorial.
+            </p>
+            <ul class="lista-departamento">
+                <li><svg class="icone-svg icone-check" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg> Prestação de contas &amp; recibos fiscais</li>
+                <li><svg class="icone-svg icone-check" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg> Download de demonstrativos de pagamento</li>
+                <li><svg class="icone-svg icone-check" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg> Adiantamentos salariais e diárias</li>
+            </ul>
+            <button class="botao-acessar-area">Acessar área &rarr;</button>
+        </div>
+
+    </div>
+</section>
+
+
+<!-- RODAPÉ -->
+<footer class="rodape">
+    <p class="rodape-esquerda">
+        <svg class="icone-bolinha" viewBox="0 0 10 10"><circle cx="5" cy="5" r="5"/></svg>
+        EMPRESA &mdash; Sistema Interno de Gestão
+    </p>
+    <p class="rodape-direita">EMPRESA &mdash; Sistema Interno de Gestão &bull; &copy; 2026 Todos os direitos reservados.</p>
+</footer>
 
 </body>
 </html>
