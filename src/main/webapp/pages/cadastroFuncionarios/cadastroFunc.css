@@ -1,0 +1,248 @@
+main {
+
+    display: flex;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+
+
+}
+
+.rightside {
+
+    display: flex;
+
+    align-items: start;
+
+    flex-direction: column;
+
+    background-color: #D2D9F4;
+
+
+
+    justify-content: start;
+
+    width: 73vw;
+
+
+}
+
+
+form {
+
+    display: flex;
+    flex-direction: column;
+    background-color: #E7EBF3;
+    padding: 48px;
+
+    gap: 10px;
+
+
+    width: 100%;
+
+}
+
+form label {
+    color: #2D2F2B;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 20px;
+    letter-spacing: 0.35px;
+    margin-bottom: 8px;
+}
+
+.rightside button {
+    background-color: white;
+}
+
+.form-buttons {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin-top: 24px;
+    gap: 20px;
+}
+
+.input-row {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+
+    gap: 5px;
+}
+
+.input-card {
+    display: flex;
+    flex-direction: column;
+
+}
+
+.input-card input {
+    height: 20px;
+    min-width: 430px;
+
+    padding: 9px 14px;
+    justify-content: center;
+    align-items: flex-start;
+    align-self: stretch;
+}
+
+.input-card select {
+
+    background-color: white;
+
+    border: solid gray;
+    border-width: 1px;
+
+    width: 100%;
+    height: 40px;
+    padding: 9px 14px;
+
+
+
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+
+
+
+}
+
+
+
+
+
+.leftside {
+
+    display: flex;
+    flex-direction: column;
+
+
+    min-width: 400px;
+    min-height: 100vh;
+
+    background-color: white;
+
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+
+
+
+    max-width: 300px;
+
+
+}
+
+.fundoLogo {
+
+
+    text-align: center;
+
+    align-content: center;
+
+    width: 40px;
+    height: 40px;
+    border-radius: 4px;
+
+    background-color: #0F1E36;
+}
+
+hr {
+    width: 300px;
+    color: darkgray;
+}
+
+.logo {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 15px;
+
+    padding-left: 10px;
+    padding-top: 20px;
+
+    max-width: fit-content;
+
+}
+
+.botoes {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    align-items: center;
+
+
+
+
+
+
+}
+
+button {
+
+    border-radius: 8px;
+    border: transparent;
+
+
+
+    color: #0F1E36;
+
+    min-height: 80px;
+    width: 300px;
+
+
+}
+
+button:hover {
+
+    background-color: #0F1E36;
+
+    color: white;
+
+}
+
+.areaLista {
+
+    display: flex;
+    flex-direction: column;
+    background-color: #E7EBF3;
+    padding: 48px;
+
+    gap: 10px;
+
+    height: 100%;
+    width: 100%;
+
+}
+
+.legendaLista {
+
+    border-radius: 5px;
+    background-color: aliceblue;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+
+    
+    display: flex;
+
+    gap: 60px;
+
+    justify-content: center;
+
+    flex-direction: row;
+
+}
+
+.cardLista {    
+    display: flex;   
+
+    gap: 60px;
+
+    justify-content: center;
+
+    flex-direction: row;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+
+
+
+}
