@@ -1,12 +1,138 @@
 <!DOCTYPE html>
-<html lang="pt">
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-
+    <title>Painel Admin - Sistema de Funcionários</title>
+    <!-- Liga o ficheiro CSS -->
+    <link rel="stylesheet" href="dashboard.css">
+    <!-- Importa ícones gratuitos da biblioteca Phosphor Icons (muito parecidos com os do seu layout) -->
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
 </head>
 <body>
-    
+    <!-- CONTAINER PRINCIPAL -->
+    <div class="app-container">
+        
+        <!--  BARRA LATERAL  -->
+        <aside class="sidebar">
+            <div class="logo-area">
+                <i class="ph-fill ph-buildings"></i>
+                <div>
+                    <h2>SISTEMA</h2>
+                    <p>FUNCIONÁRIOS</p>
+                </div>
+            </div>
+
+            <!-- Menu de navegação -->
+            <nav class="menu">
+                <ul>
+                    <!-- A classe 'active' deixa o botão escuro -->
+                    <li class="active">
+                        <a href="dashboard.html"><i class="ph ph-chart-bar"></i> Dashboard</a>
+                    </li>
+                    <li>
+                        <a href="../departamentos/departamentos.html"><i class="ph ph-users"></i> Funcionários</a>
+                    </li>
+                    <li>
+                        <a href="../departamentos/departamentos.html"><i class="ph ph-buildings"></i> Departamentos</a>
+                    </li>
+                    <li>
+                        <a href="#"><i class="ph ph-briefcase"></i> Cargos</a>
+                    </li>
+                    <li>
+                        <a href="#"><i class="ph ph-clock"></i> Ponto</a>
+                    </li>
+                    <li>
+                        <a href="#"><i class="ph ph-airplane-tilt"></i> Férias</a>
+                    </li>
+                    <li>
+                        <a href="#"><i class="ph ph-user"></i> Usuários</a>
+                    </li>
+                </ul>
+            </nav>
+
+            <div class="sidebar-footer">
+                <a href="../login/index.html" class="logout-btn">
+                    <i class="ph ph-sign-out"></i> Sair
+                </a>
+            </div>
+        </aside>
+
+        <!--  ÁREA DE CONTEÚDO  -->
+        <main class="main-content">
+            
+            <!-- Cabeçalho do Dashboard -->
+            <header class="top-header">
+                <div class="title-area">
+                    <h1>Dashboard</h1>
+                    <p>Visão geral administrativa e controle operacional da empresa</p>
+                </div>
+                
+                <div class="user-area">
+                    <span class="status-badge"><i class="ph-fill ph-circle"></i> Painel Online</span>
+                    <div class="profile-info">
+                        <div class="profile-text">
+                            <strong>Administrador Geral</strong>
+                            <span>admin@empresa.com</span>
+                        </div>
+                        <div class="avatar">AD</div>
+                    </div>
+                </div>
+            </header>
+
+            <!-- Grade de Cartões -->
+            <section class="cards-grid">
+                
+                <!-- Card 1 -->
+                <div class="card">
+                    <div class="card-header">
+                        <h3>TOTAL FUNCIONÁRIOS</h3>
+                        <div class="icon-box blue"><i class="ph ph-users"></i></div>
+                    </div>
+                    <div class="card-body">
+                        <h2>128</h2>
+                        <p class="success">+4 colaboradores este mês</p>
+                    </div>
+                </div>
+
+                <!-- Card 2 -->
+                <div class="card">
+                    <div class="card-header">
+                        <h3>DEPARTAMENTOS</h3>
+                        <div class="icon-box purple"><i class="ph ph-buildings"></i></div>
+                    </div>
+                    <div class="card-body">
+                        <h2>8</h2>
+                        <p class="neutral">Todos em operação regular</p>
+                    </div>
+                </div>
+
+                <!-- Card 3 -->
+                <div class="card">
+                    <div class="card-header">
+                        <h3>PONTOS HOJE</h3>
+                        <div class="icon-box green"><i class="ph ph-clock"></i></div>
+                    </div>
+                    <div class="card-body">
+                        <h2>119 / 128</h2>
+                        <p class="success">93% de presença computada</p>
+                    </div>
+                </div>
+
+                <!-- Card 4 -->
+                <div class="card">
+                    <div class="card-header">
+                        <h3>FÉRIAS PENDENTES</h3>
+                        <div class="icon-box warning"><i class="ph ph-warning"></i></div>
+                    </div>
+                    <div class="card-body">
+                        <h2>5</h2>
+                        <p class="warning-text">Requer aprovação do RH</p>
+                    </div>
+                </div>
+
+            </section>
+        </main>
+    </div>
 </body>
 </html>
