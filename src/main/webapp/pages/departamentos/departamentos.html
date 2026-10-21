@@ -1,12 +1,96 @@
 <!DOCTYPE html>
-<html lang="pt">
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-
+    <title>Departamentos - Sistema de Funcionários</title>
+    <!-- Liga o ficheiro CSS (que faremos na próxima etapa) -->
+    <link rel="stylesheet" href="departamentos.css">
+    <!-- Importa ícones da biblioteca Phosphor Icons -->
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
 </head>
 <body>
-    
-</body>
-</html>
+    <div class="app-container">
+        
+        <!-- ================= BARRA LATERAL (SIDEBAR) ================= -->
+        <aside class="sidebar">
+            <div class="logo-area">
+                <i class="ph-fill ph-buildings"></i>
+                <div>
+                    <h2>SISTEMA</h2>
+                    <p>FUNCIONÁRIOS</p>
+                </div>
+            </div>
+
+            <nav class="menu">
+                <ul>
+                    <li>
+                        <a href="../dashboard/dashboard.html"><i class="ph ph-chart-bar"></i> Dashboard</a>
+                    </li>
+                    <li>
+                        <a href="#"><i class="ph ph-users"></i> Funcionários</a>
+                    </li>
+                    <!-- A classe 'active' agora está nos Departamentos -->
+                    <li class="active">
+                        <a href="departamentos.html"><i class="ph ph-buildings"></i> Departamentos</a>
+                    </li>
+                    <li>
+                        <a href="#"><i class="ph ph-briefcase"></i> Cargos</a>
+                    </li>
+                    <li>
+                        <a href="#"><i class="ph ph-clock"></i> Ponto</a>
+                    </li>
+                    <li>
+                        <a href="#"><i class="ph ph-airplane-tilt"></i> Férias</a>
+                    </li>
+                    <li>
+                        <a href="#"><i class="ph ph-user"></i> Usuários</a>
+                    </li>
+                </ul>
+            </nav>
+
+            <div class="sidebar-footer">
+                <a href="../login/index.html" class="logout-btn">
+                    <i class="ph ph-sign-out"></i> Sair
+                </a>
+            </div>
+        </aside>
+
+        <!-- ================= ÁREA DE CONTEÚDO ================= -->
+        <main class="main-content">
+            
+            <!-- Cabeçalho Superior -->
+            <header class="top-header">
+                <div class="breadcrumb">
+                    <span>PAINEL CORPORATIVO</span> / <strong>DEPARTAMENTOS</strong>
+                </div>
+                
+                <div class="user-area">
+                    <div class="profile-text">
+                        <strong>Administrador</strong>
+                        <span>admin@sistema.corp</span>
+                    </div>
+                    <div class="avatar">
+                        AD
+                        <span class="status-dot"></span>
+                    </div>
+                </div>
+            </header>
+
+            <!-- Título da Página e Indicadores -->
+            <section class="page-heading">
+                <div class="heading-title">
+                    <h1>Departamentos <span class="badge">Cadastro e Gestão de Departamentos</span></h1>
+                    <p>Estruturação de unidades corporativas, dimensionamento de equipes e controle departamental.</p>
+                </div>
+                <div class="heading-stats">
+                    <div class="stat-pill"><i class="ph ph-buildings"></i> Total: <strong>6</strong></div>
+                    <div class="stat-pill"><i class="ph ph-users"></i> Colaboradores: <strong>128</strong></div>
+                </div>
+            </section>
+
+            <!-- Área de Formulário e Tabela -->
+            <section class="content-grid">
+                
+                <!-- COLUNA ESQUERDA: Formulário de Cadastro -->
+                <div class
