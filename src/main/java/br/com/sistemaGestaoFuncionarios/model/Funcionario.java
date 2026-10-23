@@ -1,7 +1,8 @@
 package br.com.sistemaGestaoFuncionarios.model;
 
 
-import java.time.LocalDate;
+import java.sql.Date;
+
 
 public class Funcionario {
     private int id;
@@ -9,13 +10,13 @@ public class Funcionario {
     private String cpf;
     private String email;
     private String telefone;
-    private LocalDate dataNascimento;
-    private LocalDate dataContratacao;
+    private Date dataNascimento;
+    private Date dataContratacao;
     private String status;
     private int cargoId;
     private int departamentoId;
 
-    public Funcionario(int id, String nome, String cpf, String email, String telefone, LocalDate dataNascimento, LocalDate dataContratacao, String status, int cargoId, int departamentoId) {
+    public Funcionario(int id, String nome, String cpf, String email, String telefone, Date dataNascimento, Date dataContratacao, String status, int cargoId, int departamentoId) {
         this.id = id;
         this.nome = nome;
         this.cpf = cpf;
@@ -68,19 +69,19 @@ public class Funcionario {
         this.telefone = telefone;
     }
 
-    public LocalDate getDataNascimento() {
+    public Date getDataNascimento() {
         return dataNascimento;
     }
 
-    public void setDataNascimento(LocalDate dataNascimento) {
+    public void setDataNascimento(Date dataNascimento) {
         this.dataNascimento = dataNascimento;
     }
 
-    public LocalDate getDataContratacao() {
+    public Date getDataContratacao() {
         return dataContratacao;
     }
 
-    public void setDataContratacao(LocalDate dataContratacao) {
+    public void setDataContratacao(Date dataContratacao) {
         this.dataContratacao = dataContratacao;
     }
 
