@@ -10,87 +10,285 @@
     <script src="https://unpkg.com/@phosphor-icons/web"></script>
 </head>
 <body>
-    <div class="app-container">
-        
-        <!-- ================= BARRA LATERAL (SIDEBAR) ================= -->
-        <aside class="sidebar">
-            <div class="logo-area">
-                <i class="ph-fill ph-buildings"></i>
-                <div>
-                    <h2>SISTEMA</h2>
-                    <p>FUNCIONÁRIOS</p>
+<div class="app-container">
+
+    <!-- ================= BARRA LATERAL (SIDEBAR) ================= -->
+    <aside class="sidebar">
+        <div class="logo-area">
+            <i class="ph-fill ph-buildings"></i>
+            <div>
+                <h2>SISTEMA</h2>
+                <p>FUNCIONÁRIOS</p>
+            </div>
+        </div>
+
+        <nav class="menu">
+            <ul>
+                <li>
+                    <a href="../dashboard/dashboard.html"><i class="ph ph-chart-bar"></i> Dashboard</a>
+                </li>
+                <li>
+                    <a href="#"><i class="ph ph-users"></i> Funcionários</a>
+                </li>
+                <!-- A classe 'active' agora está nos Departamentos -->
+                <li class="active">
+                    <a href="departamentos.html"><i class="ph ph-buildings"></i> Departamentos</a>
+                </li>
+                <li>
+                    <a href="#"><i class="ph ph-briefcase"></i> Cargos</a>
+                </li>
+                <li>
+                    <a href="#"><i class="ph ph-clock"></i> Ponto</a>
+                </li>
+                <li>
+                    <a href="#"><i class="ph ph-airplane-tilt"></i> Férias</a>
+                </li>
+                <li>
+                    <a href="#"><i class="ph ph-user"></i> Usuários</a>
+                </li>
+            </ul>
+        </nav>
+
+        <div class="sidebar-footer">
+            <a href="../login/index.html" class="logout-btn">
+                <i class="ph ph-sign-out"></i> Sair
+            </a>
+        </div>
+    </aside>
+
+    <!-- ================= ÁREA DE CONTEÚDO ================= -->
+    <main class="main-content">
+
+        <!-- Cabeçalho Superior -->
+        <header class="top-header">
+            <div class="breadcrumb">
+                <span>PAINEL CORPORATIVO</span> / <strong>DEPARTAMENTOS</strong>
+            </div>
+
+            <div class="user-area">
+                <div class="profile-text">
+                    <strong>Administrador</strong>
+                    <span>admin@sistema.corp</span>
+                </div>
+                <div class="avatar">
+                    AD
+                    <span class="status-dot"></span>
+                </div>
+            </div>
+        </header>
+
+        <!-- Título da Página e Indicadores -->
+        <section class="page-heading">
+            <div class="heading-title">
+                <h1>Departamentos <span class="badge">Cadastro e Gestão de Departamentos</span></h1>
+                <p>Estruturação de unidades corporativas, dimensionamento de equipes e controle departamental.</p>
+            </div>
+            <div class="heading-stats">
+                <div class="stat-pill"><i class="ph ph-buildings"></i> Total: <strong>6</strong></div>
+                <div class="stat-pill"><i class="ph ph-users"></i> Colaboradores: <strong>128</strong></div>
+            </div>
+        </section>
+
+        <!-- Área de Formulário e Tabela -->
+        <section class="content-grid">
+
+            <!-- COLUNA ESQUERDA: Formulário de Cadastro -->
+            <div class="form-card">
+                <div class="card-header-form">
+                    <div class="form-icon">
+                        <i class="ph-fill ph-plus-circle"></i>
+                    </div>
+                    <div>
+                        <h3>Novo Departamento</h3>
+                        <span>Cadastre uma nova unidade corporativa</span>
+                    </div>
+                    <button class="btn-cadastrar-top">CADASTRAR</button>
+                </div>
+
+                <form>
+                    <div class="input-group">
+                        <label>ID (AUTOMÁTICO) <span class="hint-system">Gerado pelo sistema</span></label>
+                        <div class="input-lock">
+                            <i class="ph ph-lock-key"></i>
+                            <input type="text" value="#DEP-007" disabled>
+                        </div>
+                    </div>
+
+                    <div class="input-group">
+                        <label>NOME DO DEPARTAMENTO <span class="required">*Obrigatório</span></label>
+                        <input type="text" placeholder="Ex: Comercial, Marketing, Suporte">
+                    </div>
+
+                    <div class="info-box">
+                        <i class="ph ph-info"></i>
+                        <p>Ao cadastrar um novo departamento, ele ficará disponível imediatamente para alocação de
+                            cargos e novos colaboradores no sistema.</p>
+                    </div>
+
+                    <div class="form-actions">
+                        <button type="button" class="btn-limpar"><i class="ph ph-eraser"></i> Limpar</button>
+                        <button type="submit" class="btn-submit"><i class="ph ph-plus"></i> Cadastrar Departamento
+                        </button>
+                    </div>
+                </form>
+            </div>
+
+            <!-- COLUNA DIREITA: Tabela de Departamentos -->
+            <div class="table-card">
+                <div class="table-header-card">
+                    <div class="table-title-area">
+                        <i class="ph ph-list-bullets"></i>
+                        <div>
+                            <h3>Departamentos Cadastrados</h3>
+                            <p>Visão consolidada de todas as divisões ativas</p>
+                        </div>
+                    </div>
+                    <div class="table-actions">
+                        <div class="search-box">
+                            <i class="ph ph-magnifying-glass"></i>
+                            <input type="text" placeholder="Buscar departamento...">
+                        </div>
+                        <button class="btn-action"><i class="ph ph-arrows-clockwise"></i> Atualizar</button>
+                        <button class="btn-action"><i class="ph ph-export"></i> Exportar</button>
+                    </div>
+                </div>
+
+                <div class="table-responsive">
+                    <table>
+                        <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>NOME DO DEPARTAMENTO</th>
+                            <th>TOTAL DE COLABORADORES</th>
+                            <th>STATUS</th>
+                            <th>AÇÕES</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <td><span class="id-tag">#1</span></td>
+                            <td>
+                                <div class="dep-info">
+                                    <i class="ph ph-briefcase"></i>
+                                    <div>
+                                        <strong>Administrativo</strong>
+                                        <span>Gestão geral & contratos</span>
+                                    </div>
+                                </div>
+                            </td>
+                            <td><i class="ph ph-users"></i> 14</td>
+                            <td><span class="status-badge"><span class="dot"></span> Ativo</span></td>
+                            <td>
+                                <button class="icon-btn"><i class="ph ph-pencil-simple"></i></button>
+                                <button class="icon-btn"><i class="ph ph-trash"></i></button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><span class="id-tag">#2</span></td>
+                            <td>
+                                <div class="dep-info">
+                                    <i class="ph ph-wallet"></i>
+                                    <div>
+                                        <strong>Financeiro</strong>
+                                        <span>Contabilidade & tesouraria</span>
+                                    </div>
+                                </div>
+                            </td>
+                            <td><i class="ph ph-users"></i> 9</td>
+                            <td><span class="status-badge"><span class="dot"></span> Ativo</span></td>
+                            <td>
+                                <button class="icon-btn"><i class="ph ph-pencil-simple"></i></button>
+                                <button class="icon-btn"><i class="ph ph-trash"></i></button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><span class="id-tag">#3</span></td>
+                            <td>
+                                <div class="dep-info">
+                                    <i class="ph ph-desktop"></i>
+                                    <div>
+                                        <strong>TI</strong>
+                                        <span>Sistemas, devops & suporte</span>
+                                    </div>
+                                </div>
+                            </td>
+                            <td><i class="ph ph-users"></i> 22</td>
+                            <td><span class="status-badge"><span class="dot"></span> Ativo</span></td>
+                            <td>
+                                <button class="icon-btn"><i class="ph ph-pencil-simple"></i></button>
+                                <button class="icon-btn"><i class="ph ph-trash"></i></button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><span class="id-tag">#4</span></td>
+                            <td>
+                                <div class="dep-info">
+                                    <i class="ph ph-users-three"></i>
+                                    <div>
+                                        <strong>RH</strong>
+                                        <span>Talentos & cultura</span>
+                                    </div>
+                                </div>
+                            </td>
+                            <td><i class="ph ph-users"></i> 7</td>
+                            <td><span class="status-badge"><span class="dot"></span> Ativo</span></td>
+                            <td>
+                                <button class="icon-btn"><i class="ph ph-pencil-simple"></i></button>
+                                <button class="icon-btn"><i class="ph ph-trash"></i></button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><span class="id-tag">#5</span></td>
+                            <td>
+                                <div class="dep-info">
+                                    <i class="ph ph-storefront"></i>
+                                    <div>
+                                        <strong>Comercial</strong>
+                                        <span>Vendas, parcerias & contas</span>
+                                    </div>
+                                </div>
+                            </td>
+                            <td><i class="ph ph-users"></i> 35</td>
+                            <td><span class="status-badge"><span class="dot"></span> Ativo</span></td>
+                            <td>
+                                <button class="icon-btn"><i class="ph ph-pencil-simple"></i></button>
+                                <button class="icon-btn"><i class="ph ph-trash"></i></button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><span class="id-tag">#6</span></td>
+                            <td>
+                                <div class="dep-info">
+                                    <i class="ph ph-factory"></i>
+                                    <div>
+                                        <strong>Produção</strong>
+                                        <span>Operações industriais & logística</span>
+                                    </div>
+                                </div>
+                            </td>
+                            <td><i class="ph ph-users"></i> 41</td>
+                            <td><span class="status-badge"><span class="dot"></span> Ativo</span></td>
+                            <td>
+                                <button class="icon-btn"><i class="ph ph-pencil-simple"></i></button>
+                                <button class="icon-btn"><i class="ph ph-trash"></i></button>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="table-footer">
+                    <span>Mostrando <strong>6</strong> de <strong>6</strong> departamentos</span>
+                    <div class="pagination">
+                        <button class="page-btn" disabled>Anterior</button>
+                        <button class="page-btn active">1</button>
+                        <button class="page-btn" disabled>Próximo</button>
+                    </div>
                 </div>
             </div>
 
-            <nav class="menu">
-                <ul>
-                    <li>
-                        <a href="../dashboard/dashboard.html"><i class="ph ph-chart-bar"></i> Dashboard</a>
-                    </li>
-                    <li>
-                        <a href="#"><i class="ph ph-users"></i> Funcionários</a>
-                    </li>
-                    <!-- A classe 'active' agora está nos Departamentos -->
-                    <li class="active">
-                        <a href="departamentos.html"><i class="ph ph-buildings"></i> Departamentos</a>
-                    </li>
-                    <li>
-                        <a href="#"><i class="ph ph-briefcase"></i> Cargos</a>
-                    </li>
-                    <li>
-                        <a href="#"><i class="ph ph-clock"></i> Ponto</a>
-                    </li>
-                    <li>
-                        <a href="#"><i class="ph ph-airplane-tilt"></i> Férias</a>
-                    </li>
-                    <li>
-                        <a href="#"><i class="ph ph-user"></i> Usuários</a>
-                    </li>
-                </ul>
-            </nav>
-
-            <div class="sidebar-footer">
-                <a href="../login/index.html" class="logout-btn">
-                    <i class="ph ph-sign-out"></i> Sair
-                </a>
-            </div>
-        </aside>
-
-        <!-- ================= ÁREA DE CONTEÚDO ================= -->
-        <main class="main-content">
-            
-            <!-- Cabeçalho Superior -->
-            <header class="top-header">
-                <div class="breadcrumb">
-                    <span>PAINEL CORPORATIVO</span> / <strong>DEPARTAMENTOS</strong>
-                </div>
-                
-                <div class="user-area">
-                    <div class="profile-text">
-                        <strong>Administrador</strong>
-                        <span>admin@sistema.corp</span>
-                    </div>
-                    <div class="avatar">
-                        AD
-                        <span class="status-dot"></span>
-                    </div>
-                </div>
-            </header>
-
-            <!-- Título da Página e Indicadores -->
-            <section class="page-heading">
-                <div class="heading-title">
-                    <h1>Departamentos <span class="badge">Cadastro e Gestão de Departamentos</span></h1>
-                    <p>Estruturação de unidades corporativas, dimensionamento de equipes e controle departamental.</p>
-                </div>
-                <div class="heading-stats">
-                    <div class="stat-pill"><i class="ph ph-buildings"></i> Total: <strong>6</strong></div>
-                    <div class="stat-pill"><i class="ph ph-users"></i> Colaboradores: <strong>128</strong></div>
-                </div>
-            </section>
-
-            <!-- Área de Formulário e Tabela -->
-            <section class="content-grid">
-                
-                <!-- COLUNA ESQUERDA: Formulário de Cadastro -->
-                <div class
+        </section>
+    </main>
+</div>
+</body>
+</html>
