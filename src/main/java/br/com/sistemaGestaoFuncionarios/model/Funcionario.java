@@ -29,6 +29,18 @@ public class Funcionario {
         this.departamentoId = departamentoId;
     }
 
+    public Funcionario(String nome, String cpf, String email, String telefone, Date dataNascimento, Date dataContratacao, String status, int cargoId, int departamentoId) {
+        this.nome = nome;
+        this.cpf = cpf;
+        this.email = email;
+        this.telefone = telefone;
+        this.dataNascimento = dataNascimento;
+        this.dataContratacao = dataContratacao;
+        this.status = status;
+        this.cargoId = cargoId;
+        this.departamentoId = departamentoId;
+    }
+
     public int getId() {
         return id;
     }
