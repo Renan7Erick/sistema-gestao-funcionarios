@@ -1,10 +1,13 @@
+<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <!DOCTYPE html>
-<html lang="en">
+<html>
+
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="cadastroFunc.css">
+    <link rel="stylesheet" href="/pages/cadastroFuncionarios/cadastroFunc.css">
     <title>Document</title>
 </head>
 
@@ -198,7 +201,8 @@
 
 
 
-               
+
+
 
                     <div class="legendaLista">
                         <p>ID</p>
@@ -206,27 +210,28 @@
                         <p>CPF</p>
                         <p>E-MAIL</p>
                         <p>TELEFONE</p>
-                        <p>DATA NASCIMENTO</p>
-                        <p>DATA CONTRATAÇÃO</p>
+                        <p>NASCIMENTO</p>
+                        <p>CONTRATAÇÃO</p>
                         <p>CARGO</p>
                         <p>DEPARTAMENTO</p>
                         <p>STATUS</p>
                     </div>
 
+                 <c:forEach var="funcionario" items="${funcionarios}">
                     <div class="cardLista">
-                        <p>01</p>
-                        <p>Christian Navarro</p>
-                        <p>123345567-89</p>
-                        <p>Christian@gmail.com</p>
-                        <p>40028922</p>
-                        <p>13/04/2007</p>
-                        <p>01/01/20025</p>
-                        <p>Analista</p>
-                        <p>Financeiro</p>
-                        <p>Afastado</p>
-
+                        <p>${funcionario.id}</p>
+                        <p>${funcionario.nome}</p>
+                        <p>${funcionario.cpf}</p>
+                        <p>${funcionario.email}</p>
+                        <p>${funcionario.telefone}</p>
+                        <p>${funcionario.dataNascimento}</p>
+                        <p>${funcionario.dataContratacao}</p>
+                        <p>${funcionario.cargoId}</p>
+                        <p>${funcionario.departamentoId}</p>
+                        <p>${funcionario.status}</p>
 
                     </div>
+                 </c:forEach>
 
                 </section>
 

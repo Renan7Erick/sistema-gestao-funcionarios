@@ -216,33 +216,27 @@ button:hover {
 
 }
 
-.legendaLista {
 
-    border-radius: 5px;
-    background-color: aliceblue;
+.legendaLista,
+.cardLista {
+    display: grid;
+    grid-template-columns: 50px 1.5fr 1.2fr 1.8fr 1.2fr 1fr 1fr 70px 110px 80px;
+    column-gap: 16px;
+    align-items: center;
+    padding: 12px 16px;
     box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
-
-    
-    display: flex;
-
-    gap: 60px;
-
-    justify-content: center;
-
-    flex-direction: row;
-
 }
 
-.cardLista {    
-    display: flex;   
+.legendaLista {
+    border-radius: 5px;
+    background-color: aliceblue;
+    font-weight: bold;
+}
 
-    gap: 60px;
-
-    justify-content: center;
-
-    flex-direction: row;
-    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
-
-
-
+.legendaLista p,
+.cardLista p {
+    margin: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 }

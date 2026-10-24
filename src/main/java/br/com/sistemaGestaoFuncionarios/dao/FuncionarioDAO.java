@@ -2,9 +2,10 @@ package br.com.sistemaGestaoFuncionarios.dao;
 
 import br.com.sistemaGestaoFuncionarios.model.Funcionario;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
+import java.sql.*;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 
 public class FuncionarioDAO {
 
@@ -41,6 +42,56 @@ public void createFuncionario(Funcionario funcionario){
 
     }
 
+}
+
+public List<Funcionario> encontrarFuncionarios(){
+    String SQL = "SELECT * FROM FUNCIONARIO";
+
+    try {
+
+        Connection connection = DriverManager.getConnection("jdbc:h2:~/test", "sa", "sa");
+        PreparedStatement preparedStatement = connection.prepareStatement(SQL);
+
+        System.out.println("conecto");
+
+        ResultSet resultSet = preparedStatement.executeQuery();
+
+        List<Funcionario> funcionarios = new ArrayList<>();
+
+        while (resultSet.next()){
+            int funcionarioId = resultSet.getInt("id");
+            String funcinarioNome = resultSet.getString("nome");
+            String funcionarioCpf = resultSet.getString("cpf");
+            String funcionarioSenha = resultSet.getString("senha");
+            String funcionarioEmail = resultSet.getString("email");
+            String funcionarioTelefone = resultSet.getString("telefone");
+            Date funcionarioDataNasc = resultSet.getDate("data_nascimento");
+            Date funcionarioDataCont = resultSet.getDate("data_contratacao");
+            String status = resultSet.getString("status");
+            String perfil = resultSet.getString("perfil");
+            int cargoId = resultSet.getInt("cargo_id");
+            int departamentoId = resultSet.getInt("departamento_id");
+
+
+            Funcionario funcionario = new Funcionario(funcionarioId, funcinarioNome, funcionarioCpf, funcionarioEmail, funcionarioSenha, funcionarioTelefone,  funcionarioDataNasc, funcionarioDataCont, status, perfil, cargoId, departamentoId);
+
+            funcionarios.add(funcionario);
+        }
+        System.out.println("cosnuilta realizadda");
+
+        connection.close();
+
+        return funcionarios;
+
+
+
+
+    }catch (Exception e) {
+
+        System.out.println("Erro ao consultar os dados no DB" + e.getMessage());
+
+        return Collections.emptyList();
+    }
 }
 
 

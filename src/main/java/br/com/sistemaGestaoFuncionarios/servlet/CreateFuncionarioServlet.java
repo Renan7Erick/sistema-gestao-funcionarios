@@ -35,7 +35,7 @@ public class CreateFuncionarioServlet extends HttpServlet {
 
         funcionarioDAO.createFuncionario(funcionario);
 
-        resp.sendRedirect("/pages/cadastroFuncionarios/cadastroFunc.html");
+        resp.sendRedirect("/encontrar-funcionarios");
 
     }
 }
