@@ -21,19 +21,21 @@ public class CreateFuncionarioServlet extends HttpServlet {
         String funcinarioNome = req.getParameter("nome");
         String funcionarioCpf = req.getParameter("cpf");
         String funcionarioEmail = req.getParameter("email");
+        String funcionarioSenha = req.getParameter("senha");
         String funcionarioTelefone = req.getParameter("telefone");
         Date funcionarioDataNasc = Date.valueOf(req.getParameter("dataNascimento"));
         Date funcionarioDataCont = Date.valueOf(req.getParameter("dataContratacao"));
         String status = req.getParameter("status");
-        int cargoId = Integer.parseInt(req.getParameter("cargo"));
-        int departamentoId = Integer.parseInt(req.getParameter("departamento"));
+        String perfil = req.getParameter("perfil");
+        int cargoId = Integer.parseInt(req.getParameter("cargoId"));
+        int departamentoId = Integer.parseInt(req.getParameter("departamentoId"));
 
 
-        Funcionario funcionario = new Funcionario(funcinarioNome, funcionarioCpf, funcionarioEmail, funcionarioTelefone, funcionarioDataNasc, funcionarioDataCont, status, cargoId, departamentoId);
+        Funcionario funcionario = new Funcionario(funcinarioNome, funcionarioCpf, funcionarioEmail, funcionarioSenha, funcionarioTelefone,  funcionarioDataNasc, funcionarioDataCont, status, perfil, cargoId, departamentoId);
 
+        funcionarioDAO.createFuncionario(funcionario);
 
-
-
+        resp.sendRedirect("/pages/cadastroFuncionarios/cadastroFunc.html");
 
     }
 }

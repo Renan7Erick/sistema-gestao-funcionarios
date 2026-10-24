@@ -9,7 +9,7 @@ import java.sql.PreparedStatement;
 public class FuncionarioDAO {
 
 public void createFuncionario(Funcionario funcionario){
-    String SQL = "INSERT INTO funcionario (nome, cpf, email, senha, perfil, telefone, data_nascimento, data_contratacao, status, cargo_id, departamento_id) VALUES (?,?,?,?,?,?,?,?,?,?,?)";
+    String SQL = "INSERT INTO funcionario (nome, cpf, email, senha, telefone, data_nascimento, data_contratacao, status, perfil, cargo_id,  departamento_id) VALUES (?,?,?,?,?,?,?,?,?,?,?)";
 
     try{
         Connection connection = DriverManager.getConnection("jdbc:h2:~/test", "sa","sa");
@@ -20,12 +20,14 @@ public void createFuncionario(Funcionario funcionario){
         preparedStatement.setString(1, funcionario.getNome());
         preparedStatement.setString(2, funcionario.getCpf());
         preparedStatement.setString(3, funcionario.getEmail());
-        preparedStatement.setString(4, funcionario.getTelefone());
-        preparedStatement.setDate(5, funcionario.getDataNascimento());
-        preparedStatement.setDate(6, funcionario.getDataContratacao());
-        preparedStatement.setString(7, funcionario.getStatus());
-        preparedStatement.setInt(8, funcionario.getCargoId());
-        preparedStatement.setInt(9, funcionario.getDepartamentoId());
+        preparedStatement.setString(4, funcionario.getSenha());
+        preparedStatement.setString(5, funcionario.getTelefone());
+        preparedStatement.setDate(6, funcionario.getDataNascimento());
+        preparedStatement.setDate(7, funcionario.getDataContratacao());
+        preparedStatement.setString(8, funcionario.getStatus());
+        preparedStatement.setString(9, funcionario.getPerfil());
+        preparedStatement.setInt(10, funcionario.getCargoId());
+        preparedStatement.setInt(11, funcionario.getDepartamentoId());
         preparedStatement.execute();
 
         System.out.println("inserido");
@@ -35,7 +37,7 @@ public void createFuncionario(Funcionario funcionario){
 
     } catch (Exception e) {
 
-        System.out.println("fail in database connection");
+        System.out.println("fail in database connection"+ e.getMessage());
 
     }
 

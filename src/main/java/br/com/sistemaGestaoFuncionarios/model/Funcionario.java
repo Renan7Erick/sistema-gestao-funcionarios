@@ -10,33 +10,39 @@ public class Funcionario {
     private String cpf;
     private String email;
     private String telefone;
+    private String senha;
     private Date dataNascimento;
     private Date dataContratacao;
     private String status;
+    private String perfil;
     private int cargoId;
     private int departamentoId;
 
-    public Funcionario(int id, String nome, String cpf, String email, String telefone, Date dataNascimento, Date dataContratacao, String status, int cargoId, int departamentoId) {
+    public Funcionario(int id, String nome, String cpf, String email, String telefone, String senha, Date dataNascimento, Date dataContratacao, String status, String perfil, int cargoId, int departamentoId) {
         this.id = id;
         this.nome = nome;
         this.cpf = cpf;
         this.email = email;
+        this.senha = senha;
         this.telefone = telefone;
         this.dataNascimento = dataNascimento;
         this.dataContratacao = dataContratacao;
         this.status = status;
+        this.perfil = perfil;
         this.cargoId = cargoId;
         this.departamentoId = departamentoId;
     }
 
-    public Funcionario(String nome, String cpf, String email, String telefone, Date dataNascimento, Date dataContratacao, String status, int cargoId, int departamentoId) {
+    public Funcionario(String nome, String cpf, String email, String senha, String telefone,  Date dataNascimento, Date dataContratacao, String status, String perfil, int cargoId, int departamentoId) {
         this.nome = nome;
         this.cpf = cpf;
         this.email = email;
+        this.senha = senha;
         this.telefone = telefone;
         this.dataNascimento = dataNascimento;
         this.dataContratacao = dataContratacao;
         this.status = status;
+        this.perfil = perfil;
         this.cargoId = cargoId;
         this.departamentoId = departamentoId;
     }
@@ -71,6 +77,22 @@ public class Funcionario {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public String getPerfil() {
+        return perfil;
+    }
+
+    public void setPerfil(String perfil) {
+        this.perfil = perfil;
+    }
+
+    public String getSenha() {
+        return senha;
+    }
+
+    public void setSenha(String senha) {
+        this.senha = senha;
     }
 
     public String getTelefone() {
