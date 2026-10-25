@@ -45,7 +45,12 @@ public void createFuncionario(Funcionario funcionario){
 }
 
 public List<Funcionario> encontrarFuncionarios(){
-    String SQL = "SELECT * FROM FUNCIONARIO";
+    String SQL = "SELECT f.*,\n" +
+            "       c.nome AS cargo_nome,\n" +
+            "       d.nome AS departamento_nome\n" +
+            "FROM funcionario f\n" +
+            "INNER JOIN cargo c ON f.cargo_id = c.id\n" +
+            "INNER JOIN departamento d ON f.departamento_id = d.id";
 
     try {
 
@@ -70,10 +75,12 @@ public List<Funcionario> encontrarFuncionarios(){
             String status = resultSet.getString("status");
             String perfil = resultSet.getString("perfil");
             int cargoId = resultSet.getInt("cargo_id");
+            String cargoNome = resultSet.getString("cargo_nome");
             int departamentoId = resultSet.getInt("departamento_id");
+            String departamentoNome = resultSet.getString("departamento_nome");
 
 
-            Funcionario funcionario = new Funcionario(funcionarioId, funcinarioNome, funcionarioCpf, funcionarioEmail, funcionarioSenha, funcionarioTelefone,  funcionarioDataNasc, funcionarioDataCont, status, perfil, cargoId, departamentoId);
+            Funcionario funcionario = new Funcionario(funcionarioId, funcinarioNome, funcionarioCpf, funcionarioEmail, funcionarioSenha, funcionarioTelefone,  funcionarioDataNasc, funcionarioDataCont, status, perfil, cargoId, cargoNome, departamentoId, departamentoNome);
 
             funcionarios.add(funcionario);
         }

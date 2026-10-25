@@ -16,9 +16,28 @@ public class Funcionario {
     private String status;
     private String perfil;
     private int cargoId;
+    private String cargoNome;
     private int departamentoId;
+    private String departamentoNome;
 
-    public Funcionario(int id, String nome, String cpf, String email,String senha, String telefone,  Date dataNascimento, Date dataContratacao, String status, String perfil, int cargoId, int departamentoId) {
+    public Funcionario(int id, String nome, String cpf, String email, String telefone, String senha, Date dataNascimento, Date dataContratacao, String status, String perfil, int cargoId, String cargoNome, int departamentoId, String departamentoNome) {
+        this.id = id;
+        this.nome = nome;
+        this.cpf = cpf;
+        this.email = email;
+        this.telefone = telefone;
+        this.senha = senha;
+        this.dataNascimento = dataNascimento;
+        this.dataContratacao = dataContratacao;
+        this.status = status;
+        this.perfil = perfil;
+        this.cargoId = cargoId;
+        this.cargoNome = cargoNome;
+        this.departamentoId = departamentoId;
+        this.departamentoNome = departamentoNome;
+    }
+
+    public Funcionario(int id, String nome, String cpf, String email, String senha, String telefone, Date dataNascimento, Date dataContratacao, String status, String perfil, int cargoId, int departamentoId) {
         this.id = id;
         this.nome = nome;
         this.cpf = cpf;
@@ -129,6 +148,22 @@ public class Funcionario {
 
     public int getCargoId() {
         return cargoId;
+    }
+
+    public String getCargoNome() {
+        return cargoNome;
+    }
+
+    public void setCargoNome(String cargoNome) {
+        this.cargoNome = cargoNome;
+    }
+
+    public String getDepartamentoNome() {
+        return departamentoNome;
+    }
+
+    public void setDepartamentoNome(String departamentoNome) {
+        this.departamentoNome = departamentoNome;
     }
 
     public void setCargoId(int cargoId) {

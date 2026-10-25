@@ -226,8 +226,8 @@
                         <p>${funcionario.telefone}</p>
                         <p>${funcionario.dataNascimento}</p>
                         <p>${funcionario.dataContratacao}</p>
-                        <p>${funcionario.cargoId}</p>
-                        <p>${funcionario.departamentoId}</p>
+                        <p>${funcionario.cargoNome}</p>
+                        <p>${funcionario.departamentoNome}</p>
                         <p>${funcionario.status}</p>
 
                     </div>
