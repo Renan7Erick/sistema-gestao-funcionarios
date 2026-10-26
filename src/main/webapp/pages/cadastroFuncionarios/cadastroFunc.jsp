@@ -50,13 +50,13 @@
 
                     <div class="input-card">
                         <label>Nome Completo</label>
-                        <input id="nome" name="nome" placeholder="Ex: pedro gameplays">
+                        <input id="nome" name="nome" placeholder="Ex: pedro gameplays" required>
                     </div>
 
 
                     <div class="input-card">
                         <label>CPF</label>
-                        <input id="cpf" name="cpf" placeholder="Ex: 000.000.000-00">
+                        <input id="cpf" name="cpf" placeholder="Ex: 000.000.000-00" required>
                     </div>
 
 
@@ -67,17 +67,17 @@
 
                     <div class="input-card">
                         <label>Email</label>
-                        <input name="email" placeholder="Ex: colaborador@empresa.com" id="email">
+                        <input name="email" placeholder="Ex: colaborador@empresa.com" id="email" required>
                     </div>
 
                     <div class="input-card">
                         <label>Senha</label>
-                        <input name="senha" type="password" id="senha">
+                        <input name="senha" type="password" id="senha" required>
                     </div>
 
                     <div class="input-card">
                         <label>Telefone</label>
-                        <input name="telefone" id="telefone" placeholder="Ex: (11) 98765-4321">
+                        <input name="telefone" id="telefone" placeholder="Ex: (11) 98765-4321" required>
                     </div>
 
                 </div>
@@ -87,12 +87,12 @@
 
                     <div class="input-card">
                         <label>Data de Nascimento</label>
-                        <input name="dataNascimento" id="dataNascimento" type="date">
+                        <input name="dataNascimento" id="dataNascimento" type="date" required>
                     </div>
 
                     <div class="input-card">
                         <label>Data de Contratação</label>
-                        <input name="dataContratacao" id="dataContratacao" type="date">
+                        <input name="dataContratacao" id="dataContratacao" type="date" required>
                     </div>
 
 
@@ -158,7 +158,7 @@
 
 
                 <div class="form-buttons">
-                    <button>Cancelar</button>
+                    <button type="reset">Cancelar</button>
                     <button type="submit">Salvar Alterações <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12"
                             viewBox="0 0 12 12" fill="none">
                             <path
