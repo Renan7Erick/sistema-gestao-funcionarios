@@ -105,18 +105,11 @@
                     <button class="btn-cadastrar-top">CADASTRAR</button>
                 </div>
 
-                <form>
-                    <div class="input-group">
-                        <label>ID (AUTOMÁTICO) <span class="hint-system">Gerado pelo sistema</span></label>
-                        <div class="input-lock">
-                            <i class="ph ph-lock-key"></i>
-                            <input type="text" value="#DEP-007" disabled>
-                        </div>
-                    </div>
+                <form action="/create-departamento" method="POST">
 
                     <div class="input-group">
                         <label>NOME DO DEPARTAMENTO <span class="required">*Obrigatório</span></label>
-                        <input type="text" placeholder="Ex: Comercial, Marketing, Suporte">
+                        <input type="text" name="nome" placeholder="Ex: Comercial, Marketing, Suporte" required>
                     </div>
 
                     <div class="info-box">
