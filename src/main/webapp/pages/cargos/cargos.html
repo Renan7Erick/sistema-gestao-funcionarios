@@ -119,14 +119,8 @@
 
                     <form id="form-cargo" action="cargos" method="post">
 
-                        <label for="id-cargo">ID (AUTOMÁTICO)</label>
-                        <div class="campo-com-icone">
-                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                <rect x="3" y="11" width="18" height="11" rx="2"/>
-                                <path d="M7 11V7a5 5 0 0 1 10 0v4"/>
-                            </svg>
-                            <input type="text" id="id-cargo" value="#13" disabled>
-                        </div>
+
+
 
                         <label for="nome-cargo">NOME DO CARGO <span class="obrigatorio">*</span></label>
                         <input type="text" id="nome-cargo" name="nome" placeholder="Ex: Desenvolvedor, Analista Financeiro" required>
@@ -181,33 +175,7 @@
                         
                     </div>
 
-                    <!-- Filtros -->
-                    <div id="filtros">
-                        <div id="caixa-busca" class="campo-com-icone">
-                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                <circle cx="11" cy="11" r="8"/>
-                                <path d="m21 21-4.3-4.3"/>
-                            </svg>
-                            <input type="text" id="busca" placeholder="Buscar cargo por nome, nível ou departamento">
-                        </div>
 
-                        <select id="filtro-departamento">
-                            <option value="">Todos Departamentos</option>
-                            <option value="1">Administrativo</option>
-                            <option value="2">Financeiro</option>
-                            <option value="3">TI</option>
-                            <option value="4">RH</option>
-                            <option value="5">Comercial</option>
-                            <option value="6">Produção</option>
-                        </select>
-
-                        <select id="filtro-nivel">
-                            <option value="">Todos Níveis</option>
-                            <option value="JUNIOR">Júnior</option>
-                            <option value="PLENO">Pleno</option>
-                            <option value="SENIOR">Sênior</option>
-                        </select>
-                    </div>
 
                     <table id="tabela-cargos">
                         <thead>
