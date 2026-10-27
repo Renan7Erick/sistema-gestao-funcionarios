@@ -1,9 +1,11 @@
+<%@ page contentType="text/html;charset=UTF-8" pageEncoding="UTF-8" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <title>Cargos - Sistema Funcionários</title>
-    <link rel="stylesheet" href="./style.css">
+    <link rel="stylesheet" href="/pages/cargos/style.css">
 </head>
 <body>
 
@@ -117,7 +119,7 @@
                         <span class="selo">CADASTRAR</span>
                     </div>
 
-                    <form id="form-cargo" action="cargos" method="post">
+                    <form id="form-cargo" action="/create-cargo" method="post">
 
 
 
@@ -141,7 +143,6 @@
                             <option value="3">TI</option>
                             <option value="4">RH</option>
                             <option value="5">Comercial</option>
-                            <option value="6">Produção</option>
                         </select>
 
 
@@ -184,124 +185,35 @@
                                 <th>CARGO / FUNÇÃO</th>
                                 <th>NÍVEL</th>
                                 <th>DEPARTAMENTO</th>
-                                <th class="centro">COLABORADORES</th>
-                                <th>STATUS</th>
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <td class="coluna-id">#1</td>
-                                <td>
-                                    <div class="nome-cargo">
-                                        <div class="icone-cargo">
-                                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                                <rect x="2" y="7" width="20" height="14" rx="2"/>
-                                                <path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"/>
-                                            </svg>
-                                        </div>
-                                        <span>Desenvolvedor Frontend</span>
-                                    </div>
-                                </td>
-                                <td><span class="nivel">JÚNIOR</span></td>
-                                <td><span class="departamento"><span class="bolinha cor-azul"></span>TI</span></td>
-                                <td class="centro"><b>8</b> colabs</td>
-                                <td><span class="status-ativo"><span class="bolinha cor-verde"></span>Ativo</span></td>
-                            </tr>
+                           <c:forEach var="cargo" items="${cargos}">
+                                       <tr>
+                                           <td class="coluna-id">#${cargo.id}</td>
+                                           <td>
+                                               <div class="nome-cargo">
+                                                   <div class="icone-cargo">
+                                                       <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                                           <rect x="2" y="7" width="20" height="14" rx="2"/>
+                                                           <path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"/>
+                                                       </svg>
+                                                   </div>
+                                                   <span><c:out value="${cargo.nome}"/></span>
+                                               </div>
+                                           </td>
+                                           <td><span class="nivel">${cargo.nivel}</span></td>
+                                           <td>
+                                               <span class="departamento">
+                                                   <span class="bolinha cor-azul"></span><c:out value="${cargo.departamentoNome}"/>
+                                               </span>
+                                           </td>
+                                       </tr>
+                                   </c:forEach>
 
-                            <tr>
-                                <td class="coluna-id">#2</td>
-                                <td>
-                                    <div class="nome-cargo">
-                                        <div class="icone-cargo">
-                                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                                <rect x="2" y="7" width="20" height="14" rx="2"/>
-                                                <path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"/>
-                                            </svg>
-                                        </div>
-                                        <span>Desenvolvedor Backend</span>
-                                    </div>
-                                </td>
-                                <td><span class="nivel">PLENO</span></td>
-                                <td><span class="departamento"><span class="bolinha cor-azul"></span>TI</span></td>
-                                <td class="centro"><b>12</b> colabs</td>
-                                <td><span class="status-ativo"><span class="bolinha cor-verde"></span>Ativo</span></td>
-                            </tr>
-
-                            <tr>
-                                <td class="coluna-id">#3</td>
-                                <td>
-                                    <div class="nome-cargo">
-                                        <div class="icone-cargo">
-                                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                                <rect x="2" y="7" width="20" height="14" rx="2"/>
-                                                <path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"/>
-                                            </svg>
-                                        </div>
-                                        <span>Analista Financeiro</span>
-                                    </div>
-                                </td>
-                                <td><span class="nivel">PLENO</span></td>
-                                <td><span class="departamento"><span class="bolinha cor-laranja"></span>Financeiro</span></td>
-                                <td class="centro"><b>5</b> colabs</td>
-                                <td><span class="status-ativo"><span class="bolinha cor-verde"></span>Ativo</span></td>
-                            </tr>
-
-                            <tr>
-                                <td class="coluna-id">#4</td>
-                                <td>
-                                    <div class="nome-cargo">
-                                        <div class="icone-cargo">
-                                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                                <rect x="2" y="7" width="20" height="14" rx="2"/>
-                                                <path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"/>
-                                            </svg>
-                                        </div>
-                                        <span>Especialista de RH</span>
-                                    </div>
-                                </td>
-                                <td><span class="nivel">SÊNIOR</span></td>
-                                <td><span class="departamento"><span class="bolinha cor-roxo"></span>RH</span></td>
-                                <td class="centro"><b>4</b> colabs</td>
-                                <td><span class="status-ativo"><span class="bolinha cor-verde"></span>Ativo</span></td>
-                            </tr>
-
-                            <tr>
-                                <td class="coluna-id">#5</td>
-                                <td>
-                                    <div class="nome-cargo">
-                                        <div class="icone-cargo">
-                                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                                <rect x="2" y="7" width="20" height="14" rx="2"/>
-                                                <path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"/>
-                                            </svg>
-                                        </div>
-                                        <span>Executivo de Vendas</span>
-                                    </div>
-                                </td>
-                                <td><span class="nivel">SÊNIOR</span></td>
-                                <td><span class="departamento"><span class="bolinha cor-verde"></span>Comercial</span></td>
-                                <td class="centro"><b>15</b> colabs</td>
-                                <td><span class="status-ativo"><span class="bolinha cor-verde"></span>Ativo</span></td>
-                            </tr>
-
-                            <tr>
-                                <td class="coluna-id">#6</td>
-                                <td>
-                                    <div class="nome-cargo">
-                                        <div class="icone-cargo">
-                                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                                <rect x="2" y="7" width="20" height="14" rx="2"/>
-                                                <path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"/>
-                                            </svg>
-                                        </div>
-                                        <span>Supervisor de Operações</span>
-                                    </div>
-                                </td>
-                                <td><span class="nivel">SÊNIOR</span></td>
-                                <td><span class="departamento"><span class="bolinha cor-vermelho"></span>Produção</span></td>
-                                <td class="centro"><b>10</b> colabs</td>
-                                <td><span class="status-ativo"><span class="bolinha cor-verde"></span>Ativo</span></td>
-                            </tr>
+                                   <c:if test="${empty cargos}">
+                                       <tr><td colspan="4">Nenhum cargo cadastrado.</td></tr>
+                                   </c:if>
                         </tbody>
                     </table>
 
