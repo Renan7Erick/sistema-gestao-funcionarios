@@ -92,7 +92,7 @@ main {
     padding: 0 12px;
 }
 
-form {
+.form-cadastro{
 
     display: flex;
     flex-direction: column;
@@ -106,7 +106,7 @@ form {
 
 }
 
-form label {
+.form-cadastro label {
     color: #2D2F2B;
     font-size: 14px;
     font-style: normal;
@@ -121,6 +121,8 @@ form label {
     min-width: 0;
     background-color: #D2D9F4;
 }
+
+
 
 .rightside button {
     background-color: white;
@@ -247,7 +249,7 @@ hr {
 
 }
 
-form button {
+.form-cadastro button {
 
     border-radius: 8px;
     border: transparent;
