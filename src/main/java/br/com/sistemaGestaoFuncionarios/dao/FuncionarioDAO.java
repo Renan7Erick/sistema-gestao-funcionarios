@@ -67,8 +67,8 @@ public List<Funcionario> encontrarFuncionarios(){
             int funcionarioId = resultSet.getInt("id");
             String funcinarioNome = resultSet.getString("nome");
             String funcionarioCpf = resultSet.getString("cpf");
-            String funcionarioSenha = resultSet.getString("senha");
             String funcionarioEmail = resultSet.getString("email");
+            String funcionarioSenha = resultSet.getString("senha");
             String funcionarioTelefone = resultSet.getString("telefone");
             Date funcionarioDataNasc = resultSet.getDate("data_nascimento");
             Date funcionarioDataCont = resultSet.getDate("data_contratacao");

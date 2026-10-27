@@ -6,25 +6,91 @@ main {
 
 }
 
-.rightside {
-
+#menu-lateral {
+    width: 255px;
+    background-color: #ffffff;
+    border-right: 1px solid #e5e7eb;
     display: flex;
-
-    align-items: start;
-
     flex-direction: column;
+    justify-content: space-between;
+    padding: 24px;
+}
 
-    background-color: #D2D9F4;
+#logo {
+    display: flex;
+    align-items: center;
+    padding-bottom: 24px;
+    margin-bottom: 24px;
+    border-bottom: 1px solid #e5e7eb;
+}
 
+#logo-icone {
+    width: 40px;
+    height: 40px;
+    background-color: #0f1b3d;
+    color: #ffffff;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 12px;
+}
 
+#logo-texto {
+    display: flex;
+    flex-direction: column;
+}
 
-    justify-content: start;
+#logo-titulo {
+    font-weight: bold;
+    font-size: 15px;
+    color: #0f1b3d;
+}
 
-    width: 73vw;
+#logo-subtitulo {
+    font-size: 12px;
+    letter-spacing: 1px;
+    color: #6b7280;
+}
 
+#menu li {
+    margin-bottom: 4px;
+}
+
+#menu a {
+    display: block;
+    padding: 10px 12px;
+    border-radius: 6px;
+    color: #4b5563;
+}
+
+#menu a:hover {
+    background-color: #f3f4f6;
+}
+
+#menu a.ativo {
+    background-color: #0f1b3d;
+    color: #ffffff;
+    font-weight: bold;
+}
+
+#area-sair {
+    border-top: 1px solid #e5e7eb;
+    padding-top: 20px;
+    position: fixed;
+
+    width: 200px;
+
+    top: 90vh;
+    left: 50px;
 
 }
 
+#link-sair {
+    color: #dc2626;
+    font-weight: bold;
+    padding: 0 12px;
+}
 
 form {
 
@@ -36,7 +102,7 @@ form {
     gap: 10px;
 
 
-    width: 100%;
+    box-sizing: border-box;
 
 }
 
@@ -48,6 +114,12 @@ form label {
     line-height: 20px;
     letter-spacing: 0.35px;
     margin-bottom: 8px;
+}
+
+.rightside {
+    flex: 1;
+    min-width: 0;
+    background-color: #D2D9F4;
 }
 
 .rightside button {
@@ -62,6 +134,8 @@ form label {
     gap: 20px;
 }
 
+
+
 .input-row {
     display: flex;
     flex-direction: row;
@@ -75,6 +149,23 @@ form label {
     flex-direction: column;
 
 }
+
+.action{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+
+
+
+}
+
+.action button{
+    border: none;
+    background-color: #E7EBF3;
+
+}
+
+
 
 .input-card input {
     height: 20px;
@@ -108,29 +199,6 @@ form label {
 
 }
 
-
-
-
-
-.leftside {
-
-    display: flex;
-    flex-direction: column;
-
-
-    min-width: 400px;
-    min-height: 100vh;
-
-    background-color: white;
-
-    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
-
-
-
-    max-width: 300px;
-
-
-}
 
 .fundoLogo {
 
@@ -179,7 +247,7 @@ hr {
 
 }
 
-button {
+form button {
 
     border-radius: 8px;
     border: transparent;
@@ -211,16 +279,20 @@ button:hover {
 
     gap: 10px;
 
-    height: 100%;
-    width: 100%;
 
+}
+
+.areaLista,
+form {
+    box-sizing: border-box;
 }
 
 
 .legendaLista,
 .cardLista {
     display: grid;
-    grid-template-columns: 50px 1.5fr 1.2fr 1.8fr 1.2fr 1fr 1fr 70px 110px 80px;
+
+    grid-template-columns:  60px 50px 1.5fr 1.2fr 1.8fr 1.2fr 1fr 1fr 70px 110px 80px;
     column-gap: 16px;
     align-items: center;
     padding: 12px 16px;

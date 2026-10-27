@@ -14,29 +14,40 @@
 <body>
     <main>
 
-        <section class="leftside">
-            <section class="logo">
-                <div class="fundoLogo">
+        <div id="menu-lateral">
 
-                    <svg width="12" height="16" viewBox="0 0 12 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path
-                            d="M1.5 0C1.08333 0.0208333 0.729167 0.166667 0.4375 0.4375C0.166667 0.729167 0.0208333 1.08333 0 1.5V14.5C0.0208333 14.9167 0.166667 15.2708 0.4375 15.5625C0.729167 15.8333 1.08333 15.9792 1.5 16H4.5V13.5C4.52083 13.0833 4.66667 12.7292 4.9375 12.4375C5.22917 12.1667 5.58333 12.0208 6 12C6.41667 12.0208 6.77083 12.1667 7.0625 12.4375C7.33333 12.7292 7.47917 13.0833 7.5 13.5V16H10.5C10.9167 15.9792 11.2708 15.8333 11.5625 15.5625C11.8333 15.2708 11.9792 14.9167 12 14.5V1.5C11.9792 1.08333 11.8333 0.729167 11.5625 0.4375C11.2708 0.166667 10.9167 0.0208333 10.5 0H1.5ZM2 7.5C2.02083 7.1875 2.1875 7.02083 2.5 7H3.5C3.8125 7.02083 3.97917 7.1875 4 7.5V8.5C3.97917 8.8125 3.8125 8.97917 3.5 9H2.5C2.1875 8.97917 2.02083 8.8125 2 8.5V7.5ZM5.5 7H6.5C6.8125 7.02083 6.97917 7.1875 7 7.5V8.5C6.97917 8.8125 6.8125 8.97917 6.5 9H5.5C5.1875 8.97917 5.02083 8.8125 5 8.5V7.5C5.02083 7.1875 5.1875 7.02083 5.5 7ZM8 7.5C8.02083 7.1875 8.1875 7.02083 8.5 7H9.5C9.8125 7.02083 9.97917 7.1875 10 7.5V8.5C9.97917 8.8125 9.8125 8.97917 9.5 9H8.5C8.1875 8.97917 8.02083 8.8125 8 8.5V7.5ZM2.5 3H3.5C3.8125 3.02083 3.97917 3.1875 4 3.5V4.5C3.97917 4.8125 3.8125 4.97917 3.5 5H2.5C2.1875 4.97917 2.02083 4.8125 2 4.5V3.5C2.02083 3.1875 2.1875 3.02083 2.5 3ZM5 3.5C5.02083 3.1875 5.1875 3.02083 5.5 3H6.5C6.8125 3.02083 6.97917 3.1875 7 3.5V4.5C6.97917 4.8125 6.8125 4.97917 6.5 5H5.5C5.1875 4.97917 5.02083 4.8125 5 4.5V3.5ZM8.5 3H9.5C9.8125 3.02083 9.97917 3.1875 10 3.5V4.5C9.97917 4.8125 9.8125 4.97917 9.5 5H8.5C8.1875 4.97917 8.02083 4.8125 8 4.5V3.5C8.02083 3.1875 8.1875 3.02083 8.5 3Z"
-                            fill="white" />
-                    </svg>
-
+            <div id="menu-topo">
+                <div id="logo">
+                    <div id="logo-icone">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <rect x="4" y="2" width="16" height="20" rx="2"/>
+                            <path d="M9 22v-4h6v4"/>
+                            <path d="M8 6h.01M12 6h.01M16 6h.01M8 10h.01M12 10h.01M16 10h.01M8 14h.01M12 14h.01M16 14h.01"/>
+                        </svg>
+                    </div>
+                    <div id="logo-texto">
+                        <span id="logo-titulo">SISTEMA</span>
+                        <span id="logo-subtitulo">FUNCIONÁRIOS</span>
+                    </div>
                 </div>
-                <h1>Sistema</h1>
-                <p>Funcionários</p>
-            </section>
 
-            <hr>
+                <ul id="menu">
+                    <li><a href="http://localhost:8080/pages/dashboard/dashboard.html">Dashboard</a></li>
+                    <li><a href="http://localhost:8080/encontrar-funcionarios" class="ativo">Funcionários</a></li>
+                    <li><a href="http://localhost:8080/pages/departamentos/departamentos.html">Departamentos</a></li>
+                    <li><a href="http://localhost:8080/encontrar-cargos">Cargos</a></li>
+                    <li><a href="../ponto/ponto.html">Ponto</a></li>
+                    <li><a href="../ferias/ferias.html">Férias</a></li>
+                </ul>
+            </div>
 
-            <section class="botoes">
-                <button>📊 Meu perfil</button>
-                <button>🕐 Meu Ponto</button>
-                <button>🦥 Minhas Férias</button>
-            </section>
-        </section>
+            <div id="area-sair">
+                <a href="../../index.html" id="link-sair">Sair</a>
+            </div>
+
+        </div>
+
+
 
         <section class="rightside">
 
@@ -198,13 +209,8 @@
                 </div>
 
 
-
-
-
-
-
-
                     <div class="legendaLista">
+                        <p>AÇÕES</p>
                         <p>ID</p>
                         <p>NOME</p>
                         <p>CPF</p>
@@ -217,9 +223,19 @@
                         <p>STATUS</p>
                     </div>
 
+
+
                  <c:forEach var="funcionario" items="${funcionarios}">
+
                     <div class="cardLista">
-                        <p>${funcionario.id}</p>
+
+                        <div class="action"><button ><svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M1.5 12H2.56875L9.9 4.66875L8.83125 3.6L1.5 10.9312V12V12M0 13.5V10.3125L9.9 0.43125C10.05 0.29375 10.2156 0.1875 10.3969 0.1125C10.5781 0.0375 10.7688 0 10.9688 0C11.1687 0 11.3625 0.0375 11.55 0.1125C11.7375 0.1875 11.9 0.3 12.0375 0.45L13.0688 1.5C13.2188 1.6375 13.3281 1.8 13.3969 1.9875C13.4656 2.175 13.5 2.3625 13.5 2.55C13.5 2.75 13.4656 2.94062 13.3969 3.12188C13.3281 3.30313 13.2188 3.46875 13.0688 3.61875L3.1875 13.5H0V13.5M12 2.55V2.55L10.95 1.5V1.5L12 2.55V2.55M9.35625 4.14375L8.83125 3.6V3.6L9.9 4.66875V4.66875L9.35625 4.14375V4.14375" fill="#94A3B8"/>
+                        </svg></button>
+                         <button ><svg width="12" height="14" viewBox="0 0 12 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                             <path d="M2.25 13.5C1.8375 13.5 1.48438 13.3531 1.19062 13.0594C0.896875 12.7656 0.75 12.4125 0.75 12V2.25H0V0.75H3.75V0H8.25V0.75H12V2.25H11.25V12C11.25 12.4125 11.1031 12.7656 10.8094 13.0594C10.5156 13.3531 10.1625 13.5 9.75 13.5H2.25V13.5M9.75 2.25H2.25V12V12V12H9.75V12V12V2.25V2.25M3.75 10.5H5.25V3.75H3.75V10.5V10.5M6.75 10.5H8.25V3.75H6.75V10.5V10.5M2.25 2.25V2.25V12V12V12V12V12V12V2.25V2.25" fill="#94A3B8"/>
+                         </svg></button>  </div>
+                        <p>${funcionario.id} </p>
                         <p>${funcionario.nome}</p>
                         <p>${funcionario.cpf}</p>
                         <p>${funcionario.email}</p>
@@ -231,6 +247,7 @@
                         <p>${funcionario.status}</p>
 
                     </div>
+
                  </c:forEach>
 
                 </section>

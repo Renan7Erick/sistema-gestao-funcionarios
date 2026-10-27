@@ -20,13 +20,13 @@ public class Funcionario {
     private int departamentoId;
     private String departamentoNome;
 
-    public Funcionario(int id, String nome, String cpf, String email, String telefone, String senha, Date dataNascimento, Date dataContratacao, String status, String perfil, int cargoId, String cargoNome, int departamentoId, String departamentoNome) {
+    public Funcionario(int id, String nome, String cpf, String email, String senha, String telefone,  Date dataNascimento, Date dataContratacao, String status, String perfil, int cargoId, String cargoNome, int departamentoId, String departamentoNome) {
         this.id = id;
         this.nome = nome;
         this.cpf = cpf;
         this.email = email;
-        this.telefone = telefone;
         this.senha = senha;
+        this.telefone = telefone;
         this.dataNascimento = dataNascimento;
         this.dataContratacao = dataContratacao;
         this.status = status;
