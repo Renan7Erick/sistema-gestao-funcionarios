@@ -53,6 +53,8 @@
 
             <form class="form-cadastro" action="/create-funcionario" method="post">
 
+                <input type="hidden" name="id" value="${param.id}">
+
                 <div class="input-row">
 
 
@@ -61,13 +63,13 @@
 
                     <div class="input-card">
                         <label>Nome Completo</label>
-                        <input id="nome" name="nome" placeholder="Ex: pedro gameplays" required>
+                        <input type="text" id="nome" name="nome" placeholder="Ex: pedro gameplays" value="${param.nome}" required>
                     </div>
 
 
                     <div class="input-card">
                         <label>CPF</label>
-                        <input id="cpf" name="cpf" placeholder="Ex: 000.000.000-00" required>
+                        <input id="cpf" name="cpf" placeholder="Ex: 000.000.000-00"  value="${param.cpf}" required>
                     </div>
 
 
@@ -78,17 +80,17 @@
 
                     <div class="input-card">
                         <label>Email</label>
-                        <input name="email" placeholder="Ex: colaborador@empresa.com" id="email" required>
+                        <input name="email" placeholder="Ex: colaborador@empresa.com" id="email" value="${param.email}" required>
                     </div>
 
                     <div class="input-card">
                         <label>Senha</label>
-                        <input name="senha" type="password" id="senha" required>
+                        <input name="senha" type="password" id="senha" ${empty param.id ? 'required' : ''}>
                     </div>
 
                     <div class="input-card">
                         <label>Telefone</label>
-                        <input name="telefone" id="telefone" placeholder="Ex: (11) 98765-4321" required>
+                        <input name="telefone" id="telefone" placeholder="Ex: (11) 98765-4321" value="${param.telefone}" required>
                     </div>
 
                 </div>
@@ -98,12 +100,12 @@
 
                     <div class="input-card">
                         <label>Data de Nascimento</label>
-                        <input name="dataNascimento" id="dataNascimento" type="date" required>
+                        <input name="dataNascimento" id="dataNascimento" type="date" value="${param.dataNascimento}" required>
                     </div>
 
                     <div class="input-card">
                         <label>Data de Contratação</label>
-                        <input name="dataContratacao" id="dataContratacao" type="date" required>
+                        <input name="dataContratacao" id="dataContratacao"  type="date"  value="${param.dataContratacao}" required>
                     </div>
 
 
@@ -113,11 +115,9 @@
                         <label>Cargo</label>
                         <div class="input-div">
                             <select name="cargoId" id="cargoId">
-                                <option value="1">Analista Administrativo</option>
-                                <option value="2">Analista Financeiro</option>
-                                <option value="3">Desenvolvedor Backend</option>
-                                <option value="4">Analista de RH</option>
-                                <option value="5">Executivo de Vendas</option>
+                                <c:forEach var="cargo" items="${cargos}">
+                                    <option value="${cargo.id}" ${param.cargoId == cargo.id ? 'selected' : ''}>${cargo.nome}</option>
+                                </c:forEach>
                             </select>
                         </div>
                     </div>
@@ -128,11 +128,9 @@
                         <label>Departamento</label>
                         <div class="input-div">
                             <select name="departamentoId" id="departamentoId">
-                                <option value="1">Administrativo</option>
-                                <option value="2">Financeiro</option>
-                                <option value="3">TI</option>
-                                <option value="4">RH</option>
-                                <option value="5">Comercial</option>
+                                <c:forEach var="departamento" items="${departamentos}">
+                                    <option value="${departamento.id}" ${param.departamentoId == departamento.id ? 'selected' : ''}>${departamento.nome}</option>
+                                </c:forEach>
                             </select>
                         </div>
                     </div>
@@ -147,9 +145,8 @@
                     <label>Status</label>
                     <div class="input-div">
                         <select name="status" id="status">
-                            <option value="ATIVO">Ativo</option>
-                            <option value="INATIVO">Inativo</option>
-
+                            <option value="ATIVO" ${param.status == 'ATIVO' ? 'selected' : ''}>Ativo</option>
+                            <option value="INATIVO" ${param.status == 'INATIVO' ? 'selected' : ''}>Inativo</option>
                         </select>
                     </div>
                 </div>
@@ -229,9 +226,9 @@
 
                     <div class="cardLista">
 
-                        <div class="action" ><button ><svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <div class="action" > <a href="encontrar-funcionarios?id=${funcionario.id}&nome=${funcionario.nome}&cpf=${funcionario.cpf}&email=${funcionario.email}&telefone=${funcionario.telefone}&dataNascimento=${funcionario.dataNascimento}&dataContratacao=${funcionario.dataContratacao}&cargoId=${funcionario.cargoId}&departamentoId=${funcionario.departamentoId}&status=${funcionario.status}&perfil=${funcionario.perfil}" ><svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path d="M1.5 12H2.56875L9.9 4.66875L8.83125 3.6L1.5 10.9312V12V12M0 13.5V10.3125L9.9 0.43125C10.05 0.29375 10.2156 0.1875 10.3969 0.1125C10.5781 0.0375 10.7688 0 10.9688 0C11.1687 0 11.3625 0.0375 11.55 0.1125C11.7375 0.1875 11.9 0.3 12.0375 0.45L13.0688 1.5C13.2188 1.6375 13.3281 1.8 13.3969 1.9875C13.4656 2.175 13.5 2.3625 13.5 2.55C13.5 2.75 13.4656 2.94062 13.3969 3.12188C13.3281 3.30313 13.2188 3.46875 13.0688 3.61875L3.1875 13.5H0V13.5M12 2.55V2.55L10.95 1.5V1.5L12 2.55V2.55M9.35625 4.14375L8.83125 3.6V3.6L9.9 4.66875V4.66875L9.35625 4.14375V4.14375" fill="#94A3B8"/>
-                        </svg></button>
+                        </svg></a>
 
                             <form action="/delete-funcionario" method="post">
 

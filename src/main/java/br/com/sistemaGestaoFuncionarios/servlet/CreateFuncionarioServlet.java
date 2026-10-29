@@ -18,6 +18,15 @@ public class CreateFuncionarioServlet extends HttpServlet {
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         FuncionarioDAO funcionarioDAO = new FuncionarioDAO();
 
+        String textId = req.getParameter("id");
+        int funcionarioId = 0;
+
+        if(!textId.equals("")){
+            funcionarioId = Integer.parseInt(req.getParameter("id"));
+        }
+
+
+
         String funcinarioNome = req.getParameter("nome");
         String funcionarioCpf = req.getParameter("cpf");
         String funcionarioEmail = req.getParameter("email");
@@ -31,9 +40,17 @@ public class CreateFuncionarioServlet extends HttpServlet {
         int departamentoId = Integer.parseInt(req.getParameter("departamentoId"));
 
 
-        Funcionario funcionario = new Funcionario(funcinarioNome, funcionarioCpf, funcionarioEmail, funcionarioSenha, funcionarioTelefone,  funcionarioDataNasc, funcionarioDataCont, status, perfil, cargoId, departamentoId);
+        Funcionario funcionario = new Funcionario(funcionarioId, funcinarioNome, funcionarioCpf, funcionarioEmail, funcionarioSenha, funcionarioTelefone,  funcionarioDataNasc, funcionarioDataCont, status, perfil, cargoId, departamentoId);
 
-        funcionarioDAO.createFuncionario(funcionario);
+        if (funcionarioId == 0){
+
+            funcionarioDAO.createFuncionario(funcionario);
+
+        } else {
+
+            funcionarioDAO.updateFuncionario(funcionario);
+        }
+
 
         resp.sendRedirect("/encontrar-funcionarios");
 
