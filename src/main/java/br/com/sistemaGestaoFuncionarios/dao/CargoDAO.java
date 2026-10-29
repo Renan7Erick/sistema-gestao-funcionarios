@@ -73,5 +73,25 @@ public class CargoDAO {
         }
     }
 
+    public void deleteCargoById(int cargoId){
+        String SQL = "DELETE CARGO WHERE ID = ?";
+
+        try {
+            Connection connection = DriverManager.getConnection("jdbc:h2:~/test", "sa","sa");
+            System.out.println("success in database connection");
+
+            PreparedStatement preparedStatement = connection.prepareStatement(SQL);
+            preparedStatement.setInt(1, cargoId);
+            preparedStatement.execute();
+
+            System.out.println("sucesso ao deletar usuario de id: " + cargoId);
+
+            connection.close();
+
+        } catch (Exception e) {
+            System.out.println("fail in database connection"+ e.getMessage());
+        }
+    }
+
 
 }

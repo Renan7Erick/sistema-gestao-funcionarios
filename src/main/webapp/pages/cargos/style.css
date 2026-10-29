@@ -639,3 +639,40 @@ h1, h2, p {
     color: #9ca3af;
     cursor: default;
 }
+
+.acoes {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+}
+
+.acoes form {
+    margin: 0;
+}
+
+.btn-acao {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    border: none;
+    border-radius: 6px;
+    background: transparent;
+    cursor: pointer;
+    transition: background 0.2s, color 0.2s;
+}
+
+.btn-editar {
+    color: #2563eb;
+}
+.btn-editar:hover {
+    background: #dbeafe;
+}
+
+.btn-deletar {
+    color: #dc2626;
+}
+.btn-deletar:hover {
+    background: #fee2e2;
+}

@@ -185,36 +185,60 @@
                                 <th>CARGO / FUNÇÃO</th>
                                 <th>NÍVEL</th>
                                 <th>DEPARTAMENTO</th>
+                                <th>Ações</th>
                             </tr>
                         </thead>
-                        <tbody>
-                           <c:forEach var="cargo" items="${cargos}">
-                                       <tr>
-                                           <td class="coluna-id">#${cargo.id}</td>
-                                           <td>
-                                               <div class="nome-cargo">
-                                                   <div class="icone-cargo">
-                                                       <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                                           <rect x="2" y="7" width="20" height="14" rx="2"/>
-                                                           <path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"/>
-                                                       </svg>
-                                                   </div>
-                                                   <span><c:out value="${cargo.nome}"/></span>
-                                               </div>
-                                           </td>
-                                           <td><span class="nivel">${cargo.nivel}</span></td>
-                                           <td>
-                                               <span class="departamento">
-                                                   <span class="bolinha cor-azul"></span><c:out value="${cargo.departamentoNome}"/>
-                                               </span>
-                                           </td>
-                                       </tr>
-                                   </c:forEach>
+                        <<tbody>
+                             <c:forEach var="cargo" items="${cargos}">
+                                 <tr>
+                                     <td class="coluna-id">#${cargo.id}</td>
+                                     <td>
+                                         <div class="nome-cargo">
+                                             <div class="icone-cargo">
+                                                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                                     <rect x="2" y="7" width="20" height="14" rx="2"/>
+                                                     <path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"/>
+                                                 </svg>
+                                             </div>
+                                             <span><c:out value="${cargo.nome}"/></span>
+                                         </div>
+                                     </td>
+                                     <td><span class="nivel">${cargo.nivel}</span></td>
+                                     <td>
+                                         <span class="departamento">
+                                             <span class="bolinha cor-azul"></span><c:out value="${cargo.departamentoNome}"/>
+                                         </span>
+                                     </td>
+                                     <td>
+                                         <div class="acoes">
+                                             <!-- Editar -->
+                                             <a
+                                                class="btn-acao btn-editar" title="Editar cargo">
+                                                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                                     <path d="M12 20h9"/>
+                                                     <path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/>
+                                                 </svg>
+                                             </a>
 
-                                   <c:if test="${empty cargos}">
-                                       <tr><td colspan="4">Nenhum cargo cadastrado.</td></tr>
-                                   </c:if>
-                        </tbody>
+                                             <!-- Deletar -->
+                                             <form action="/delete-cargo" method="post"
+                                                   onsubmit="return confirm('Tem certeza que deseja excluir este cargo?');">
+                                                 <input type="hidden" name="id" value="${cargo.id}">
+                                                 <button type="submit" class="btn-acao btn-deletar" title="Excluir cargo">
+                                                     <svg width="12" height="14" viewBox="0 0 12 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                         <path d="M2.25 13.5C1.8375 13.5 1.48438 13.3531 1.19062 13.0594C0.896875 12.7656 0.75 12.4125 0.75 12V2.25H0V0.75H3.75V0H8.25V0.75H12V2.25H11.25V12C11.25 12.4125 11.1031 12.7656 10.8094 13.0594C10.5156 13.3531 10.1625 13.5 9.75 13.5H2.25V13.5M9.75 2.25H2.25V12V12V12H9.75V12V12V2.25V2.25M3.75 10.5H5.25V3.75H3.75V10.5V10.5M6.75 10.5H8.25V3.75H6.75V10.5V10.5M2.25 2.25V2.25V12V12V12V12V12V12V2.25V2.25" fill="#94A3B8"/>
+                                                     </svg>
+                                                 </button>
+                                             </form>
+                                         </div>
+                                     </td>
+                                 </tr>
+                             </c:forEach>
+
+                             <c:if test="${empty cargos}">
+                                 <tr><td colspan="5">Nenhum cargo cadastrado.</td></tr>
+                             </c:if>
+                         </tbody>
                     </table>
 
                     
