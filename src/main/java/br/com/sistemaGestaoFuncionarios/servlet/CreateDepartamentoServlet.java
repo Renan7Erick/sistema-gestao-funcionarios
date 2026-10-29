@@ -21,6 +21,6 @@ public class CreateDepartamentoServlet extends HttpServlet {
         DepartamentoDAO departamentoDAO = new DepartamentoDAO();
         departamentoDAO.createDepartamento(departamento);
 
-        response.sendRedirect("departamentos/departamentos.html");
+        response.sendRedirect("/encontrar-departamentos");
     }
 }
