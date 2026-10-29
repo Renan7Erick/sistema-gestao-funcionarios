@@ -28,17 +28,17 @@
             </div>
 
             <ul id="menu">
-                <li><a href="../dashboard/dashboard.html">Dashboard</a></li>
-                <li><a href="../funcionarios/funcionarios.html">Funcionários</a></li>
-                <li><a href="../departamentos/departamentos.html">Departamentos</a></li>
-                <li><a href="cargos.html" class="ativo">Cargos</a></li>
-                <li><a href="../ponto/ponto.html">Ponto</a></li>
-                <li><a href="../ferias/ferias.html">Férias</a></li>
+                <li><a href="">Dashboard</a></li>
+                <li><a href="http://localhost:8080/encontrar-funcionarios">Funcionários</a></li>
+                <li><a href="http://localhost:8080/encontrar-departamentos">Departamentos</a></li>
+                <li><a href="http://localhost:8080/encontrar-cargos" class="ativo">Cargos</a></li>
+                <li><a href="http://localhost:8080/encontrar-ponto">Ponto</a></li>
+                <li><a href="http://localhost:8080/encontrar-ferias">Férias</a></li>
             </ul>
         </div>
 
         <div id="area-sair">
-            <a href="../../index.html" id="link-sair">Sair</a>
+            <a href="/index.html" id="link-sair">Sair</a>
         </div>
 
     </div>

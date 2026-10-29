@@ -45,9 +45,7 @@
                 <li>
                     <a href="#"><i class="ph ph-airplane-tilt"></i> Férias</a>
                 </li>
-                <li>
-                    <a href="#"><i class="ph ph-user"></i> Usuários</a>
-                </li>
+
             </ul>
         </nav>
 
