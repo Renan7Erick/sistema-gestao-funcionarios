@@ -115,11 +115,9 @@
                         <label>Cargo</label>
                         <div class="input-div">
                             <select name="cargoId" id="cargoId">
-                                    <option value="1" ${param.cargoId == 1 ? 'selected' : ''}>Analista Administrativo</option>
-                                    <option value="2" ${param.cargoId == 2 ? 'selected' : ''}>Analista Financeiro</option>
-                                    <option value="3" ${param.cargoId == 3 ? 'selected' : ''}>Desenvolvedor Backend</option>
-                                    <option value="4" ${param.cargoId == 4 ? 'selected' : ''}>Analista de RH</option>
-                                    <option value="5" ${param.cargoId == 5 ? 'selected' : ''}>Executivo de Vendas</option>
+                                <c:forEach var="cargo" items="${cargos}">
+                                    <option value="${cargo.id}" ${param.cargoId == cargo.id ? 'selected' : ''}>${cargo.nome}</option>
+                                </c:forEach>
                             </select>
                         </div>
                     </div>
@@ -130,11 +128,9 @@
                         <label>Departamento</label>
                         <div class="input-div">
                             <select name="departamentoId" id="departamentoId">
-                                    <option value="1" ${param.departamentoId == 1 ? 'selected' : ''}>Administrativo</option>
-                                    <option value="2" ${param.departamentoId == 2 ? 'selected' : ''}>Financeiro</option>
-                                    <option value="3" ${param.departamentoId == 3 ? 'selected' : ''}>TI</option>
-                                    <option value="4" ${param.departamentoId == 4 ? 'selected' : ''}>RH</option>
-                                    <option value="5" ${param.departamentoId == 5 ? 'selected' : ''}>Comercial</option>
+                                <c:forEach var="departamento" items="${departamentos}">
+                                    <option value="${departamento.id}" ${param.departamentoId == departamento.id ? 'selected' : ''}>${departamento.nome}</option>
+                                </c:forEach>
                             </select>
                         </div>
                     </div>

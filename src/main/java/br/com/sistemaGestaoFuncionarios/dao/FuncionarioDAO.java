@@ -102,7 +102,7 @@ public List<Funcionario> encontrarFuncionarios(){
 }
 
     public void deleteFuncionarioById(String funcionarioId){
-    String SQL = "DELETE FUNCIONARIO WHERE ID = ?";
+    String SQL = "DELETE FUNCIONARIO WHERE ID = ?"; // PRECISA APAGAR O PONTO E AS FERIAS, OS CADASTROS INICIAIS (POSSUEM PONTO E FERIAS) NAO PODERAM SER APAGADOS.
 
     try {
 
