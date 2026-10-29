@@ -121,28 +121,30 @@
 
                     <form id="form-cargo" action="/create-cargo" method="post">
 
+                        <input type="hidden" id="id" name="id" value="${param.id}">
+
 
 
 
                         <label for="nome-cargo">NOME DO CARGO <span class="obrigatorio">*</span></label>
-                        <input type="text" id="nome-cargo" name="nome" placeholder="Ex: Desenvolvedor, Analista Financeiro" required>
+                        <input type="text" id="nome-cargo" name="nome" placeholder="Ex: Desenvolvedor, Analista Financeiro" value="${param.nome}" required>
 
                         <label for="nivel-cargo">NÍVEL <span class="obrigatorio">*</span></label>
                         <select id="nivel-cargo" name="nivel" required>
                             <option value="">Selecione a senioridade</option>
-                            <option value="JUNIOR">Júnior</option>
-                            <option value="PLENO">Pleno</option>
-                            <option value="SENIOR">Sênior</option>
+                            <option value="JUNIOR" ${param.nivel == 'JUNIOR' ? 'selected' : ''}>Júnior</option>
+                            <option value="PLENO" ${param.nivel == 'PLENO' ? 'selected' : ''}>Pleno</option>
+                            <option value="SENIOR" ${param.nivel == 'SENIOR' ? 'selected' : ''}>Sênior</option>
                         </select>
 
                         <label for="departamento-cargo">DEPARTAMENTO (DEPARTAMENTO_ID) <span class="obrigatorio">*</span></label>
                         <select id="departamento-cargo" name="departamento_id" required>
                             <option value="">Selecione um departamento</option>
-                            <option value="1">Administrativo</option>
-                            <option value="2">Financeiro</option>
-                            <option value="3">TI</option>
-                            <option value="4">RH</option>
-                            <option value="5">Comercial</option>
+                            <option value="1" ${param.departamento_id == '1' ? 'selected' : ''}>Administrativo</option>
+                            <option value="2" ${param.departamento_id == '2' ? 'selected' : ''}>Financeiro</option>
+                            <option value="3" ${param.departamento_id == '3' ? 'selected' : ''}>TI</option>
+                            <option value="4" ${param.departamento_id == '4' ? 'selected' : ''}>RH</option>
+                            <option value="5" ${param.departamento_id == '5' ? 'selected' : ''}>Comercial</option>
                         </select>
 
 
@@ -152,7 +154,7 @@
                                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                                     <path d="M12 5v14M5 12h14"/>
                                 </svg>
-                                Cadastrar Cargo
+                                ${empty param.id ? 'Cadastrar Cargo' : 'Salvar Alterações'}
                             </button>
                         </div>
 
@@ -212,7 +214,7 @@
                                      <td>
                                          <div class="acoes">
                                              <!-- Editar -->
-                                             <a
+                                             <a href = "/encontrar-cargos?id=${cargo.id}&nome=${cargo.nome}&nivel=${cargo.nivel}&departamento_id=${cargo.departamentoId}"
                                                 class="btn-acao btn-editar" title="Editar cargo">
                                                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                                                      <path d="M12 20h9"/>

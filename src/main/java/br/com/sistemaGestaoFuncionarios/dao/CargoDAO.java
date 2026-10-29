@@ -93,5 +93,30 @@ public class CargoDAO {
         }
     }
 
+    public void updateCargo(Cargo cargo){
+        String SQL = "UPDATE CARGO SET NOME = ?, NIVEL = ?, DEPARTAMENTO_ID = ? WHERE ID = ?";
+        try {
+            Connection connection = DriverManager.getConnection("jdbc:h2:~/test", "sa", "sa");
+
+            System.out.println("success in database connection");
+
+            PreparedStatement preparedStatement = connection.prepareStatement(SQL);
+
+            preparedStatement.setString(1, cargo.getNome());
+            preparedStatement.setString(2, cargo.getNivel());
+            preparedStatement.setInt(3, cargo.getDepartamentoId());
+            preparedStatement.setInt(4, cargo.getId());
+            preparedStatement.execute();
+
+            System.out.println("success in update cargo");
+
+            connection.close();
+
+        } catch (Exception e) {
+            System.out.println("fail in database connection");
+            System.out.println("Error: " + e.getMessage());
+        }
+    }
+
 
 }
