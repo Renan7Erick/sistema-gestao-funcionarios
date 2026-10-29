@@ -52,4 +52,31 @@ public class DepartamentoDAO {
 
         return departamentos;
     }
+
+    public void deleteDepartamentoById(String id) {
+        String SQL = "DELETE FROM departamento WHERE id = ?";
+        try {
+            Connection connection = DriverManager.getConnection("jdbc:h2:~/test", "sa", "sa");
+            PreparedStatement preparedStatement = connection.prepareStatement(SQL);
+            preparedStatement.setInt(1, Integer.parseInt(id));
+            preparedStatement.execute();
+            connection.close();
+        } catch (Exception e) {
+            System.out.println("Erro ao deletar: " + e.getMessage());
+        }
+    }
+
+    public void updateDepartamento(Departamento departamento) {
+        String SQL = "UPDATE departamento SET nome = ? WHERE id = ?";
+        try {
+            Connection connection = DriverManager.getConnection("jdbc:h2:~/test", "sa", "sa");
+            PreparedStatement preparedStatement = connection.prepareStatement(SQL);
+            preparedStatement.setString(1, departamento.getNome());
+            preparedStatement.setInt(2, departamento.getId());
+            preparedStatement.execute();
+            connection.close();
+        } catch (Exception e) {
+            System.out.println("Erro ao atualizar: " + e.getMessage());
+        }
+    }
 }
