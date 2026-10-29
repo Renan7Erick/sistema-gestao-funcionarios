@@ -1,3 +1,6 @@
+<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
@@ -91,48 +94,20 @@
                         <th>AÇÕES</th>
                     </tr>
                 </thead>
-                <tbody>
-                    <tr>
-                        <td><strong>14/05/2026</strong><br><span>Quinta-feira</span></td>
-                        <td>08:00</td>
-                        <td>12:00</td>
-                        <td>13:00</td>
-                        <td>--:--</td>
-                        <td>01h 15m</td>
-                        <td><span class="badge regular">REGULAR</span></td>
-                        <td><button class="btn-icon">✔️ OK</button></td>
-                    </tr>
-                    <tr>
-                        <td><strong>13/05/2026</strong><br><span>Quarta-feira</span></td>
-                        <td>08:02</td>
-                        <td>12:01</td>
-                        <td>13:00</td>
-                        <td>17:05</td>
-                        <td>08h 02m</td>
-                        <td><span class="badge regular">REGULAR</span></td>
-                        <td><button class="btn-icon">✏️ Ajuste</button></td>
-                    </tr>
-                    <tr>
-                        <td><strong>12/05/2026</strong><br><span>Terça-feira</span></td>
-                        <td>07:58</td>
-                        <td>12:00</td>
-                        <td>13:00</td>
-                        <td>17:15</td>
-                        <td class="hora-extra">08h 17m</td>
-                        <td><span class="badge extra">HORA EXTRA</span></td>
-                        <td><button class="btn-icon">✏️ Ajuste</button></td>
-                    </tr>
-                    <tr>
-                        <td><strong>08/05/2026</strong><br><span>Sexta-feira</span></td>
-                        <td class="atraso">08:24</td>
-                        <td>12:00</td>
-                        <td>13:00</td>
-                        <td>17:00</td>
-                        <td class="atraso">07h 36m</td>
-                        <td><span class="badge atraso">ATRASO</span></td>
-                        <td><button class="btn-icon btn-justificar">📄 Justificar</button></td>
-                    </tr>
-                </tbody>
+				<tbody>
+				                    <c:forEach var="ponto" items="${pontos}">
+				                        <tr>
+				                            <td><strong>${ponto.data}</strong></td>
+				                            <td>${ponto.entrada}</td>
+				                            <td>--:--</td> <!-- Sem atributo no model -->
+				                            <td>--:--</td> <!-- Sem atributo no model -->
+				                            <td>${ponto.saida}</td>
+				                            <td>--:--</td> <!-- Cálculo não implementado -->
+				                            <td><span class="badge regular">REGISTRADO</span></td>
+				                            <td><button class="btn-icon">✔️ OK</button></td>
+				                        </tr>
+				                    </c:forEach>
+				                </tbody>
             </table>
         </section>
     </main>
