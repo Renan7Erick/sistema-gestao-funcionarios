@@ -7,7 +7,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Minhas Férias - Portal do Colaborador</title>
-    <link rel="stylesheet" href="ferias.css">
+    <link rel="stylesheet" href="/pages/feriasFuncionarios/ferias.css">
 </head>
 <body>
 

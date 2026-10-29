@@ -166,7 +166,7 @@
 
 
                 <div class="form-buttons">
-                    <button type="reset">Cancelar</button>
+                    <button onclick="window.location.href='/encontrar-funcionarios'" type="reset">Cancelar</button> <!-- foi usado o onclick, pq o href só funciona em tags "a" mas para nao ter que reformatar esse botao para cancelar, preferi usar assim para cancelar um update -->
                     <button type="submit"> ${empty param.id ? 'Cadastrar' : 'Salvar alterações'} <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12"
                             viewBox="0 0 12 12" fill="none">
                             <path

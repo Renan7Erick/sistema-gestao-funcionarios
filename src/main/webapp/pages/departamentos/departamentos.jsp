@@ -40,10 +40,10 @@
                     <a href="/encontrar-cargos"><i class="ph ph-briefcase"></i> Cargos</a>
                 </li>
                 <li>
-                    <a href="#"><i class="ph ph-clock"></i> Ponto</a>
+                    <a href="http://localhost:8080/encontrar-ponto"><i class="ph ph-clock"></i> Ponto</a>
                 </li>
                 <li>
-                    <a href="#"><i class="ph ph-airplane-tilt"></i> Férias</a>
+                    <a href="http://localhost:8080/encontrar-ferias"><i class="ph ph-airplane-tilt"></i> Férias</a>
                 </li>
 
             </ul>

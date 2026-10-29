@@ -7,7 +7,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Meu Ponto - Portal do Colaborador</title>
-    <link rel="stylesheet" href="ponto.css">
+    <link rel="stylesheet" href="/pages/pontoFuncionarios/ponto.css">
 </head>
 <body>
 
