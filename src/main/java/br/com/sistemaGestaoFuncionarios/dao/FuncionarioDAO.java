@@ -129,6 +129,42 @@ public List<Funcionario> encontrarFuncionarios(){
 
     }
 
+    public void updateFuncionario(Funcionario funcionario){
 
+        String SQL = "UPDATE FUNCIONARIO SET NOME = ?, CPF = ?, EMAIL = ?, TELEFONE = ?, DATA_NASCIMENTO =?, DATA_CONTRATACAO = ?, STATUS = ? , PERFIL = ?, CARGO_ID = ?, DEPARTAMENTO_ID = ? WHERE ID = ?";
+
+        try{
+            Connection connection = DriverManager.getConnection("jdbc:h2:~/test", "sa","sa");
+            System.out.println("conecto");
+
+            PreparedStatement preparedStatement = connection.prepareStatement(SQL);
+
+            preparedStatement.setString(1, funcionario.getNome());
+            preparedStatement.setString(2, funcionario.getCpf());
+            preparedStatement.setString(3, funcionario.getEmail());
+            preparedStatement.setString(4, funcionario.getTelefone());
+            preparedStatement.setDate(5, funcionario.getDataNascimento());
+            preparedStatement.setDate(6, funcionario.getDataContratacao());
+            preparedStatement.setString(7, funcionario.getStatus());
+            preparedStatement.setString(8, funcionario.getPerfil());
+            preparedStatement.setInt(9, funcionario.getCargoId());
+            preparedStatement.setInt(10, funcionario.getDepartamentoId());
+            preparedStatement.setInt(11, funcionario.getId());
+            preparedStatement.execute();
+
+            System.out.println("atualizado");
+
+
+            connection.close();
+
+        } catch (Exception e) {
+
+            System.out.println("fail in database connection"+ e.getMessage());
+
+        }
+
+
+
+    }
 
 }
