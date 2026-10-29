@@ -1,6 +1,7 @@
 package br.com.sistemaGestaoFuncionarios.dao;
 
 import br.com.sistemaGestaoFuncionarios.model.Funcionario;
+import br.com.sistemaGestaoFuncionarios.model.Ponto;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -102,6 +103,15 @@ public List<Funcionario> encontrarFuncionarios(){
 }
 
     public void deleteFuncionarioById(String funcionarioId){
+
+
+        FeriasDAO feriasDAO = new FeriasDAO();
+        PontoDAO pontoDAO = new PontoDAO();
+
+        feriasDAO.deleteFeriasByFuncionarioId(funcionarioId);
+        pontoDAO.deletePontoByFuncionarioId(funcionarioId);
+
+
     String SQL = "DELETE FUNCIONARIO WHERE ID = ?"; // PRECISA APAGAR O PONTO E AS FERIAS, OS CADASTROS INICIAIS (POSSUEM PONTO E FERIAS) NAO PODERAM SER APAGADOS.
 
     try {
