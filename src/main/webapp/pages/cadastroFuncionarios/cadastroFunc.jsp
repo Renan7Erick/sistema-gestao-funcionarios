@@ -34,10 +34,10 @@
                 <ul id="menu">
                     <li><a href="http://localhost:8080/pages/dashboard/dashboard.html">Dashboard</a></li>
                     <li><a href="http://localhost:8080/encontrar-funcionarios" class="ativo">Funcionários</a></li>
-                    <li><a href="http://localhost:8080/pages/departamentos/departamentos.html">Departamentos</a></li>
+                    <li><a href="http://localhost:8080/encontrar-departamentos">Departamentos</a></li>
                     <li><a href="http://localhost:8080/encontrar-cargos">Cargos</a></li>
-                    <li><a href="../ponto/ponto.html">Ponto</a></li>
-                    <li><a href="../ferias/ferias.html">Férias</a></li>
+                    <li><a href="http://localhost:8080/encontrar-ponto">Ponto</a></li>
+                    <li><a href="http://localhost:8080/encontrar-ferias">Férias</a></li>
                 </ul>
             </div>
 
@@ -84,7 +84,7 @@
                     </div>
 
                     <div class="input-card">
-                        <label>Senha</label>
+                        <label> ${empty param.id ? 'Senha' : ''} </label>
                         <input name="senha" type="${empty param.id ? 'password' : 'hidden'}" id="senha" ${empty param.id ? 'required' : ''}>
                     </div>
 
