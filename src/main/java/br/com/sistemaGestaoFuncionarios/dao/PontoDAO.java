@@ -70,4 +70,5 @@ public class PontoDAO {
             System.out.println("fail in database connection" + e.getMessage());
         }
     }
+   
 }
