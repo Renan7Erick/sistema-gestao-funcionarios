@@ -108,7 +108,7 @@ public List<Funcionario> encontrarFuncionarios(){
         FeriasDAO feriasDAO = new FeriasDAO();
         PontoDAO pontoDAO = new PontoDAO();
 
-        feriasDAO.deleteFeriasByFuncionarioId(funcionarioId);
+        feriasDAO.deleteFeriasByFuncionarioId(funcionarioId); // deletando o ponto e as ferias, pois precisa deletar eles para poder deletar um funcionario
         pontoDAO.deletePontoByFuncionarioId(funcionarioId);
 
 
