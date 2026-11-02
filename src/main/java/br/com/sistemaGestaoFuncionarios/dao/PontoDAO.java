@@ -111,6 +111,7 @@ public class PontoDAO {
 
             System.out.println("conecto");
 
+            preparedStatement.setInt(1, funcionarioId);
             ResultSet resultSet = preparedStatement.executeQuery();
 
             List<Ponto> pontos = new ArrayList<>();

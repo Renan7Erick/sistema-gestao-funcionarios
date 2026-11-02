@@ -22,7 +22,7 @@ public class ListPontoServlet extends HttpServlet{
 
         req.setAttribute("pontos", pontos);
 
-        req.getRequestDispatcher("/pages/areaFuncionarios/meuPonto/meuPonto.jsp").forward(req,resp);
+        req.getRequestDispatcher("/pages/pontoFuncionarios/pontoFuncionarios.jsp").forward(req,resp);
 
     }
 }

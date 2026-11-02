@@ -28,7 +28,7 @@ public class CreatePontoServlet extends HttpServlet {
 
         new PontoDAO().createPonto(ponto);
 
-        resp.sendRedirect("/encontrar-pontos");
+        resp.sendRedirect("/encontrar-ponto-por-id");
 
 
     }

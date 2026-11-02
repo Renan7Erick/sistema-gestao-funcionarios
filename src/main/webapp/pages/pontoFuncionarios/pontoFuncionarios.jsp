@@ -6,7 +6,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ponto - Painel Admin</title>
-    <link rel="stylesheet" href="pontoFuncionarios.css">
+    <link rel="stylesheet" href="/pages/pontoFuncionarios/pontoFuncionarios.css">
 </head>
 <body>
 
@@ -21,12 +21,12 @@
         </div>
 
         <ul class="menu">
-            <li><a href="#">Dashboard</a></li>
-            <li><a href="#">Funcionários</a></li>
-            <li><a href="#">Departamentos</a></li>
-            <li><a href="#">Cargos</a></li>
-            <li><a href="admin-ponto.html" class="ativo">Ponto</a></li>
-            <li><a href="admin-ferias.html">Férias</a></li>
+            <li><a href="http://localhost:8080/pages/dashboard/dashboard.html">Dashboard</a></li>
+            <li><a href="http://localhost:8080/encontrar-funcionarios">Funcionários</a></li>
+            <li><a href="http://localhost:8080/encontrar-departamentos">Departamentos</a></li>
+            <li><a href="http://localhost:8080/encontrar-cargos">Cargos</a></li>
+            <li ><a class="ativo" href="http://localhost:8080/encontrar-pontos">Ponto</a></li>
+            <li><a href="http://localhost:8080/encontrar-ferias">Férias</a></li>
         </ul>
     </div>
 
@@ -70,6 +70,7 @@
                     <c:forEach var="ponto" items="${pontos}">
                         <tr>
                             <td>${ponto.id}</td>
+                            <td>${ponto.funcionarioId}</td>
                             <td>${ponto.data}</td>
                             <td>${ponto.entrada}</td>
                             <td>${ponto.saida}</td>

@@ -21,9 +21,10 @@
         </div>
 
         <ul class="menu">
-            <li><a href="#">Meu Perfil</a></li>
-            <li><a href="func-ponto.html" class="ativo">Meu Ponto</a></li>
-            <li><a href="">Minhas Férias</a></li>
+            <a href="/pages/areaFuncionarios/meuPerfil/meuPerfil.html">📊 Meu perfil</a>
+            <a class="ativo" href="/encontrar-ponto-por-id">🕐 Meu Ponto</a>
+            <a href="/pages/areaFuncionarios/minhasFerias/minhasFerias.html">🦥 Minhas Férias</a>
+            <a href="http://localhost:8080/"> sair </a>
         </ul>
     </div>
 

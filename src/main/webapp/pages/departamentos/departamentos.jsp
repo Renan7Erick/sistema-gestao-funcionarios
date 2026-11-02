@@ -26,25 +26,12 @@
 
         <nav class="menu">
             <ul>
-                <li>
-                    <a href="/encontrar-dashboard"><i class="ph ph-chart-bar"></i> Dashboard</a>
-                </li>
-                <li>
-                    <a href="/encontrar-funcionarios"><i class="ph ph-users"></i> Funcionários</a>
-                </li>
-                <!-- A classe 'active' mantém o botão destacado -->
-                <li class="active">
-                    <a href="/encontrar-departamentos"><i class="ph ph-buildings"></i> Departamentos</a>
-                </li>
-                <li>
-                    <a href="/encontrar-cargos"><i class="ph ph-briefcase"></i> Cargos</a>
-                </li>
-                <li>
-                    <a href="http://localhost:8080/encontrar-ponto"><i class="ph ph-clock"></i> Ponto</a>
-                </li>
-                <li>
-                    <a href="http://localhost:8080/encontrar-ferias"><i class="ph ph-airplane-tilt"></i> Férias</a>
-                </li>
+                <li><a href="http://localhost:8080/pages/dashboard/dashboard.html">Dashboard</a></li>
+                <li><a href="http://localhost:8080/encontrar-funcionarios">Funcionários</a></li>
+                <li><a class="active" href="http://localhost:8080/encontrar-departamentos">Departamentos</a></li>
+                <li><a href="http://localhost:8080/encontrar-cargos">Cargos</a></li>
+                <li><a href="http://localhost:8080/encontrar-pontos">Ponto</a></li>
+                <li><a href="http://localhost:8080/encontrar-ferias">Férias</a></li>
 
             </ul>
         </nav>
