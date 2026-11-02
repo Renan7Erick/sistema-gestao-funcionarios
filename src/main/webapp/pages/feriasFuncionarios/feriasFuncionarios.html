@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+</html><!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Férias - Painel Admin</title>
+    <link rel="stylesheet" href="feriasFuncionarios.css">
+</head>
+<body>
+
+<aside class="sidebar">
+    <div>
+        <div class="logo">
+            <div class="logo-icone">❖</div>
+            <div class="logo-texto">
+                <strong>SISTEMA</strong>
+                <span>FUNCIONÁRIOS</span>
+            </div>
+        </div>
+
+        <ul class="menu">
+            <li><a href="#">Dashboard</a></li>
+            <li><a href="#">Funcionários</a></li>
+            <li><a href="#">Departamentos</a></li>
+            <li><a href="#">Cargos</a></li>
+            <li><a href="admin-ponto.html">Ponto</a></li>
+            <li><a href="admin-ferias.html" class="ativo">Férias</a></li>
+        </ul>
+    </div>
+
+    <a href="#" class="sair">Sair</a>
+</aside>
+
+<div class="conteudo">
+    <header class="topbar">
+        <span>GESTÃO ORGANIZACIONAL</span>
+        <span class="selo">Administrador</span>
+    </header>
+
+    <main>
+        <section class="cabecalho">
+            <span class="trilha">Painel corporativo › Férias</span>
+            <h1>Solicitações e Gestão de Férias</h1>
+            <p>Aprove ou rejeite as solicitações feitas pelos colaboradores.</p>
+        </section>
+
+        <section class="card">
+            <div class="card-topo">
+                <div>
+                    <h2>Solicitações de férias</h2>
+                    <p>As solicitações novas chegam com o status PENDENTE.</p>
+                </div>
+            </div>
+
+            <div class="tabela-wrap">
+                <table>
+                    <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Funcionário</th>
+                        <th>Início</th>
+                        <th>Término</th>
+                        <th>Status</th>
+                        <th>Ações</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+
+                    <tr>
+                        <td><strong>#FER-1</strong></td>
+                        <td class="mudo">#FUNC-2</td>
+                        <td>2026-12-15</td>
+                        <td>2026-12-30</td>
+                        <td><span class="badge PENDENTE">PENDENTE</span></td>
+                        <td>
+
+                            <form action="#" data-action="/atualizar-ferias" method="post" class="acoes">
+                                <input type="hidden" name="id" value="1">
+                                <button type="submit" name="status" value="APROVADA" class="btn btn-ok">Aprovar</button>
+                                <button type="submit" name="status" value="REJEITADA" class="btn btn-nao">Rejeitar</button>
+                            </form>
+
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td><strong>#FER-2</strong></td>
+                        <td class="mudo">#FUNC-3</td>
+                        <td>2026-11-02</td>
+                        <td>2026-11-16</td>
+                        <td><span class="badge APROVADA">APROVADA</span></td>
+                        <td>
+
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td><strong>#FER-3</strong></td>
+                        <td class="mudo">#FUNC-4</td>
+                        <td>2026-11-23</td>
+                        <td>2026-12-07</td>
+                        <td><span class="badge REJEITADA">REJEITADA</span></td>
+                        <td>
+
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td><strong>#FER-4</strong></td>
+                        <td class="mudo">#FUNC-5</td>
+                        <td>2027-01-04</td>
+                        <td>2027-01-18</td>
+                        <td><span class="badge PENDENTE">PENDENTE</span></td>
+                        <td>
+
+                            <form action="#" data-action="/atualizar-ferias" method="post" class="acoes">
+                                <input type="hidden" name="id" value="4">
+                                <button type="submit" name="status" value="APROVADA" class="btn btn-ok">Aprovar</button>
+                                <button type="submit" name="status" value="REJEITADA" class="btn btn-nao">Rejeitar</button>
+                            </form>
+
+                        </td>
+                    </tr>
+
+                    </tbody>
+                </table>
+            </div>
+        </section>
+    </main>
+</div>
+
+</body>
+</html>

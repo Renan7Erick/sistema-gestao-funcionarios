@@ -1,10 +1,12 @@
+<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <!DOCTYPE html>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Meu Ponto</title>
-    <link rel="stylesheet" href="meuPonto.css">
+    <link rel="stylesheet" href="/pages/areaFuncionarios/meuPonto/meuPonto.css")>
 </head>
 <body>
 
@@ -21,7 +23,7 @@
         <ul class="menu">
             <li><a href="#">Meu Perfil</a></li>
             <li><a href="func-ponto.html" class="ativo">Meu Ponto</a></li>
-            <li><a href="func-ferias.html">Minhas Férias</a></li>
+            <li><a href="">Minhas Férias</a></li>
         </ul>
     </div>
 
@@ -47,7 +49,7 @@
                     <p>O primeiro registro do dia marca a entrada. O seguinte marca a saída.</p>
                 </div>
 
-                <form action="#" data-action="/registrar-ponto" method="post">
+                <form action="/create-ponto" method="post">
                     <button type="submit" class="btn btn-primario">+ Registrar Ponto (Entrada/Saída)</button>
                 </form>
             </div>
@@ -65,6 +67,7 @@
                 <table>
                     <thead>
                     <tr>
+                        <th>ID</th>
                         <th>Data</th>
                         <th>Entrada</th>
                         <th>Saída</th>
@@ -72,23 +75,16 @@
                     </thead>
                     <tbody>
 
+<c:forEach var="ponto" items="${pontos}">
                     <tr>
-                        <td>2026-10-19</td>
-                        <td>08:00</td>
-                        <td>17:00</td>
+                        <td>${ponto.id}</td>
+                        <td>${ponto.data}</td>
+                        <td>${ponto.entrada}</td>
+                        <td>${ponto.saida}</td>
                     </tr>
+</c:forEach>
 
-                    <tr>
-                        <td>2026-10-19</td>
-                        <td>08:10</td>
-                        <td>17:05</td>
-                    </tr>
 
-                    <tr>
-                        <td>2026-10-20</td>
-                        <td>07:55</td>
-                        <td>16:50</td>
-                    </tr>
 
                     </tbody>
                 </table>
