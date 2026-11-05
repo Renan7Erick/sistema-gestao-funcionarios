@@ -17,20 +17,18 @@ public class CreateFeriasServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         try {
-           
             int funcionarioId = Integer.parseInt(request.getParameter("funcionarioId"));
             LocalDate dataInicio = LocalDate.parse(request.getParameter("dataInicio"));
             LocalDate dataFim = LocalDate.parse(request.getParameter("dataFim"));
-            String status = "Pendente";
-
             
+            // A sua regra de ouro para garantir os requisitos:
+            String status = "Pendente"; 
+
             Ferias ferias = new Ferias(0, funcionarioId, dataInicio, dataFim, status);
-
-            
             FeriasDAO feriasDAO = new FeriasDAO();
             feriasDAO.createFerias(ferias);
 
-            
+            // Redireciona de volta para a lista (ajuste a rota se o Rodrigo mudou)
             response.sendRedirect("/encontrar-ferias");
 
         } catch (Exception e) {

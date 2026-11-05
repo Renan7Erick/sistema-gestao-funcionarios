@@ -15,6 +15,7 @@ import java.util.List;
 public class ListDepartamentoServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        req.setCharacterEncoding("UTF-8");
         DepartamentoDAO dao = new DepartamentoDAO();
         List<Departamento> departamentoList = dao.findAllDepartamentos();
 

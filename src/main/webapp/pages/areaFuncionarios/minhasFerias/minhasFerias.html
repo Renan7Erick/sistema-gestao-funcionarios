@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Minhas Férias</title>
+    <link rel="stylesheet" href="minhasFerias.css">
+</head>
+<body>
+
+<aside class="sidebar">
+    <div>
+        <div class="logo">
+            <div class="logo-icone">❖</div>
+            <div class="logo-texto">
+                <strong>SISTEMA</strong>
+                <span>FUNCIONÁRIOS</span>
+            </div>
+        </div>
+
+        <ul class="menu">
+            <li><a href="#">Meu Perfil</a></li>
+            <li><a href="func-ponto.html">Meu Ponto</a></li>
+            <li><a href="func-ferias.html" class="ativo">Minhas Férias</a></li>
+        </ul>
+    </div>
+
+    <a href="#" class="sair">Sair</a>
+</aside>
+
+<div class="conteudo">
+    <header class="topbar">
+        <span>PORTAL DO COLABORADOR</span>
+        <span class="selo">Ativo</span>
+    </header>
+
+    <main>
+        <section class="cabecalho">
+            <h1>Minhas Férias</h1>
+            <p>Solicite períodos de férias e acompanhe o resultado.</p>
+        </section>
+
+        <section class="card">
+            <div class="card-topo">
+                <div>
+                    <h2>Nova solicitação de férias</h2>
+                    <p>A solicitação é criada como PENDENTE e fica aguardando a análise do RH.</p>
+                </div>
+                <span class="badge PENDENTE">Status inicial: PENDENTE</span>
+            </div>
+
+            <form action="#" data-action="/solicitar-ferias" method="post">
+                <div class="form-linha">
+                    <div class="campo">
+                        <label for="dataInicio">Data de início *</label>
+                        <input type="date" id="dataInicio" name="dataInicio" required>
+                    </div>
+
+                    <div class="campo">
+                        <label for="dataFim">Data de término *</label>
+                        <input type="date" id="dataFim" name="dataFim" required>
+                    </div>
+                </div>
+
+                <div class="form-rodape">
+                    <span class="dica">Informe o primeiro e o último dia de gozo.</span>
+                    <div class="acoes">
+                        <button type="reset" class="btn btn-contorno">Limpar</button>
+                        <button type="submit" class="btn btn-primario">+ Solicitar Férias</button>
+                    </div>
+                </div>
+            </form>
+        </section>
+
+        <section class="card">
+            <div class="card-topo">
+                <div>
+                    <h2>Histórico de solicitações</h2>
+                    <p>Suas solicitações de férias e o status de cada uma.</p>
+                </div>
+            </div>
+
+            <div class="tabela-wrap">
+                <table>
+                    <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Início</th>
+                        <th>Término</th>
+                        <th>Status</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+
+                    <tr>
+                        <td><strong>#FER-1</strong></td>
+                        <td>2026-12-15</td>
+                        <td>2026-12-30</td>
+                        <td><span class="badge PENDENTE">PENDENTE</span></td>
+                    </tr>
+
+                    <tr>
+                        <td><strong>#FER-2</strong></td>
+                        <td>2026-11-02</td>
+                        <td>2026-11-16</td>
+                        <td><span class="badge APROVADA">APROVADA</span></td>
+                    </tr>
+
+                    <tr>
+                        <td><strong>#FER-3</strong></td>
+                        <td>2026-11-23</td>
+                        <td>2026-12-07</td>
+                        <td><span class="badge REJEITADA">REJEITADA</span></td>
+                    </tr>
+
+                    </tbody>
+                </table>
+            </div>
+        </section>
+    </main>
+</div>
+
+</body>
+</html>

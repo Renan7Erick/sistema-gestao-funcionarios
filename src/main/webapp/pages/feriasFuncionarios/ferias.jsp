@@ -1,161 +1,141 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-	<script src="https://unpkg.com/@phosphor-icons/web"></script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Controle de Férias - Painel Admin</title>
-    <link rel="stylesheet" href="/pages/feriasFuncionarios/ferias.css">
+    <title>Férias - Painel Admin</title>
+    <link rel="stylesheet" href="/pages/feriasFuncionarios/feriasFuncionarios.css">
 </head>
 <body>
 
-    <!-- Menu Lateral -->
-	<aside class="sidebar">
-	    <div class="logo-area">
-	        <i class="ph-fill ph-buildings"></i>
-	        <div>
-	            <h2>SISTEMA</h2>
-	            <p>FUNCIONÁRIOS</p>
-	        </div>
-	    </div>
-
-	    <nav class="menu">
-	        <ul>
-	            <li><a href="http://localhost:8080/pages/dashboard/dashboard.html"><i class="ph ph-chart-bar"></i> Dashboard</a></li>
-	            <li><a href="http://localhost:8080/encontrar-funcionarios"><i class="ph ph-users"></i> Funcionários</a></li>
-	            <li><a href="http://localhost:8080/encontrar-departamentos"><i class="ph ph-buildings"></i> Departamentos</a></li>
-	            <li><a href="http://localhost:8080/encontrar-cargos"><i class="ph ph-briefcase"></i> Cargos</a></li>
-	            <li><a href="http://localhost:8080/encontrar-ponto"><i class="ph ph-clock"></i> Ponto</a></li>
-	            <li class="active"><a href="http://localhost:8080/encontrar-ferias"><i class="ph ph-airplane-tilt"></i> Férias</a></li>
-	        </ul>
-	    </nav>
-
-	    <div class="sidebar-footer">
-	        <a href="http://localhost:8080/pages/login/index.html" class="logout-btn">
-	            <i class="ph ph-sign-out"></i> Sair
-	        </a>
-	    </div>
-	</aside>
-
-    <!-- Área Principal -->
-    <main class="main-content">
-        <header class="topbar">
-            <span class="breadcrumb">SISTEMA - PAINEL ADMIN</span>
-            <div class="user-profile">
-                <span class="status-badge active-status"><span class="dot green"></span> Ativo</span>
-                <div class="avatar">CF</div>
+<aside class="sidebar">
+    <div>
+        <div class="logo">
+            <div class="logo-icone">❖</div>
+            <div class="logo-texto">
+                <strong>SISTEMA</strong>
+                <span>FUNCIONARIOS</span>
             </div>
-        </header>
+        </div>
 
-		<section class="page-header">
-		            <span class="breadcrumb">PAINEL ADMIN • GESTÃO DE FÉRIAS</span>
-		            <h1>Controle de Férias</h1>
-		            <p>Lançamento e aprovação de férias dos colaboradores</p>
-		        </section>
+      <ul class="menu">
+    <li><a href="/encontrar-dashboard">Dashboard</a></li>
+    <li><a href="/encontrar-funcionarios">Funcionarios</a></li>
+    <li><a href="/encontrar-departamentos">Departamentos</a></li>
+    <li><a href="/encontrar-cargos">Cargos</a></li>
+    <li><a href="/encontrar-pontos">Ponto</a></li>
+    <li><a href="/encontrar-ferias" class="ativo">Férias</a></li>
+</ul>
+    </div>
 
-		        <!-- Formulário de Lançamento (Visão RH) -->
-		        <section class="card form-card">
-		            <div class="card-header">
-		                <h3 class="card-title">⨁ Lançar Novas Férias</h3>
-		            </div>
-		            
-		            <form action="/create-ferias" method="POST">
-		                <input type="hidden" name="status" value="Aprovada">
+    <a href="#" class="sair">Sair</a>
+</aside>
 
-		                <div class="form-row">
-		                    <!-- O RH agora digita qual funcionário vai tirar férias -->
-		                    <div class="input-group">
-		                        <label for="funcionario-id">ID DO FUNCIONÁRIO *</label>
-		                        <input type="number" id="funcionario-id" name="funcionarioId" placeholder="Ex: 5" required>
-		                    </div>
+<div class="conteudo">
+    <header class="topbar">
+        <span>GESTÃO ORGANIZACIONAL</span>
+        <span class="selo">Administrador</span>
+    </header>
 
-		                    <div class="input-group">
-		                        <label for="data-inicio">DATA DE INÍCIO *</label>
-		                        <input type="date" id="data-inicio" name="dataInicio" required>
-		                    </div>
-		                    
-		                    <div class="input-group">
-		                        <label for="data-fim">DATA DE TÉRMINO *</label>
-		                        <input type="date" id="data-fim" name="dataFim" required>
-		                    </div>
-		                </div>
+    <main>
+        <section class="cabecalho">
+            <span class="trilha">Painel corporativo de Férias</span>
+            <h1>Solicitações e Gestão de Férias</h1>
+            <p>Aprove ou rejeite as solicitações feitas pelos colaboradores.</p>
+        </section>
 
-		                <div class="form-footer">
-		                    <div class="form-actions">
-		                        <button type="submit" class="btn-primary">✦ Lançar Férias</button>
-		                    </div>
-		                </div>
-		            </form>
-		        </section>
-        <!-- Tabela de Histórico -->
-        <section class="card table-card">
-            <div class="table-header-controls">
+        <section class="card">
+            <div class="card-topo">
                 <div>
-                    <h3>Histórico de Solicitações</h3>
-                    <p class="subtitle">Registros da entidade FERIAS vinculados ao colaborador</p>
-                </div>
-                <div class="table-actions">
-                    <div class="search-box">
-                        <span class="search-icon">🔍</span>
-                        <input type="text" placeholder="Buscar por ID ou data...">
-                    </div>
-                    <button class="btn-outline">↻ Atualizar</button>
+                    <h2>Solicitações de férias</h2>
+                    <p>As solicitações novas chegam com o status PENDENTE.</p>
                 </div>
             </div>
-            
-            <table class="data-table">
-				<thead>
-				                <tr>
-				                    <th>ID (PK)</th>
-				                    <th>FUNCIONÁRIO ID (FK)</th>
-				                    <th>DATA DE INÍCIO</th>
-				                    <th>DATA DE TÉRMINO</th>
-				                    <th>STATUS</th>
-				                    <th>AÇÕES</th> 
-				                </tr>
-				            </thead>
-				<tbody>
-				    <c:forEach var="feria" items="${ferias}">
-				        <tr>
-				            <td><strong>#FER-${feria.id}</strong></td>
-				            <td class="muted-text">#FUNC-${feria.funcionarioId}</td>
-				            <td>${feria.dataInicio}</td>
-				            <td>${feria.dataFim}</td>
-							<td>
-							        <span class="badge ${feria.status == 'Aprovada' ? 'success' : (feria.status == 'Pendente' ? 'warning' : 'danger')}">
-							            ${feria.status}
-							        </span>
-							    </td>
-							    
-							    <!-- Nova Coluna de Ações -->
-							
-								<td class="table-actions-cell">
-								    <!-- Ícone para Editar (pode direcionar para um modal ou tela de edição) -->
-								    <a href="/editar-ferias?id=${feria.id}" style="text-decoration: none; margin-right: 8px;">✏️</a>
 
-								    <form action="/delete-ferias" method="POST" style="display: inline;">
-								        <input type="hidden" name="id" value="${feria.id}">
-								        <button type="submit" style="background: none; border: none; cursor: pointer;" title="Excluir">🗑️</button>
-								    </form>
-								</td>
-							</tr>
-				    </c:forEach>
-				</tbody>
-            </table>
+            <div class="tabela-wrap">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Funcionario</th>
+                            <th>Inicio</th>
+                            <th>Término</th>
+                            <th>Status</th>
+                            <th>Ações</th>
+                        </tr>
+                    </thead>
 
-            <div class="table-footer">
-                <span class="muted-text">Mostrando 4 registros da entidade FERIAS</span>
-                <div class="pagination">
-                    <span class="muted-text">Página 1 de 1</span>
-                    <button class="btn-icon" disabled>&lt;</button>
-                    <button class="btn-icon" disabled>&gt;</button>
-                </div>
+                    <tbody>
+
+                        <c:forEach var="feria" items="${ferias}">
+                            <tr>
+                                <td><strong>#FER-${feria.id}</strong></td>
+                                <td class="mudo">${feria.funcionarioId}</td>
+                                <td>${feria.dataInicio}</td>
+                                <td>${feria.dataFim}</td>
+
+                                <td>
+                                    <span class="badge ${feria.status}">
+                                        ${feria.status}
+                                    </span>
+                                </td>
+
+                                <td class="table-actions-cell">
+
+                                    <!-- CORREÇÃO AQUI: "Pendente" com apenas a primeira letra maiúscula -->
+                                    <c:if test="${feria.status == 'Pendente'}">
+
+                                        <form action="/atualizar-status-ferias"
+                                              method="POST"
+                                              style="display: inline;">
+
+                                            <input type="hidden"
+                                                   name="id"
+                                                   value="${feria.id}">
+
+                                            <input type="hidden"
+                                                   name="status"
+                                                   value="APROVADA">
+
+                                            <button type="submit"
+                                                    style="background-color: #28a745; color: white; border: none; padding: 5px 10px; border-radius: 4px; cursor: pointer;">
+                                                Aprovar
+                                            </button>
+                                        </form>
+
+                                        <form action="/atualizar-status-ferias"
+                                              method="POST"
+                                              style="display: inline;">
+
+                                            <input type="hidden"
+                                                   name="id"
+                                                   value="${feria.id}">
+
+                                            <input type="hidden"
+                                                   name="status"
+                                                   value="REJEITADA">
+
+                                            <button type="submit"
+                                                    style="background-color: #dc3545; color: white; border: none; padding: 5px 10px; border-radius: 4px; cursor: pointer; margin-left: 5px;">
+                                                Rejeitar
+                                            </button>
+                                        </form>
+
+                                    </c:if>
+
+                                </td>
+                            </tr>
+                        </c:forEach>
+
+                    </tbody>
+                </table>
             </div>
         </section>
     </main>
+</div>
 
 </body>
 </html>

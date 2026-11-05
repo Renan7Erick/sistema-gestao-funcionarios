@@ -35,7 +35,7 @@ public void createFuncionario(Funcionario funcionario){
         System.out.println("inserido");
 
 
-        connection.close();
+
 
     } catch (Exception e) {
 
@@ -51,7 +51,7 @@ public List<Funcionario> encontrarFuncionarios(){
             "       d.nome AS departamento_nome\n" +
             "FROM funcionario f\n" +
             "INNER JOIN cargo c ON f.cargo_id = c.id\n" +
-            "INNER JOIN departamento d ON f.departamento_id = d.id";
+            "INNER JOIN departamento d ON f.departamento_id = d.id"; // inner join para mostrar o cargo e departamento de respectivo id
 
     try {
 
@@ -108,7 +108,7 @@ public List<Funcionario> encontrarFuncionarios(){
         FeriasDAO feriasDAO = new FeriasDAO();
         PontoDAO pontoDAO = new PontoDAO();
 
-        feriasDAO.deleteFeriasByFuncionarioId(funcionarioId);
+        feriasDAO.deleteFeriasByFuncionarioId(funcionarioId); // deletando o ponto e as ferias, pois precisa deletar eles para poder deletar um funcionario
         pontoDAO.deletePontoByFuncionarioId(funcionarioId);
 
 

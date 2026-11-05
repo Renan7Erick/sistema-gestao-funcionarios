@@ -13,15 +13,12 @@ import java.util.List;
 
 @WebServlet("/encontrar-ferias")
 public class ListFeriasServlet extends HttpServlet {
-
-	@Override
-	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		FeriasDAO dao = new FeriasDAO();
-		List<Ferias> feriasList = dao.encontrarFerias();
-
-		req.setAttribute("ferias", feriasList);
-
-		// jsp
-		req.getRequestDispatcher("/pages/feriasFuncionarios/ferias.jsp").forward(req, resp);
-	}
+    @Override
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        FeriasDAO dao = new FeriasDAO();
+        List<Ferias> lista = dao.findAllFerias();
+        
+        request.setAttribute("ferias", lista);
+        request.getRequestDispatcher("/pages/feriasFuncionarios/ferias.jsp").forward(request, response);
+    }
 }

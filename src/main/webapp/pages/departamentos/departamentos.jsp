@@ -26,25 +26,12 @@
 
         <nav class="menu">
             <ul>
-                <li>
-                    <a href="/encontrar-dashboard"><i class="ph ph-chart-bar"></i> Dashboard</a>
-                </li>
-                <li>
-                    <a href="/encontrar-funcionarios"><i class="ph ph-users"></i> Funcionários</a>
-                </li>
-                <!-- A classe 'active' mantém o botão destacado -->
-                <li class="active">
-                    <a href="/encontrar-departamentos"><i class="ph ph-buildings"></i> Departamentos</a>
-                </li>
-                <li>
-                    <a href="/encontrar-cargos"><i class="ph ph-briefcase"></i> Cargos</a>
-                </li>
-                <li>
-                    <a href="http://localhost:8080/encontrar-ponto"><i class="ph ph-clock"></i> Ponto</a>
-                </li>
-                <li>
-                    <a href="http://localhost:8080/encontrar-ferias"><i class="ph ph-airplane-tilt"></i> Férias</a>
-                </li>
+                <li><a href="http://localhost:8080/encontrar-dashboard">Dashboard</a></li>
+                <li><a href="http://localhost:8080/encontrar-funcionarios">Funcionários</a></li>
+                <li><a class="active" href="http://localhost:8080/encontrar-departamentos">Departamentos</a></li>
+                <li><a href="http://localhost:8080/encontrar-cargos">Cargos</a></li>
+                <li><a href="http://localhost:8080/encontrar-pontos">Ponto</a></li>
+                <li><a href="http://localhost:8080/encontrar-ferias">Férias</a></li>
 
             </ul>
         </nav>
@@ -107,9 +94,11 @@
 
                 <form action="/create-departamento" method="POST">
 
+                    <input type="hidden" name="id" value="<c:out value='${param.id}'/>">
+
                     <div class="input-group">
                         <label>NOME DO DEPARTAMENTO <span class="required">*Obrigatório</span></label>
-                        <input type="text" name="nome" placeholder="Ex: Comercial, Marketing, Suporte" required>
+                        <input type="text" name="nome" placeholder="Ex: Comercial, Marketing, Suporte" value="<c:out value='${param.nome}'/>" required>
                     </div>
 
                     <div class="info-box">
@@ -120,7 +109,7 @@
 
                     <div class="form-actions">
                         <button type="button" class="btn-limpar"><i class="ph ph-eraser"></i> Limpar</button>
-                        <button type="submit" class="btn-submit"><i class="ph ph-plus"></i> Cadastrar Departamento
+                        <button type="submit" class="btn-submit"><i class="ph ph-plus"></i> ${empty param.id ? 'Cadastrar Departamento' : 'Salvar Alterações'}
                         </button>
                     </div>
                 </form>
@@ -173,16 +162,13 @@
                                     <td><span class="status-badge"><span class="dot"></span> Ativo</span></td>
                                     <td style="display:flex; gap: 8px;">
 
-                                        <!-- Botão de Editar com Prompt nativo do navegador -->
-                                        <button class="icon-btn" onclick="let novoNome = prompt('Editar nome do departamento:', '${departamento.nome}'); if(novoNome && novoNome.trim() !== '') { document.getElementById('form-edit-${departamento.id}').nome.value = novoNome; document.getElementById('form-edit-${departamento.id}').submit(); }"><i class="ph ph-pencil-simple"></i></button>
+                                        <c:url var="urlEditar" value="/encontrar-departamentos">
+                                            <c:param name="id" value="${departamento.id}"/>
+                                            <c:param name="nome" value="${departamento.nome}"/>
+                                        </c:url>
+                                        <button type="button" class="icon-btn" title="Editar" onclick="window.location.href='${urlEditar}'"><i class="ph ph-pencil-simple"></i></button>
 
-                                        <!-- Formulário invisível para enviar a requisição POST de Update -->
-                                        <form id="form-edit-${departamento.id}" action="/update-departamento" method="POST" style="display:none;">
-                                            <input type="hidden" name="id" value="${departamento.id}">
-                                            <input type="hidden" name="nome" value="">
-                                        </form>
-
-                                        <!-- Formulário visível apenas como botão para o POST de Delete -->
+                                        <!-- Formulário de Delete (inalterado) -->
                                         <form action="/delete-departamento" method="POST" style="margin: 0;">
                                             <input type="hidden" name="id" value="${departamento.id}">
                                             <button type="submit" class="icon-btn" title="Deletar"><i class="ph ph-trash"></i></button>

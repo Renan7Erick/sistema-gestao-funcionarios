@@ -9,106 +9,6 @@ import java.util.List;
 
 public class FeriasDAO {
 
-	public void createFerias(Ferias ferias) {
-		String SQL = "INSERT INTO ferias (funcionario_id, data_inicio, data_fim, status) VALUES (?, ?, ?, ?)";
-
-		try {
-			Connection connection = DriverManager.getConnection("jdbc:h2:~/test", "sa", "sa");
-			System.out.println("conecto");
-
-			PreparedStatement preparedStatement = connection.prepareStatement(SQL);
-
-			preparedStatement.setInt(1, ferias.getFuncionarioId());
-			preparedStatement.setDate(2, Date.valueOf(ferias.getDataInicio()));
-			preparedStatement.setDate(3, Date.valueOf(ferias.getDataFim()));
-			preparedStatement.setString(4, ferias.getStatus());
-			preparedStatement.execute();
-
-			System.out.println("férias inseridas");
-
-			connection.close();
-
-		} catch (Exception e) {
-			System.out.println("fail in database connection" + e.getMessage());
-		}
-	}
-
-	public List<Ferias> encontrarFerias() {
-		String SQL = "SELECT * FROM ferias";
-
-		try {
-			Connection connection = DriverManager.getConnection("jdbc:h2:~/test", "sa", "sa");
-			PreparedStatement preparedStatement = connection.prepareStatement(SQL);
-
-			System.out.println("conecto");
-
-			ResultSet resultSet = preparedStatement.executeQuery();
-			List<Ferias> listaFerias = new ArrayList<>();
-
-			while (resultSet.next()) {
-				int id = resultSet.getInt("id");
-				int funcionarioId = resultSet.getInt("funcionario_id");
-				Date dataInicio = resultSet.getDate("data_inicio");
-				Date dataFim = resultSet.getDate("data_fim");
-				String status = resultSet.getString("status");
-
-				Ferias ferias = new Ferias(id, funcionarioId, dataInicio.toLocalDate(), dataFim.toLocalDate(), status);
-
-				listaFerias.add(ferias);
-			}
-			System.out.println("consulta realizada");
-
-			connection.close();
-			return listaFerias;
-
-		} catch (Exception e) {
-			System.out.println("Erro ao consultar os dados no DB" + e.getMessage());
-			return Collections.emptyList();
-		}
-	}
-
-	public void updateFerias(Ferias ferias) {
-		String SQL = "UPDATE ferias SET data_inicio = ?, data_fim = ?, status = ? WHERE id = ?";
-
-		try {
-			Connection connection = DriverManager.getConnection("jdbc:h2:~/test", "sa", "sa");
-			PreparedStatement preparedStatement = connection.prepareStatement(SQL);
-
-			preparedStatement.setDate(1, Date.valueOf(ferias.getDataInicio()));
-			preparedStatement.setDate(2, Date.valueOf(ferias.getDataFim()));
-			preparedStatement.setString(3, ferias.getStatus());
-			preparedStatement.setInt(4, ferias.getId());
-			preparedStatement.execute();
-
-			System.out.println("férias atualizadas com sucesso");
-
-			connection.close();
-
-		} catch (Exception e) {
-			System.out.println("fail in database connection" + e.getMessage());
-		}
-	}
-
-	public void deleteFeriasById(String feriasId) {
-		String SQL = "DELETE FROM ferias WHERE id = ?";
-
-		try {
-			Connection connection = DriverManager.getConnection("jdbc:h2:~/test", "sa", "sa");
-			System.out.println("success in database connection");
-
-			PreparedStatement preparedStatement = connection.prepareStatement(SQL);
-			preparedStatement.setString(1, feriasId);
-			preparedStatement.execute();
-
-			System.out.println("sucesso ao deletar férias de id: " + feriasId);
-
-			connection.close();
-
-		} catch (Exception e) {
-			System.out.println("fail in database connection" + e.getMessage());
-		}
-	}
-
 	public void deleteFeriasByFuncionarioId(String funcionarioId) {
 		String SQL = "DELETE FROM ferias WHERE FUNCIONARIO_ID = ?";
 
@@ -128,5 +28,61 @@ public class FeriasDAO {
 			System.out.println("fail in database connection" + e.getMessage());
 		}
 	}
-
+	public void createFerias(Ferias ferias) {
+        String SQL = "INSERT INTO FERIAS (FUNCIONARIO_ID, DATA_INICIO, DATA_FIM, STATUS) VALUES (?, ?, ?, ?)";
+        
+        try {
+            java.sql.Connection connection = java.sql.DriverManager.getConnection("jdbc:h2:~/test", "sa", "sa");
+            java.sql.PreparedStatement preparedStatement = connection.prepareStatement(SQL);
+            
+            preparedStatement.setInt(1, ferias.getFuncionarioId());
+            preparedStatement.setDate(2, java.sql.Date.valueOf(ferias.getDataInicio()));
+            preparedStatement.setDate(3, java.sql.Date.valueOf(ferias.getDataFim()));
+            preparedStatement.setString(4, ferias.getStatus());
+            
+            preparedStatement.execute();
+            System.out.println("Férias registradas com sucesso no banco H2.");
+            
+            connection.close();
+        } catch (Exception e) {
+            System.out.println("Falha na conexão com banco ao salvar férias: " + e.getMessage());
+        }
+    }
+	public java.util.List<Ferias> findAllFerias() {
+        String SQL = "SELECT * FROM FERIAS";
+        java.util.List<Ferias> ferias = new java.util.ArrayList<>();
+        try {
+            java.sql.Connection connection = java.sql.DriverManager.getConnection("jdbc:h2:~/test", "sa", "sa");
+            java.sql.PreparedStatement preparedStatement = connection.prepareStatement(SQL);
+            java.sql.ResultSet resultSet = preparedStatement.executeQuery();
+            
+            while (resultSet.next()) {
+                Ferias f = new Ferias(
+                    resultSet.getInt("ID"),
+                    resultSet.getInt("FUNCIONARIO_ID"),
+                    resultSet.getDate("DATA_INICIO").toLocalDate(),
+                    resultSet.getDate("DATA_FIM").toLocalDate(),
+                    resultSet.getString("STATUS")
+                );
+                ferias.add(f);
+            }
+            connection.close();
+        } catch (Exception e) {
+            System.out.println("Erro ao listar férias: " + e.getMessage());
+        }
+        return ferias;
+    }
+	public void updateStatusFerias(int id, String status) {
+        String SQL = "UPDATE FERIAS SET STATUS = ? WHERE ID = ?";
+        try {
+            java.sql.Connection connection = java.sql.DriverManager.getConnection("jdbc:h2:~/test", "sa", "sa");
+            java.sql.PreparedStatement ps = connection.prepareStatement(SQL);
+            ps.setString(1, status);
+            ps.setInt(2, id);
+            ps.execute();
+            connection.close();
+        } catch (Exception e) {
+            System.out.println("Erro ao atualizar status: " + e.getMessage());
+        }
+    }
 }

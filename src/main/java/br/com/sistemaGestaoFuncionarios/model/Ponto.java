@@ -1,22 +1,29 @@
 package br.com.sistemaGestaoFuncionarios.model;
 
+import java.sql.Date;
+import java.sql.Time;
 import java.time.LocalDate;
 import java.time.LocalTime;
 
 public class Ponto {
     private int id;
     private int funcionarioId;
-    private LocalDate data;
-    private LocalTime entrada;
-    private LocalTime saida;
+    private Date data;
+    private Time entrada;
+    private Time saida;
 
-    public Ponto(int id, int funcionarioId, LocalDate data, LocalTime entrada, LocalTime saida) {
+    public Ponto(int id, int funcionarioId, Date data, Time entrada, Time saida) {
         this.id = id;
         this.funcionarioId = funcionarioId;
         this.data = data;
         this.entrada = entrada;
         this.saida = saida;
     }
+
+    public Ponto() {
+
+    }
+
 
     public int getId() {
         return id;
@@ -34,27 +41,27 @@ public class Ponto {
         this.funcionarioId = funcionarioId;
     }
 
-    public LocalDate getData() {
+    public Date getData() {
         return data;
     }
 
-    public void setData(LocalDate data) {
+    public void setData(Date data) {
         this.data = data;
     }
 
-    public LocalTime getEntrada() {
+    public Time getEntrada() {
         return entrada;
     }
 
-    public void setEntrada(LocalTime entrada) {
+    public void setEntrada(Time entrada) {
         this.entrada = entrada;
     }
 
-    public LocalTime getSaida() {
+    public Time getSaida() {
         return saida;
     }
 
-    public void setSaida(LocalTime saida) {
+    public void setSaida(Time saida) {
         this.saida = saida;
     }
 }

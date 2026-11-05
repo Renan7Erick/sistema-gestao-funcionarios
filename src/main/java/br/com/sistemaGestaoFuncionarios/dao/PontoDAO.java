@@ -1,5 +1,6 @@
 package br.com.sistemaGestaoFuncionarios.dao;
 
+import br.com.sistemaGestaoFuncionarios.model.Funcionario;
 import br.com.sistemaGestaoFuncionarios.model.Ponto;
 import java.sql.*;
 import java.util.ArrayList;
@@ -8,48 +9,146 @@ import java.util.List;
 
 public class PontoDAO {
 
-    public List<Ponto> encontrarPontos() {
-        String SQL = "SELECT * FROM ponto";
-        
-        try {
-            Connection connection = DriverManager.getConnection("jdbc:h2:~/test", "sa", "sa");
-            PreparedStatement preparedStatement = connection.prepareStatement(SQL);
-            
-            System.out.println("conecto ao banco para listar pontos");
-            
-            ResultSet resultSet = preparedStatement.executeQuery();
-            List<Ponto> listaPontos = new ArrayList<>();
 
-            while (resultSet.next()) {
-                int id = resultSet.getInt("id");
-                int funcionarioId = resultSet.getInt("funcionario_id");
-                
-              
-                Date dataSql = resultSet.getDate("data");
-                Time entradaSql = resultSet.getTime("entrada");
-                Time saidaSql = resultSet.getTime("saida");
-                
-  
-                Ponto ponto = new Ponto(
-                        id, 
-                        funcionarioId, 
-                        dataSql != null ? dataSql.toLocalDate() : null, 
-                        entradaSql != null ? entradaSql.toLocalTime() : null, 
-                        saidaSql != null ? saidaSql.toLocalTime() : null
-                );
-                
-                listaPontos.add(ponto);
+    public void createPonto(Ponto ponto){
+
+        try {
+            Connection connection = DriverManager.getConnection("jdbc:h2:~/test", "sa","sa");
+
+            String SQL = "SELECT * FROM PONTO WHERE FUNCIONARIO_ID = ? AND DATA = CURRENT_DATE ORDER BY ID DESC"; // lista a data e o id do funcioanrio, para os horarios,  precisa ser atualizado 1 vez, um de entrada e um de saída
+// é organizado por id para o resultSet.next() encontrar o ultimo registro dee saida
+
+            System.out.println("conecto");
+
+            PreparedStatement preparedStatement = connection.prepareStatement(SQL);
+
+            preparedStatement.setInt(1, ponto.getFuncionarioId()); // vai ser pego pelo usuario logado
+
+            ResultSet resultSet = preparedStatement.executeQuery();
+
+            if(resultSet.next() && resultSet.getTime("saida") == null){ //verifica se ja tem um registro, se sim, cadastra uma saída
+                SQL = "UPDATE PONTO SET SAIDA = CURRENT_TIME WHERE ID = ?"; // é um update, pois ele atualiza o cadastro para cadastrar a saída
+
+                preparedStatement = connection.prepareStatement(SQL);
+                preparedStatement.setInt(1, resultSet.getInt("id"));
+                preparedStatement.executeUpdate();
+
+                System.out.println("registro de saída");
+            } else { // se nao, cadastra uma entrada
+
+                SQL = "INSERT INTO PONTO (FUNCIONARIO_ID, DATA, ENTRADA) VALUES (?, CURRENT_DATE, CURRENT_TIME)";
+
+                preparedStatement = connection.prepareStatement(SQL);
+                preparedStatement.setInt(1, ponto.getFuncionarioId());
+                preparedStatement.executeUpdate();
+
+                System.out.println("Entrada Registrada");
+
             }
-            System.out.println("consulta de pontos realizada");
+
+            System.out.println("inserido");
 
             connection.close();
-            return listaPontos;
+
 
         } catch (Exception e) {
-            System.out.println("Erro ao consultar os dados de Ponto no DB: " + e.getMessage());
-            return Collections.emptyList();
+
+            System.out.println("fail in database connection" + e.getMessage());
+
         }
     }
+
+    public List<Ponto> encontrarPontos(){
+        String SQL = "SELECT * FROM PONTO";
+
+        try {
+
+            Connection connection = DriverManager.getConnection("jdbc:h2:~/test", "sa", "sa");
+            PreparedStatement preparedStatement = connection.prepareStatement(SQL);
+
+            System.out.println("conecto");
+
+            ResultSet resultSet = preparedStatement.executeQuery();
+
+            List<Ponto> pontos = new ArrayList<>();
+
+            while (resultSet.next()){
+                int pontoId = resultSet.getInt("id");
+                Date data = resultSet.getDate("data");
+                Time entrada = resultSet.getTime("entrada");
+                Time saida = resultSet.getTime("saida");
+                int funcionario_Id = resultSet.getInt("funcionario_id");
+
+                Ponto ponto = new Ponto(pontoId,funcionario_Id, data, entrada,saida);
+
+                pontos.add(ponto);
+            }
+
+            System.out.println("cosnuilta realizadda");
+
+            connection.close();
+
+            return pontos;
+
+
+
+        }catch (Exception e) {
+
+            System.out.println("fail in database connection" + e.getMessage());
+            e.printStackTrace();
+            return Collections.emptyList();
+
+        }
+    }
+
+    public List<Ponto> encontrarPontosByFuncionarioId(int funcionarioId){
+        String SQL = "SELECT * FROM PONTO where funcionario_id = ?";
+
+        try {
+
+            Connection connection = DriverManager.getConnection("jdbc:h2:~/test", "sa", "sa");
+            PreparedStatement preparedStatement = connection.prepareStatement(SQL);
+
+            System.out.println("conecto");
+
+            preparedStatement.setInt(1, funcionarioId);
+            ResultSet resultSet = preparedStatement.executeQuery();
+
+            List<Ponto> pontos = new ArrayList<>();
+
+            while (resultSet.next()){
+                int pontoId = resultSet.getInt("id");
+                Date data = resultSet.getDate("data");
+                Time entrada = resultSet.getTime("entrada");
+                Time saida = resultSet.getTime("saida");
+                int funcionario_Id = resultSet.getInt("funcionario_id");
+
+                Ponto ponto = new Ponto(pontoId,funcionario_Id, data, entrada,saida);
+
+                pontos.add(ponto);
+            }
+
+            System.out.println("cosnuilta realizadda");
+
+            connection.close();
+
+            return pontos;
+
+
+
+        }catch (Exception e) {
+
+            System.out.println("fail in database connection");
+
+            return Collections.emptyList();
+
+        }
+
+    }
+
+
+
+
 
     public void deletePontoByFuncionarioId(String funcionarioId) {
         String SQL = "DELETE FROM PONTO WHERE FUNCIONARIO_ID = ?";

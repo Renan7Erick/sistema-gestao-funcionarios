@@ -32,11 +32,11 @@
                 </div>
 
                 <ul id="menu">
-                    <li><a href="http://localhost:8080/pages/dashboard/dashboard.html">Dashboard</a></li>
+                    <li><a href="http://localhost:8080/encontrar-dashboard">Dashboard</a></li>
                     <li><a href="http://localhost:8080/encontrar-funcionarios" class="ativo">Funcionários</a></li>
                     <li><a href="http://localhost:8080/encontrar-departamentos">Departamentos</a></li>
                     <li><a href="http://localhost:8080/encontrar-cargos">Cargos</a></li>
-                    <li><a href="http://localhost:8080/encontrar-ponto">Ponto</a></li>
+                    <li><a href="http://localhost:8080/encontrar-pontos">Ponto</a></li>
                     <li><a href="http://localhost:8080/encontrar-ferias">Férias</a></li>
                 </ul>
             </div>

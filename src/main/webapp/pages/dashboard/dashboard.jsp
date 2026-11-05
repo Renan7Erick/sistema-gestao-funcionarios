@@ -1,3 +1,6 @@
+<%@ page contentType="text/html;charset=UTF-8" pageEncoding="UTF-8" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
@@ -5,7 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Painel Admin - Sistema de Funcionários</title>
     <!-- Liga o ficheiro CSS -->
-    <link rel="stylesheet" href="dashboard.css">
+    <link rel="stylesheet" href="/pages/dashboard/dashboard.css">
     <!-- Importa ícones gratuitos da biblioteca Phosphor Icons (muito parecidos com os do seu layout) -->
     <script src="https://unpkg.com/@phosphor-icons/web"></script>
 </head>
@@ -28,7 +31,7 @@
                 <ul>
                     <!-- A classe 'active' deixa o botão escuro -->
                     <li class="active">
-                        <a href="dashboard.html"><i class="ph ph-chart-bar"></i> Dashboard</a>
+                        <a href="http://localhost:8080/encontrar-dashboard"><i class="ph ph-chart-bar"></i> Dashboard</a>
                     </li>
                     <li>
                         <a href="http://localhost:8080/encontrar-funcionarios"><i class="ph ph-users"></i> Funcionários</a>
@@ -41,7 +44,7 @@
                     </li>
                     <li>
 						<li>
-						    <a href="http://localhost:8080/encontrar-ponto"><i class="ph ph-clock"></i> Ponto</a>
+						    <a href="http://localhost:8080/encontrar-pontos"><i class="ph ph-clock"></i> Ponto</a>
 						</li>
 						<li>
 						    <a href="http://localhost:8080/encontrar-ferias"><i class="ph ph-airplane-tilt"></i> Férias</a>
@@ -90,8 +93,8 @@
                         <div class="icon-box blue"><i class="ph ph-users"></i></div>
                     </div>
                     <div class="card-body">
-                        <h2>128</h2>
-                        <p class="success">+4 colaboradores este mês</p>
+                        <h2>${totalFuncionarios}</h2>
+
                     </div>
                 </div>
 
@@ -102,8 +105,8 @@
                         <div class="icon-box purple"><i class="ph ph-buildings"></i></div>
                     </div>
                     <div class="card-body">
-                        <h2>8</h2>
-                        <p class="neutral">Todos em operação regular</p>
+                        <h2>${totalDepartamentos}</h2>
+
                     </div>
                 </div>
 
@@ -114,8 +117,8 @@
                         <div class="icon-box green"><i class="ph ph-clock"></i></div>
                     </div>
                     <div class="card-body">
-                        <h2>119 / 128</h2>
-                        <p class="success">93% de presença computada</p>
+                        <h2>${totalPontosHoje}</h2>
+
                     </div>
                 </div>
 
@@ -126,8 +129,8 @@
                         <div class="icon-box warning"><i class="ph ph-warning"></i></div>
                     </div>
                     <div class="card-body">
-                        <h2>5</h2>
-                        <p class="warning-text">Requer aprovação do RH</p>
+                        <h2>${totalFeriasPendente}</h2>
+
                     </div>
                 </div>
 
