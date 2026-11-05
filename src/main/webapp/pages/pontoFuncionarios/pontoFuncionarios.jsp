@@ -21,7 +21,7 @@
         </div>
 
         <ul class="menu">
-            <li><a href="http://localhost:8080/pages/dashboard/dashboard.html">Dashboard</a></li>
+            <li><a href="http://localhost:8080/encontrar-dashboard">Dashboard</a></li>
             <li><a href="http://localhost:8080/encontrar-funcionarios">Funcionários</a></li>
             <li><a href="http://localhost:8080/encontrar-departamentos">Departamentos</a></li>
             <li><a href="http://localhost:8080/encontrar-cargos">Cargos</a></li>
