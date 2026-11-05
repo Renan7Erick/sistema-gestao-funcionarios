@@ -4,6 +4,7 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
+	<script src="https://unpkg.com/@phosphor-icons/web"></script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Controle de Férias - Painel Admin</title>
@@ -13,16 +14,31 @@
 
     <!-- Menu Lateral -->
 	<aside class="sidebar">
-	        <div class="logo">
-	            <span class="logo-icon">❖</span> SISTEMA
+	    <div class="logo-area">
+	        <i class="ph-fill ph-buildings"></i>
+	        <div>
+	            <h2>SISTEMA</h2>
+	            <p>FUNCIONÁRIOS</p>
 	        </div>
-	        <nav class="menu">
-	            <a href="/pages/dashboard/dashboard.html" class="menu-item">📊 Dashboard</a>
-	            <a href="/encontrar-ponto" class="menu-item">🕒 Ponto</a>
-	            <a href="/encontrar-ferias" class="menu-item active">✈️ Férias</a>
-	        </nav>
-	        <a href="/pages/login/index.html" class="logout">🚪 Sair</a>
-	    </aside>
+	    </div>
+
+	    <nav class="menu">
+	        <ul>
+	            <li><a href="http://localhost:8080/pages/dashboard/dashboard.html"><i class="ph ph-chart-bar"></i> Dashboard</a></li>
+	            <li><a href="http://localhost:8080/encontrar-funcionarios"><i class="ph ph-users"></i> Funcionários</a></li>
+	            <li><a href="http://localhost:8080/encontrar-departamentos"><i class="ph ph-buildings"></i> Departamentos</a></li>
+	            <li><a href="http://localhost:8080/encontrar-cargos"><i class="ph ph-briefcase"></i> Cargos</a></li>
+	            <li><a href="http://localhost:8080/encontrar-ponto"><i class="ph ph-clock"></i> Ponto</a></li>
+	            <li class="active"><a href="http://localhost:8080/encontrar-ferias"><i class="ph ph-airplane-tilt"></i> Férias</a></li>
+	        </ul>
+	    </nav>
+
+	    <div class="sidebar-footer">
+	        <a href="http://localhost:8080/pages/login/index.html" class="logout-btn">
+	            <i class="ph ph-sign-out"></i> Sair
+	        </a>
+	    </div>
+	</aside>
 
     <!-- Área Principal -->
     <main class="main-content">
@@ -46,7 +62,7 @@
 		                <h3 class="card-title">⨁ Lançar Novas Férias</h3>
 		            </div>
 		            
-		            <form action="/sistema-gestao-funcionarios/create-ferias" method="POST" class="ferias-form">
+		            <form action="/create-ferias" method="POST">
 		                <input type="hidden" name="status" value="Aprovada">
 
 		                <div class="form-row">
@@ -115,15 +131,16 @@
 							    </td>
 							    
 							    <!-- Nova Coluna de Ações -->
-							    <td class="table-actions-cell">
-							        <!-- Ícone para Editar (pode direcionar para um modal ou tela de edição) -->
-									<a href="/sistema-gestao-funcionarios/editar-ferias?id=${feria.id}" style="text-decoration: none; margin-right: 8px;">✏️</a>
+							
+								<td class="table-actions-cell">
+								    <!-- Ícone para Editar (pode direcionar para um modal ou tela de edição) -->
+								    <a href="/editar-ferias?id=${feria.id}" style="text-decoration: none; margin-right: 8px;">✏️</a>
 
-									<form action="/sistema-gestao-funcionarios/delete-ferias" method="POST" style="display: inline;">
-									    <input type="hidden" name="id" value="${feria.id}">
-									    <button type="submit" style="background: none; border: none; cursor: pointer;" title="Excluir">🗑️</button>
-									</form>
-							    </td>
+								    <form action="/delete-ferias" method="POST" style="display: inline;">
+								        <input type="hidden" name="id" value="${feria.id}">
+								        <button type="submit" style="background: none; border: none; cursor: pointer;" title="Excluir">🗑️</button>
+								    </form>
+								</td>
 							</tr>
 				    </c:forEach>
 				</tbody>

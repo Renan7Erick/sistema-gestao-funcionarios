@@ -4,6 +4,7 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 	<head>
+		<script src="https://unpkg.com/@phosphor-icons/web"></script>
 	    <meta charset="UTF-8">
 	    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 	    <title>Gestão de Ponto - Painel Admin</title>
@@ -12,17 +13,32 @@
 	</head>
 	<body>
 	    <!-- Menu Lateral Padronizado -->
-	    <aside class="sidebar">
-	        <div class="logo">
-	            <span class="logo-icon">❖</span> SISTEMA
-	        </div>
-	        <nav class="menu">
-	            <a href="/pages/dashboard/dashboard.html" class="menu-item">📊 Dashboard</a>
-	            <a href="/encontrar-ponto" class="menu-item active">🕒 Ponto</a>
-	            <a href="/encontrar-ferias" class="menu-item">✈️ Férias</a>
-	        </nav>
-	        <a href="/pages/login/index.html" class="logout">🚪 Sair</a>
-	    </aside>
+		<aside class="sidebar">
+		    <div class="logo-area">
+		        <i class="ph-fill ph-buildings"></i>
+		        <div>
+		            <h2>SISTEMA</h2>
+		            <p>FUNCIONÁRIOS</p>
+		        </div>
+		    </div>
+
+		    <nav class="menu">
+		        <ul>
+		            <li><a href="http://localhost:8080/pages/dashboard/dashboard.html"><i class="ph ph-chart-bar"></i> Dashboard</a></li>
+		            <li><a href="http://localhost:8080/encontrar-funcionarios"><i class="ph ph-users"></i> Funcionários</a></li>
+		            <li><a href="http://localhost:8080/encontrar-departamentos"><i class="ph ph-buildings"></i> Departamentos</a></li>
+		            <li><a href="http://localhost:8080/encontrar-cargos"><i class="ph ph-briefcase"></i> Cargos</a></li>
+		            <li class="active"><a href="http://localhost:8080/encontrar-ponto"><i class="ph ph-clock"></i> Ponto</a></li>
+		            <li><a href="http://localhost:8080/encontrar-ferias"><i class="ph ph-airplane-tilt"></i> Férias</a></li>
+		        </ul>
+		    </nav>
+
+		    <div class="sidebar-footer">
+		        <a href="http://localhost:8080/pages/login/index.html" class="logout-btn">
+		            <i class="ph ph-sign-out"></i> Sair
+		        </a>
+		    </div>
+		</aside>
 
     <!-- Área Principal -->
     <main class="main-content">

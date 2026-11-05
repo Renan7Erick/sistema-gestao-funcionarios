@@ -21,7 +21,7 @@ public class CreateFeriasServlet extends HttpServlet {
             int funcionarioId = Integer.parseInt(request.getParameter("funcionarioId"));
             LocalDate dataInicio = LocalDate.parse(request.getParameter("dataInicio"));
             LocalDate dataFim = LocalDate.parse(request.getParameter("dataFim"));
-            String status = request.getParameter("status"); 
+            String status = "Pendente";
 
             
             Ferias ferias = new Ferias(0, funcionarioId, dataInicio, dataFim, status);
