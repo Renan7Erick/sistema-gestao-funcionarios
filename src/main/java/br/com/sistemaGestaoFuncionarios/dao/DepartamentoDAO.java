@@ -30,7 +30,12 @@ public class DepartamentoDAO {
     }
 
     public List<Departamento> findAllDepartamentos() {
-        String SQL = "SELECT * FROM departamento";
+        // Consulta SQL atualizada: junta (JOIN) o departamento com o funcionário e conta quantos existem
+        String SQL = "SELECT d.id, d.nome, COUNT(f.id) as total_colaboradores " +
+                "FROM departamento d " +
+                "LEFT JOIN funcionario f ON d.id = f.departamento_id " +
+                "GROUP BY d.id, d.nome";
+
         List<Departamento> departamentos = new ArrayList<>();
 
         try {
@@ -41,7 +46,10 @@ public class DepartamentoDAO {
             while (resultSet.next()) {
                 int id = resultSet.getInt("id");
                 String nome = resultSet.getString("nome");
-                Departamento departamento = new Departamento(id, nome);
+                int totalColaboradores = resultSet.getInt("total_colaboradores"); // Pega a contagem do banco
+
+                // Usa o novo construtor
+                Departamento departamento = new Departamento(id, nome, totalColaboradores);
                 departamentos.add(departamento);
             }
 

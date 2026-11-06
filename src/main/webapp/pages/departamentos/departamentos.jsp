@@ -1,5 +1,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
+
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
@@ -71,8 +73,9 @@
                 <p>Estruturação de unidades corporativas, dimensionamento de equipes e controle departamental.</p>
             </div>
             <div class="heading-stats">
-                <div class="stat-pill"><i class="ph ph-buildings"></i> Total: <strong>6</strong></div>
-                <div class="stat-pill"><i class="ph ph-users"></i> Colaboradores: <strong>128</strong></div>
+
+                <div class="stat-pill"><i class="ph ph-buildings"></i> Total: <strong>${fn:length(departamentos)}</strong></div>
+                <div class="stat-pill"><i class="ph ph-users"></i> Colaboradores: <strong>${totalColaboradoresGeral}</strong></div>
             </div>
         </section>
 
@@ -158,7 +161,7 @@
                                             </div>
                                         </div>
                                     </td>
-                                    <td><i class="ph ph-users"></i> - </td>
+                                    <td><i class="ph ph-users"></i> ${departamento.totalColaboradores} Colaboradores</td>
                                     <td><span class="status-badge"><span class="dot"></span> Ativo</span></td>
                                     <td style="display:flex; gap: 8px;">
 
@@ -168,8 +171,8 @@
                                         </c:url>
                                         <button type="button" class="icon-btn" title="Editar" onclick="window.location.href='${urlEditar}'"><i class="ph ph-pencil-simple"></i></button>
 
-                                        <!-- Formulário de Delete (inalterado) -->
-                                        <form action="/delete-departamento" method="POST" style="margin: 0;">
+                                        <!-- Formulário de Delete com confirmação em JavaScript -->
+                                        <form action="/delete-departamento" method="POST" style="margin: 0;" onsubmit="return confirm('Tem certeza que deseja excluir o departamento ${departamento.nome}? Esta ação não pode ser desfeita.');">
                                             <input type="hidden" name="id" value="${departamento.id}">
                                             <button type="submit" class="icon-btn" title="Deletar"><i class="ph ph-trash"></i></button>
                                         </form>

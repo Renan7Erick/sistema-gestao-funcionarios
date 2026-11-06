@@ -1,6 +1,7 @@
 package br.com.sistemaGestaoFuncionarios.servlet;
 
 import br.com.sistemaGestaoFuncionarios.dao.DepartamentoDAO;
+import br.com.sistemaGestaoFuncionarios.dao.DashboardDAO; // Importe o DashboardDAO
 import br.com.sistemaGestaoFuncionarios.model.Departamento;
 
 import javax.servlet.ServletException;
@@ -16,10 +17,19 @@ public class ListDepartamentoServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         req.setCharacterEncoding("UTF-8");
+
         DepartamentoDAO dao = new DepartamentoDAO();
         List<Departamento> departamentoList = dao.findAllDepartamentos();
 
+        // NOVO: Buscar o total real de colaboradores usando o DashboardDAO
+        DashboardDAO dashboardDAO = new DashboardDAO();
+        int totalColaboradoresGeral = dashboardDAO.contarFuncionarios();
+
         req.setAttribute("departamentos", departamentoList);
+
+        // NOVO: Enviar o total real para o JSP
+        req.setAttribute("totalColaboradoresGeral", totalColaboradoresGeral);
+
         req.getRequestDispatcher("/pages/departamentos/departamentos.jsp").forward(req, resp);
     }
 }
