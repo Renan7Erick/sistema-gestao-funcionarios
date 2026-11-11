@@ -1,3 +1,6 @@
+<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+<!DOCTYPE html>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
@@ -8,17 +11,18 @@
 </head>
 <body>
     <div class="login-container">
-        <form class="login-card">
+        <form action="/login" method="post" class="login-card">
+            <span>${requestScope.message}</span>
             <h2>Acesso ao sistema</h2>
             
             <div class="input-group">
                 <label for="email">E-mail</label>
-                <input type="email" id="email" placeholder="seu.email@empresa.com" required>
+                <input name="email" type="email" id="email" placeholder="seu.email@empresa.com" required>
             </div>
             
             <div class="input-group">
                 <label for="senha">Senha</label>
-                <input type="password" id="senha" placeholder="••••••••" required>
+                <input name="senha" type="password" id="senha" placeholder="••••••••" required>
             </div>
             
             <button type="submit">Entrar</button>
