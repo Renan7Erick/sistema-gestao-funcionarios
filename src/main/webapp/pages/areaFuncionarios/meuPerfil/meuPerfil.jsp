@@ -30,7 +30,7 @@
 
 <section class="botoes">
                 <a href="/funcionario/meu-perfil">📊 Meu perfil</a>
-                <a href="/encontrar-ponto-por-id">🕐 Meu Ponto</a>
+                <a href="/funcionario/meu-ponto">🕐 Meu Ponto</a>
                 <a href="/minhas-ferias">🦥 Minhas Férias</a>
                 <a href="/logout"> sair </a>
             </section>

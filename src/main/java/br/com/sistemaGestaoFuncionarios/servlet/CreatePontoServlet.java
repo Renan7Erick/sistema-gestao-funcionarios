@@ -1,6 +1,7 @@
 package br.com.sistemaGestaoFuncionarios.servlet;
 
 import br.com.sistemaGestaoFuncionarios.dao.PontoDAO;
+import br.com.sistemaGestaoFuncionarios.model.Funcionario;
 import br.com.sistemaGestaoFuncionarios.model.Ponto;
 
 import javax.servlet.ServletException;
@@ -19,16 +20,16 @@ public class CreatePontoServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
-        int funcionarioId = 1; // teste temporario pois ainda nao ha sistema d elogin para receber esse id
+        Funcionario funcionarioLogado = (Funcionario) req.getSession().getAttribute("funcionarioLogado");
 
 
         Ponto ponto = new Ponto();
 
-        ponto.setFuncionarioId(funcionarioId);
+        ponto.setFuncionarioId(funcionarioLogado.getId());
 
         new PontoDAO().createPonto(ponto);
 
-        resp.sendRedirect("/encontrar-ponto-por-id");
+        resp.sendRedirect("/funcionario/meu-ponto");
 
 
     }

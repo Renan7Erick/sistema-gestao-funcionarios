@@ -1,6 +1,7 @@
 package br.com.sistemaGestaoFuncionarios.servlet;
 
 import br.com.sistemaGestaoFuncionarios.dao.PontoDAO;
+import br.com.sistemaGestaoFuncionarios.model.Funcionario;
 import br.com.sistemaGestaoFuncionarios.model.Ponto;
 
 import javax.servlet.ServletException;
@@ -11,16 +12,16 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.List;
 
-@WebServlet("/encontrar-ponto-por-id")
+@WebServlet("/funcionario/meu-ponto")
 public class ListPontoByIdServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        Funcionario funcionarioLogado = (Funcionario) req.getSession().getAttribute("funcionarioLogado");
 
+         //ainda nao há sistema de login, portanto o id do funcionario ainda é teste
 
-        int funcionarioTeste = 1; //ainda nao há sistema de login, portanto o id do funcionario ainda é teste
-
-        List<Ponto> pontos = new PontoDAO().encontrarPontosByFuncionarioId(funcionarioTeste);
+        List<Ponto> pontos = new PontoDAO().encontrarPontosByFuncionarioId(funcionarioLogado.getId());
 
 
         req.setAttribute("pontos", pontos);
