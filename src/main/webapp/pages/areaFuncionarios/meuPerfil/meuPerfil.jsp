@@ -1,10 +1,12 @@
+<%@ page contentType="text/html;charset=UTF-8" pageEncoding="UTF-8" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="meuPerfil.css">
+    <link rel="stylesheet" href="/pages/areaFuncionarios/meuPerfil/meuPerfil.css">
     <title>Document</title>
 </head>
 
@@ -26,11 +28,12 @@
 
             <hr>
 
-           <section class="botoes">
-                <a href="/pages/areaFuncionarios/meuPerfil/meuPerfil.html">📊 Meu perfil</a>
+<section class="botoes">
+                <a href="/funcionario/meu-perfil">📊 Meu perfil</a>
                 <a href="/encontrar-ponto-por-id">🕐 Meu Ponto</a>
                 <a href="/minhas-ferias">🦥 Minhas Férias</a>
-                <a href="/"> sair </a>
+                <a href="/logout"> sair </a>
+            </section>
             </section>
         <section class="rightside">
 
@@ -52,17 +55,17 @@
 
                         <div class="blocosCard">
                             <p>Nome Completo</p>
-                            <div class="info">Pedro Erick Theodoro</div>
+                            <div class="info"><c:out value="${funcionario.nome}"/></div>
                         </div>
 
                         <div class="blocosCard">
                             <p>E-mail Corporativo</p>
-                            <div class="info">colaborador@empresa.com</div>
+                            <div class="info"><c:out value="${funcionario.email}"/></div>
                         </div>
 
                         <div class="blocosCard">
                             <p>Nome Completo</p>
-                            <div class="info">Pedro Erick Theodoro</div>
+                            <div class="info"><c:out value="${funcionario.telefone}"/></div>
                         </div>
 
                     </div>
@@ -83,17 +86,17 @@
 
                         <div class="blocosCard">
                             <p>Departamento</p>
-                            <div class="info">Tecnologia da Informação</div>
+                            <div class="info"><c:out value="${funcionario.departamentoNome}"/></div>
                         </div>
 
                         <div class="blocosCard">
                             <p>Cargo</p>
-                            <div class="info">Analista de Sistemas Pleno</div>
+                            <div class="info"><c:out value="${funcionario.cargoNome}"/></div>
                         </div>
 
                         <div class="blocosCard">
                             <p>Data de Admissão</p>
-                            <div class="info">14/03/2023</div>
+                            <div class="info"> <c:out value="${funcionario.dataContratacao}"/></div>
                         </div>
 
                     </div>

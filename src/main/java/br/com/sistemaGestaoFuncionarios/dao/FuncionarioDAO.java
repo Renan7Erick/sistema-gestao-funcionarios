@@ -216,6 +216,52 @@ public List<Funcionario> encontrarFuncionarios(){
 
     }
 
+    public Funcionario findById(int id){
+        String SQL = "SELECT f.*, c.nome AS cargo_nome, d.nome AS departamento_nome " +
+                "FROM funcionario f " +
+                "JOIN cargo c ON f.cargo_id = c.id " +
+                "JOIN departamento d ON f.departamento_id = d.id " +
+                "WHERE f.id = ?";
+        Funcionario funcionario = null;
+
+        try {
+            Connection connection = DriverManager.getConnection("jdbc:h2:~/test", "sa", "sa");
+            PreparedStatement preparedStatement = connection.prepareStatement(SQL);
+            preparedStatement.setInt(1, id);
+            ResultSet resultSet = preparedStatement.executeQuery();
+
+            if (resultSet.next()){
+                String nome = resultSet.getString("nome");
+                String cpf = resultSet.getString("cpf");
+                String email = resultSet.getString("email");
+                String telefone = resultSet.getString("telefone");
+                Date dataNascimento = resultSet.getDate("data_nascimento");
+                Date dataContratacao = resultSet.getDate("data_contratacao");
+                String status = resultSet.getString("status");
+                String perfil = resultSet.getString("perfil");
+                int cargoId = resultSet.getInt("cargo_id");
+                String cargoNome = resultSet.getString("cargo_nome");
+                int departamentoId = resultSet.getInt("departamento_id");
+                String departamentoNome = resultSet.getString("departamento_nome");
+
+                // senha = null de propósito
+                funcionario = new Funcionario(id, nome, cpf, email, null, telefone, dataNascimento,
+                        dataContratacao, status, perfil, cargoId, cargoNome, departamentoId, departamentoNome);
+            }
+
+            connection.close();
+
+
+
+
+        } catch (Exception e) {
+            System.out.println("Erro: " + e.getMessage());
+        }
+
+        return funcionario;
+
+    }
+
 
 
 }

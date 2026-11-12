@@ -28,7 +28,7 @@ public class LoginServlet extends HttpServlet {
             if ("ADMIN".equals(funcionario.getPerfil())){
                 resp.sendRedirect("/encontrar-dashboard");
             }else {
-                resp.sendRedirect("/pages/areaFuncionarios/meuPerfil/meuPerfil.html");
+                resp.sendRedirect("/funcionario/meu-perfil");
             }
         }else {
             req.setAttribute("message", "E-mail ou senha inválidos!");

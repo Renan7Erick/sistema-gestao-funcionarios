@@ -55,7 +55,7 @@
             </nav>
 
             <div class="sidebar-footer">
-                <a href="../login/index.html" class="logout-btn">
+                <a href="/logout" class="logout-btn">
                     <i class="ph ph-sign-out"></i> Sair
                 </a>
             </div>
