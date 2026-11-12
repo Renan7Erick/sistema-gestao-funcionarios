@@ -1,10 +1,14 @@
+<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Minhas Férias</title>
-    <link rel="stylesheet" href="minhasFerias.css">
+    <!-- Rota do CSS corrigida com caminho absoluto -->
+    <link rel="stylesheet" href="/pages/areaFuncionarios/minhasFerias/minhasFerias.css">
 </head>
 <body>
 
@@ -19,13 +23,13 @@
         </div>
 
         <ul class="menu">
-            <li><a href="#">Meu Perfil</a></li>
-            <li><a href="func-ponto.html">Meu Ponto</a></li>
-            <li><a href="func-ferias.html" class="ativo">Minhas Férias</a></li>
+            <li><a href="/pages/areaFuncionarios/meuPerfil/meuPerfil.html">Meu Perfil</a></li>
+            <li><a href="/encontrar-ponto-por-id">Meu Ponto</a></li>
+            <li><a href="/minhas-ferias" class="ativo">Minhas Férias</a></li>
         </ul>
     </div>
 
-    <a href="#" class="sair">Sair</a>
+    <a href="/" class="sair">Sair</a>
 </aside>
 
 <div class="conteudo">
@@ -46,11 +50,18 @@
                     <h2>Nova solicitação de férias</h2>
                     <p>A solicitação é criada como PENDENTE e fica aguardando a análise do RH.</p>
                 </div>
-                <span class="badge PENDENTE">Status inicial: PENDENTE</span>
+                <span class="badge Pendente">Status inicial: PENDENTE</span>
             </div>
 
-            <form action="#" data-action="/solicitar-ferias" method="post">
+            <!-- O formulário aponta para o Servlet que cria as férias no H2 -->
+            <form action="/create-ferias" method="POST">
                 <div class="form-linha">
+                    
+                    <div class="campo">
+                        <label for="funcionarioId">Meu ID *</label>
+                        <input type="number" id="funcionarioId" name="funcionarioId" placeholder="Ex: 1" required>
+                    </div>
+
                     <div class="campo">
                         <label for="dataInicio">Data de início *</label>
                         <input type="date" id="dataInicio" name="dataInicio" required>
@@ -91,27 +102,16 @@
                     </tr>
                     </thead>
                     <tbody>
-
-                    <tr>
-                        <td><strong>#FER-1</strong></td>
-                        <td>2026-12-15</td>
-                        <td>2026-12-30</td>
-                        <td><span class="badge PENDENTE">PENDENTE</span></td>
-                    </tr>
-
-                    <tr>
-                        <td><strong>#FER-2</strong></td>
-                        <td>2026-11-02</td>
-                        <td>2026-11-16</td>
-                        <td><span class="badge APROVADA">APROVADA</span></td>
-                    </tr>
-
-                    <tr>
-                        <td><strong>#FER-3</strong></td>
-                        <td>2026-11-23</td>
-                        <td>2026-12-07</td>
-                        <td><span class="badge REJEITADA">REJEITADA</span></td>
-                    </tr>
+                        
+                    <!-- Tabela dinâmica do banco de dados -->
+                    <c:forEach var="feria" items="${ferias}">
+                        <tr>
+                            <td><strong>#FER-${feria.id}</strong></td>
+                            <td>${feria.dataInicio}</td>
+                            <td>${feria.dataFim}</td>
+                            <td><span class="badge ${feria.status}">${feria.status}</span></td>
+                        </tr>
+                    </c:forEach>
 
                     </tbody>
                 </table>
