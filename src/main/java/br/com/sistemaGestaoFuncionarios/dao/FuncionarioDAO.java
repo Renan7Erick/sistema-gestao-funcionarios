@@ -177,4 +177,45 @@ public List<Funcionario> encontrarFuncionarios(){
 
     }
 
+    public Funcionario findByEmailAndSenha(String email, String senha){
+        String SQL = "SELECT * FROM funcionario WHERE email = ? AND senha = ? AND status = 'ATIVO'";
+        Funcionario funcionario = null;
+
+        try {
+            Connection connection = DriverManager.getConnection("jdbc:h2:~/test", "sa", "sa");
+            PreparedStatement preparedStatement = connection.prepareStatement(SQL);
+            preparedStatement.setString(1, email);
+            preparedStatement.setString(2, senha);
+            ResultSet resultSet = preparedStatement.executeQuery();
+
+            if (resultSet.next()) {
+                int id = resultSet.getInt("id");
+                String nome = resultSet.getString("nome");
+                String cpf = resultSet.getString("cpf");
+                String emailFuncionario = resultSet.getString("email");
+                String telefone = resultSet.getString("telefone");
+                Date dataNascimento = resultSet.getDate("data_nascimento");
+                Date dataContratacao = resultSet.getDate("data_contratacao");
+                String status = resultSet.getString("status");
+                String perfil = resultSet.getString("perfil");
+                int cargoId = resultSet.getInt("cargo_id");
+                int departamentoId = resultSet.getInt("departamento_id");
+
+
+                funcionario = new Funcionario(id, nome, cpf, emailFuncionario, null, telefone,
+                        dataNascimento, dataContratacao, status, perfil, cargoId, departamentoId);
+            }
+
+            connection.close();
+
+        } catch (Exception e) {
+            System.out.println("Erro: " + e.getMessage());
+        }
+
+        return funcionario;
+
+    }
+
+
+
 }
