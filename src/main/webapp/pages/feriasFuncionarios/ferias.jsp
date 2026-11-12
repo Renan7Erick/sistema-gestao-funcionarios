@@ -86,7 +86,7 @@
                                 <td class="table-actions-cell">
 
                                     <!-- CORREÇÃO AQUI: "Pendente" com apenas a primeira letra maiúscula -->
-                                    <c:if test="${feria.status == 'Pendente'}">
+                                    <c:if test="${feria.status == 'PENDENTE'}">
 
                                         <form action="/atualizar-status-ferias"
                                               method="POST"

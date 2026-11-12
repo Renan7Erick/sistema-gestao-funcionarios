@@ -24,7 +24,7 @@
 
         <ul class="menu">
             <li><a href="/pages/areaFuncionarios/meuPerfil/meuPerfil.html">Meu Perfil</a></li>
-            <li><a href="/encontrar-ponto-por-id">Meu Ponto</a></li>
+            <li><a href="/funcionario/meu-ponto">Meu Ponto</a></li>
             <li><a href="/minhas-ferias" class="ativo">Minhas Férias</a></li>
         </ul>
     </div>
