@@ -85,4 +85,23 @@ public class FeriasDAO {
             System.out.println("Erro ao atualizar status: " + e.getMessage());
         }
     }
+	public boolean hasFeriasAtivas(int funcionarioId) {
+        boolean temAtiva = false;
+        String SQL = "SELECT COUNT(*) FROM FERIAS WHERE FUNCIONARIO_ID = ? AND UPPER(STATUS) IN ('PENDENTE', 'APROVADA')";
+        
+        try {
+            java.sql.Connection connection = java.sql.DriverManager.getConnection("jdbc:h2:~/test", "sa", "sa");
+            java.sql.PreparedStatement ps = connection.prepareStatement(SQL);
+            ps.setInt(1, funcionarioId);
+            
+            java.sql.ResultSet rs = ps.executeQuery();
+            if (rs.next()) {
+                temAtiva = rs.getInt(1) > 0;
+            }
+            connection.close();
+        } catch (Exception e) {
+            System.out.println("Erro ao verificar férias ativas: " + e.getMessage());
+        }
+        return temAtiva;
+    }
 }

@@ -54,6 +54,19 @@
             </div>
 
             <!-- O formulário aponta para o Servlet que cria as férias no H2 -->
+            <!-- Alerta de Erro (Bloqueio) -->
+            <c:if test="${not empty erroBloqueio}">
+                <div style="background-color: #f8d7da; color: #721c24; padding: 12px; border-radius: 4px; margin-bottom: 15px; border: 1px solid #f5c6cb; font-weight: bold;">
+                    ⚠️ ${erroBloqueio}
+                </div>
+            </c:if>
+
+            <!-- Alerta de Sucesso -->
+            <c:if test="${not empty mensagemSucesso}">
+                <div style="background-color: #d4edda; color: #155724; padding: 12px; border-radius: 4px; margin-bottom: 15px; border: 1px solid #c3e6cb; font-weight: bold;">
+                    ✅ ${mensagemSucesso}
+                </div>
+            </c:if>
             <form action="/create-ferias" method="POST">
                 <div class="form-linha">
                     

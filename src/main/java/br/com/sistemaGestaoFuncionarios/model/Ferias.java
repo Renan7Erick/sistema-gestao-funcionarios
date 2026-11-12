@@ -3,13 +3,17 @@ package br.com.sistemaGestaoFuncionarios.model;
 
 import java.time.LocalDate;
 
+
 public class Ferias {
     private int id;
     private int funcionarioId;
     private LocalDate dataInicio;
     private LocalDate dataFim;
     private String status;
-
+    
+    public Ferias() {
+    }
+    
     public Ferias(int id, int funcionarioId, LocalDate dataInicio, LocalDate dataFim, String status) {
         this.id = id;
         this.funcionarioId = funcionarioId;
