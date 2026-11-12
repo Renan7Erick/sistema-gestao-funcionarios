@@ -155,8 +155,8 @@
                         <label>Perfil</label>
                         <div class="input-div">
                             <select name="perfil" id="perfil">
-                                <option value="ADMIN">ADMIN</option>
-                                <option VALUE="FUNCIONARIO">FUNCIONARIO</option>
+                                <option value="ADMIN" ${param.perfil == "ADMIN" ? 'selected' : ''}>ADMIN</option>
+                                <option value="FUNCIONARIO" ${param.perfil == "FUNCIONARIO" ? 'selected' : ''}>FUNCIONARIO</option>
                             </select>
                         </div>
                     </div>
