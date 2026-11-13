@@ -19,7 +19,6 @@ public class ListPontoByIdServlet extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         Funcionario funcionarioLogado = (Funcionario) req.getSession().getAttribute("funcionarioLogado");
 
-         //ainda nao há sistema de login, portanto o id do funcionario ainda é teste
 
         List<Ponto> pontos = new PontoDAO().encontrarPontosByFuncionarioId(funcionarioLogado.getId());
 

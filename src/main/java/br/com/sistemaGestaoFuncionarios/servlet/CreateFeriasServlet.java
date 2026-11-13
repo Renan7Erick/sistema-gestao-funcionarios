@@ -2,6 +2,7 @@ package br.com.sistemaGestaoFuncionarios.servlet;
 
 import br.com.sistemaGestaoFuncionarios.dao.FeriasDAO;
 import br.com.sistemaGestaoFuncionarios.model.Ferias;
+import br.com.sistemaGestaoFuncionarios.model.Funcionario;
 
 import java.time.LocalDate;
 import javax.servlet.ServletException;
@@ -18,18 +19,17 @@ public class CreateFeriasServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         try {
-            int funcionarioId = Integer.parseInt(request.getParameter("funcionarioId"));
+            Funcionario funcionarioLogado = (Funcionario) request.getSession().getAttribute("funcionarioLogado");
             String dataInicio = request.getParameter("dataInicio");
             String dataFim = request.getParameter("dataFim");
 
             FeriasDAO dao = new FeriasDAO();
 
             // 1. REGRA DE BLOQUEIO: Testa se já tem férias
-            if (dao.hasFeriasAtivas(funcionarioId)) {
+            if (dao.hasFeriasAtivas(funcionarioLogado.getId())) {
                 request.setAttribute("erroBloqueio", "Ação negada: Você já possui uma solicitação de férias em andamento ou aprovada.");
                 request.setAttribute("ferias", dao.findAllFerias());
-                request.getRequestDispatcher("/pages/areaFuncionarios/minhasFerias/minhasFerias.jsp").forward(request, response);
-                return; // Para a execução aqui
+                response.sendRedirect("/funcionario/minhas-ferias");                return; // Para a execução aqui
             }
 
             // 2. CRIAÇÃO: Se estiver livre, salva no banco
@@ -37,7 +37,7 @@ public class CreateFeriasServlet extends HttpServlet {
             LocalDate fimFormatado = LocalDate.parse(dataFim);
 
             Ferias ferias = new Ferias();
-            ferias.setFuncionarioId(funcionarioId);
+            ferias.setFuncionarioId(funcionarioLogado.getId());
             ferias.setDataInicio(inicioFormatado);
             ferias.setDataFim(fimFormatado);
             ferias.setStatus("Pendente");
@@ -47,7 +47,7 @@ public class CreateFeriasServlet extends HttpServlet {
             // 3. MENSAGEM DE SUCESSO: Carrega a mensagem verde e a tabela atualizada
             request.setAttribute("mensagemSucesso", "Solicitação submetida com sucesso! Acompanhe o protocolo no histórico abaixo e aguarde o retorno do administrador.");
             request.setAttribute("ferias", dao.findAllFerias());
-            request.getRequestDispatcher("/pages/areaFuncionarios/minhasFerias/minhasFerias.jsp").forward(request, response);
+            response.sendRedirect("/funcionario/minhas-ferias");
             
         } catch (Exception e) {
             System.out.println("Erro: " + e.getMessage());

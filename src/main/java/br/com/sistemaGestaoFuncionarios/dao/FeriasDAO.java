@@ -1,8 +1,10 @@
 package br.com.sistemaGestaoFuncionarios.dao;
 
 import br.com.sistemaGestaoFuncionarios.model.Ferias;
+import br.com.sistemaGestaoFuncionarios.model.Ponto;
 
 import java.sql.*;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -71,6 +73,49 @@ public class FeriasDAO {
             System.out.println("Erro ao listar férias: " + e.getMessage());
         }
         return ferias;
+    }
+    public List<Ferias> encontrarFeriasPorFuncionarioId(int funcionarioId){
+        String SQL = "SELECT * FROM Ferias where funcionario_id = ?";
+
+        try {
+
+            Connection connection = DriverManager.getConnection("jdbc:h2:~/test", "sa", "sa");
+            PreparedStatement preparedStatement = connection.prepareStatement(SQL);
+
+            System.out.println("conecto");
+
+            preparedStatement.setInt(1, funcionarioId);
+            ResultSet resultSet = preparedStatement.executeQuery();
+
+            List<Ferias> ferias = new ArrayList<>();
+
+            while (resultSet.next()){
+                int feriasId = resultSet.getInt("ID");
+                LocalDate dataInicio = resultSet.getDate("DATA_INICIO").toLocalDate();
+                LocalDate dataFim = resultSet.getDate("DATA_FIM").toLocalDate();
+                String status = resultSet.getString("STATUS");
+                int funcionario_Id = resultSet.getInt("funcionario_id");
+
+                Ferias feria = new Ferias(feriasId, funcionario_Id, dataInicio, dataFim, status);
+
+                ferias.add(feria);
+            }
+
+            System.out.println("cosnuilta realizadda");
+
+            connection.close();
+
+            return ferias;
+
+
+
+        }catch (Exception e) {
+
+            System.out.println("fail in database connection");
+
+            return Collections.emptyList();
+
+        }
     }
 	public void updateStatusFerias(int id, String status) {
         String SQL = "UPDATE FERIAS SET STATUS = ? WHERE ID = ?";

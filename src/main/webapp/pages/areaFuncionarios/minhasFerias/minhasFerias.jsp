@@ -23,9 +23,9 @@
         </div>
 
         <ul class="menu">
-            <li><a href="/pages/areaFuncionarios/meuPerfil/meuPerfil.html">Meu Perfil</a></li>
+            <li><a href="/funcionario/meu-perfil">Meu Perfil</a></li>
             <li><a href="/funcionario/meu-ponto">Meu Ponto</a></li>
-            <li><a href="/minhas-ferias" class="ativo">Minhas Férias</a></li>
+            <li><a href="/funcionario/minhas-ferias" class="ativo">Minhas Férias</a></li>
         </ul>
     </div>
 
@@ -69,11 +69,6 @@
             </c:if>
             <form action="/create-ferias" method="POST">
                 <div class="form-linha">
-                    
-                    <div class="campo">
-                        <label for="funcionarioId">Meu ID *</label>
-                        <input type="number" id="funcionarioId" name="funcionarioId" placeholder="Ex: 1" required>
-                    </div>
 
                     <div class="campo">
                         <label for="dataInicio">Data de início *</label>
@@ -119,7 +114,7 @@
                     <!-- Tabela dinâmica do banco de dados -->
                     <c:forEach var="feria" items="${ferias}">
                         <tr>
-                            <td><strong>#FER-${feria.id}</strong></td>
+                            <td><strong>${feria.id}</strong></td>
                             <td>${feria.dataInicio}</td>
                             <td>${feria.dataFim}</td>
                             <td><span class="badge ${feria.status}">${feria.status}</span></td>
