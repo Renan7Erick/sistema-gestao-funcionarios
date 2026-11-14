@@ -1,35 +1,6 @@
 /* ==========================================
-   GERAL
+   GERAL (Mantido apenas utilitários da página)
    ========================================== */
-* {
-    box-sizing: border-box;
-}
-
-body {
-    margin: 0;
-    font-family: Arial, Helvetica, sans-serif;
-    font-size: 14px;
-    color: #1f2937;
-    background-color: #f8f9fb;
-    display: flex;
-    min-height: 100vh;
-}
-
-a {
-    text-decoration: none;
-}
-
-ul {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-}
-
-h1, h2, p {
-    margin: 0;
-}
-
-/* Bolinhas coloridas (departamentos, status) */
 .bolinha {
     display: inline-block;
     width: 7px;
@@ -44,191 +15,6 @@ h1, h2, p {
 .cor-roxo     { background-color: #a855f7; }
 .cor-vermelho { background-color: #ef4444; }
 
-/* ==========================================
-   MENU LATERAL
-   ========================================== */
-#menu-lateral {
-    width: 255px;
-    background-color: #ffffff;
-    border-right: 1px solid #e5e7eb;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    padding: 24px;
-}
-
-#logo {
-    display: flex;
-    align-items: center;
-    padding-bottom: 24px;
-    margin-bottom: 24px;
-    border-bottom: 1px solid #e5e7eb;
-}
-
-#logo-icone {
-    width: 40px;
-    height: 40px;
-    background-color: #0f1b3d;
-    color: #ffffff;
-    border-radius: 10px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-right: 12px;
-}
-
-#logo-texto {
-    display: flex;
-    flex-direction: column;
-}
-
-#logo-titulo {
-    font-weight: bold;
-    font-size: 15px;
-    color: #0f1b3d;
-}
-
-#logo-subtitulo {
-    font-size: 12px;
-    letter-spacing: 1px;
-    color: #6b7280;
-}
-
-#menu li {
-    margin-bottom: 4px;
-}
-
-#menu a {
-    display: block;
-    padding: 10px 12px;
-    border-radius: 6px;
-    color: #4b5563;
-}
-
-#menu a:hover {
-    background-color: #f3f4f6;
-}
-
-#menu a.ativo {
-    background-color: #0f1b3d;
-    color: #ffffff;
-    font-weight: bold;
-}
-
-#area-sair {
-    border-top: 1px solid #e5e7eb;
-    padding-top: 20px;
-}
-
-#link-sair {
-    color: #dc2626;
-    font-weight: bold;
-    padding: 0 12px;
-}
-
-/* ==========================================
-   CONTEÚDO E BARRA DO TOPO
-   ========================================== */
-#conteudo {
-    flex: 1;
-}
-
-#barra-topo {
-    height: 66px;
-    background-color: #ffffff;
-    border-bottom: 1px solid #e5e7eb;
-    padding: 0 32px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-}
-
-#titulo-topo {
-    font-size: 12px;
-    font-weight: bold;
-    letter-spacing: 1px;
-    color: #4b5563;
-}
-
-#usuario-topo {
-    display: flex;
-    align-items: center;
-}
-
-#status-online {
-    background-color: #e8eefc;
-    color: #1f2937;
-    font-size: 12px;
-    font-weight: bold;
-    padding: 4px 10px;
-    border-radius: 12px;
-    margin-right: 16px;
-}
-
-#dados-usuario {
-    display: flex;
-    flex-direction: column;
-    text-align: right;
-    margin-right: 10px;
-}
-
-#nome-usuario {
-    font-size: 14px;
-}
-
-#email-usuario {
-    font-size: 12px;
-    color: #6b7280;
-}
-
-#avatar {
-    width: 36px;
-    height: 36px;
-    background-color: #0f1b3d;
-    color: #ffffff;
-    font-size: 13px;
-    font-weight: bold;
-    border-radius: 10px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-/* ==========================================
-   CABEÇALHO DA PÁGINA
-   ========================================== */
-#area-pagina {
-    padding: 32px;
-}
-
-#cabecalho-pagina {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
-    margin-bottom: 24px;
-}
-
-#caminho {
-    font-size: 12px;
-    letter-spacing: 1px;
-    color: #6b7280;
-    margin-bottom: 12px;
-}
-
-#caminho b {
-    color: #111827;
-}
-
-#titulo-pagina h1 {
-    font-size: 28px;
-    color: #111827;
-    margin-bottom: 6px;
-}
-
-#descricao-pagina {
-    color: #4b5563;
-}
-
 .selo {
     display: inline-block;
     background-color: #dfe6fb;
@@ -240,6 +26,19 @@ h1, h2, p {
     border-radius: 12px;
     vertical-align: middle;
     margin-left: 6px;
+}
+
+/* ==========================================
+   ÁREA DA PÁGINA (RESUMOS)
+   ========================================== */
+#area-pagina {
+    padding: 32px;
+}
+
+#cabecalho-pagina {
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 24px;
 }
 
 /* Caixas de resumo (Total e Níveis) */
@@ -320,12 +119,14 @@ h1, h2, p {
 .texto-topo-cartao h2 {
     font-size: 16px;
     color: #111827;
+    margin: 0;
 }
 
 .texto-topo-cartao p {
     font-size: 12px;
     color: #6b7280;
     margin-top: 2px;
+    margin-bottom: 0;
 }
 
 .icone-escuro,
@@ -382,9 +183,9 @@ h1, h2, p {
     border-radius: 4px;
     font-size: 14px;
     background-color: #ffffff;
+    box-sizing: border-box;
 }
 
-/* Campo com ícone dentro (usa uma caixa com borda e o input sem borda) */
 .campo-com-icone {
     display: flex;
     align-items: center;
@@ -464,57 +265,6 @@ h1, h2, p {
 /* ==========================================
    TABELA DE CARGOS
    ========================================== */
-#botoes-tabela {
-    display: flex;
-}
-
-.botao-pequeno {
-    display: flex;
-    align-items: center;
-    background-color: #eef0fb;
-    color: #374151;
-    border: 1px solid #e5e7eb;
-    border-radius: 4px;
-    padding: 6px 10px;
-    margin-left: 8px;
-    font-size: 13px;
-    cursor: pointer;
-}
-
-.botao-pequeno svg {
-    margin-right: 6px;
-}
-
-#filtros {
-    display: flex;
-    padding: 16px 24px;
-}
-
-#caixa-busca {
-    flex: 1;
-    background-color: #ffffff;
-    margin-right: 8px;
-}
-
-#caixa-busca input {
-    flex: 1;
-    height: 38px;
-    border: none;
-    font-size: 14px;
-    padding: 0 10px;
-}
-
-#filtros select {
-    height: 38px;
-    border: 1px solid #374151;
-    border-radius: 4px;
-    padding: 0 8px;
-    margin-left: 8px;
-    font-size: 13px;
-    font-weight: bold;
-    background-color: #ffffff;
-}
-
 #tabela-cargos {
     width: 100%;
     border-collapse: collapse;
@@ -531,15 +281,12 @@ h1, h2, p {
 #tabela-cargos td {
     padding: 14px 10px;
     border-top: 1px solid #f3f4f6;
+    font-size: 13px;
 }
 
 #tabela-cargos th:first-child,
 #tabela-cargos td:first-child {
     padding-left: 24px;
-}
-
-.centro {
-    text-align: center !important;
 }
 
 .coluna-id {
@@ -587,57 +334,6 @@ h1, h2, p {
     font-size: 12px;
     padding: 4px 8px;
     border-radius: 2px;
-}
-
-.status-ativo {
-    display: inline-block;
-    background-color: #e6f7ee;
-    color: #15803d;
-    font-size: 12px;
-    padding: 4px 8px;
-    border-radius: 12px;
-}
-
-/* ==========================================
-   PAGINAÇÃO
-   ========================================== */
-#rodape-tabela {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 16px 24px;
-    border-top: 1px solid #f3f4f6;
-}
-
-#texto-paginacao {
-    font-size: 13px;
-    color: #4b5563;
-}
-
-#paginacao {
-    display: flex;
-}
-
-.botao-pagina {
-    background-color: #eef0fb;
-    color: #374151;
-    border: none;
-    border-radius: 4px;
-    padding: 8px 12px;
-    margin-left: 6px;
-    font-size: 13px;
-    font-weight: bold;
-    cursor: pointer;
-}
-
-.botao-pagina.pagina-atual {
-    background-color: #0f1b3d;
-    color: #ffffff;
-}
-
-.botao-pagina.desativado {
-    color: #9ca3af;
-    cursor: default;
 }
 
 .acoes {

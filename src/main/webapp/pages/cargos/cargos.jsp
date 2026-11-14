@@ -5,69 +5,70 @@
 <head>
     <meta charset="UTF-8">
     <title>Cargos - Sistema Funcionários</title>
+    <!-- CSS global da Dashboard PRIMEIRO -->
+    <link rel="stylesheet" href="/pages/dashboard/dashboard.css">
+    <!-- CSS específico desta página -->
     <link rel="stylesheet" href="/pages/cargos/style.css">
+    <!-- Biblioteca de ícones -->
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
 </head>
 <body>
+<div class="app-container">
 
-    <!-- ========== MENU LATERAL ========== -->
-    <div id="menu-lateral">
-
-        <div id="menu-topo">
-            <div id="logo">
-                <div id="logo-icone">
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                        <rect x="4" y="2" width="16" height="20" rx="2"/>
-                        <path d="M9 22v-4h6v4"/>
-                        <path d="M8 6h.01M12 6h.01M16 6h.01M8 10h.01M12 10h.01M16 10h.01M8 14h.01M12 14h.01M16 14h.01"/>
-                    </svg>
-                </div>
-                <div id="logo-texto">
-                    <span id="logo-titulo">SISTEMA</span>
-                    <span id="logo-subtitulo">FUNCIONÁRIOS</span>
-                </div>
+    <!-- ========== BARRA LATERAL (PADRÃO DASHBOARD) ========== -->
+    <aside class="sidebar">
+        <div class="logo-area">
+            <i class="ph-fill ph-buildings"></i>
+            <div>
+                <h2>SISTEMA</h2>
+                <p>FUNCIONÁRIOS</p>
             </div>
+        </div>
 
-            <ul id="menu">
-                <li><a href="http://localhost:8080/encontrar-dashboard">Dashboard</a></li>
-                <li><a href="http://localhost:8080/encontrar-funcionarios">Funcionários</a></li>
-                <li><a href="http://localhost:8080/encontrar-departamentos">Departamentos</a></li>
-                <li><a href="http://localhost:8080/encontrar-cargos" class="ativo">Cargos</a></li>
-                <li><a href="http://localhost:8080/encontrar-pontos">Ponto</a></li>
-                <li><a href="http://localhost:8080/encontrar-ferias">Férias</a></li>
+        <nav class="menu">
+            <ul>
+                <li><a href="http://localhost:8080/encontrar-dashboard"><i class="ph ph-chart-bar"></i> Dashboard</a></li>
+                <li><a href="http://localhost:8080/encontrar-funcionarios"><i class="ph ph-users"></i> Funcionários</a></li>
+                <li><a href="http://localhost:8080/encontrar-departamentos"><i class="ph ph-buildings"></i> Departamentos</a></li>
+                <li class="active"><a href="http://localhost:8080/encontrar-cargos"><i class="ph ph-briefcase"></i> Cargos</a></li>
+                <li><a href="http://localhost:8080/encontrar-pontos"><i class="ph ph-clock"></i> Ponto</a></li>
+                <li><a href="http://localhost:8080/encontrar-ferias"><i class="ph ph-airplane-tilt"></i> Férias</a></li>
             </ul>
-        </div>
+        </nav>
 
-        <div id="area-sair">
-            <a href="/index.html" id="link-sair">Sair</a>
+        <div class="sidebar-footer">
+            <a href="/logout" class="logout-btn">
+                <i class="ph ph-sign-out"></i> Sair
+            </a>
         </div>
-
-    </div>
+    </aside>
 
     <!-- ========== CONTEÚDO ========== -->
-    <div id="conteudo">
+    <main class="main-content">
 
-        <!-- Barra do topo -->
-        <div id="barra-topo">
-            <span id="titulo-topo">GESTÃO ORGANIZACIONAL</span>
-
-            <div id="usuario-topo">
-                <div id="dados-usuario">
-                    <span id="nome-usuario">Administrador</span>
-                    <span id="email-usuario">admin@empresa.com</span>
-                </div>
-                <div id="avatar">AD</div>
+        <!-- ========== CABEÇALHO SUPERIOR (PADRÃO DASHBOARD) ========== -->
+        <header class="top-header">
+            <div class="title-area">
+                <h1>Cargos</h1>
+                <p>Definição de funções, níveis hierárquicos e alocação por departamento</p>
             </div>
-        </div>
+
+            <div class="user-area">
+                <span class="status-badge"><i class="ph-fill ph-circle"></i> Painel Online</span>
+                <div class="profile-info">
+                    <div class="profile-text">
+                        <strong>Administrador Geral</strong>
+                        <span>admin@empresa.com</span>
+                    </div>
+                    <div class="avatar">AD</div>
+                </div>
+            </div>
+        </header>
 
         <div id="area-pagina">
 
-            <!-- Cabeçalho da página -->
-            <div id="cabecalho-pagina">
-                <div id="titulo-pagina">
-                    <h1>Cargos <span class="selo">CADASTRO E GESTÃO DE CARGOS</span></h1>
-                    <p id="descricao-pagina">Definição de funções, níveis hierárquicos e alocação por departamento.</p>
-                </div>
-
+            <!-- Indicadores (Movidos para a direita já que o título está no cabeçalho superior) -->
+            <div id="cabecalho-pagina" style="justify-content: flex-end;">
                 <div id="resumos">
                     <div class="caixa-resumo">
                         <div class="icone-resumo">
@@ -123,9 +124,6 @@
 
                         <input type="hidden" id="id" name="id" value="${param.id}">
 
-
-
-
                         <label for="nome-cargo">NOME DO CARGO <span class="obrigatorio">*</span></label>
                         <input type="text" id="nome-cargo" name="nome" placeholder="Ex: Desenvolvedor, Analista Financeiro" value="${param.nome}" required>
 
@@ -149,7 +147,7 @@
 
 
                         <div id="botoes-formulario">
-                            <button type="reset" id="botao-limpar">Limpar</button>
+                            <button type="button" id="botao-limpar" onclick="window.location.href='/encontrar-cargos'">Limpar</button>
                             <button type="submit" id="botao-cadastrar">
                                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                                     <path d="M12 5v14M5 12h14"/>
@@ -175,10 +173,7 @@
                             <h2>Cargos Cadastrados</h2>
                             <p>Visão geral de funções e departamentos associados</p>
                         </div>
-                        
                     </div>
-
-
 
                     <table id="tabela-cargos">
                         <thead>
@@ -190,7 +185,7 @@
                                 <th>Ações</th>
                             </tr>
                         </thead>
-                        <<tbody>
+                        <tbody>
                              <c:forEach var="cargo" items="${cargos}">
                                  <tr>
                                      <td class="coluna-id">#${cargo.id}</td>
@@ -214,7 +209,7 @@
                                      <td>
                                          <div class="acoes">
                                              <!-- Editar -->
-                                             <a href = "/encontrar-cargos?id=${cargo.id}&nome=${cargo.nome}&nivel=${cargo.nivel}&departamento_id=${cargo.departamentoId}"
+                                             <a href="/encontrar-cargos?id=${cargo.id}&nome=${cargo.nome}&nivel=${cargo.nivel}&departamento_id=${cargo.departamentoId}"
                                                 class="btn-acao btn-editar" title="Editar cargo">
                                                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                                                      <path d="M12 20h9"/>
@@ -240,16 +235,13 @@
                              <c:if test="${empty cargos}">
                                  <tr><td colspan="5">Nenhum cargo cadastrado.</td></tr>
                              </c:if>
-                         </tbody>
+                        </tbody>
                     </table>
-
-                    
-
                 </div>
 
             </div>
         </div>
-    </div>
-
+    </main>
+</div>
 </body>
 </html>

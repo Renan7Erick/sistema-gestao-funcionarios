@@ -331,7 +331,7 @@ td {
     color: #64748b;
 }
 
-.status-badge {
+.status-tabela {
     display: inline-flex;
     align-items: center;
     gap: 6px;

@@ -15,7 +15,6 @@
 <body>
 <div class="app-container">
 
-    <!-- ================= BARRA LATERAL (PADRÃO DASHBOARD) ================= -->
     <aside class="sidebar">
         <div class="logo-area">
             <i class="ph-fill ph-buildings"></i>
@@ -43,10 +42,8 @@
         </div>
     </aside>
 
-    <!-- ================= ÁREA DE CONTEÚDO ================= -->
     <main class="main-content">
 
-        <!-- ================= CABEÇALHO SUPERIOR (PADRÃO DASHBOARD) ================= -->
         <header class="top-header">
             <div class="title-area">
                 <h1>Departamentos</h1>
@@ -65,7 +62,6 @@
             </div>
         </header>
 
-        <!-- Indicadores (Título movido para o header, mantemos só os status) -->
         <section class="page-heading">
             <div class="heading-stats">
                 <div class="stat-pill"><i class="ph ph-buildings"></i> Total: <strong>${fn:length(departamentos)}</strong></div>
@@ -73,10 +69,8 @@
             </div>
         </section>
 
-        <!-- Área de Formulário e Tabela -->
         <section class="content-grid">
 
-            <!-- COLUNA ESQUERDA: Formulário de Cadastro -->
             <div class="form-card">
                 <div class="card-header-form">
                     <div class="form-icon">
@@ -112,7 +106,6 @@
                 </form>
             </div>
 
-            <!-- COLUNA DIREITA: Tabela de Departamentos -->
             <div class="table-card">
                 <div class="table-header-card">
                     <div class="table-title-area">
@@ -156,7 +149,7 @@
                                         </div>
                                     </td>
                                     <td><i class="ph ph-users"></i> ${departamento.totalColaboradores} Colaboradores</td>
-                                    <td><span class="status-badge"><span class="dot"></span> Ativo</span></td>
+                                    <td><span class="status-tabela"><span class="dot"></span> Ativo</span></td>
                                     <td style="display:flex; gap: 8px;">
 
                                         <c:url var="urlEditar" value="/encontrar-departamentos">
@@ -165,7 +158,6 @@
                                         </c:url>
                                         <button type="button" class="icon-btn" title="Editar" onclick="window.location.href='${urlEditar}'"><i class="ph ph-pencil-simple"></i></button>
 
-                                        <!-- Formulário de Delete com confirmação em JavaScript -->
                                         <form action="/delete-departamento" method="POST" style="margin: 0;" onsubmit="return confirm('Tem certeza que deseja excluir o departamento ${departamento.nome}? Esta ação não pode ser desfeita.');">
                                             <input type="hidden" name="id" value="${departamento.id}">
                                             <button type="submit" class="icon-btn" title="Deletar"><i class="ph ph-trash"></i></button>
@@ -175,7 +167,6 @@
                                 </tr>
                             </c:forEach>
 
-                            <!-- Mensagem amigável caso a tabela esteja vazia -->
                             <c:if test="${empty departamentos}">
                                 <tr>
                                     <td colspan="5" style="text-align: center; padding: 20px;">Nenhum departamento cadastrado.</td>
