@@ -8,15 +8,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Departamentos - Sistema de Funcionários</title>
-    <!-- Liga o ficheiro CSS com caminho absoluto para funcionar com o Servlet -->
+    <link rel="stylesheet" href="/pages/dashboard/dashboard.css">
     <link rel="stylesheet" href="/pages/departamentos/departamentos.css">
-    <!-- Importa ícones da biblioteca Phosphor Icons -->
     <script src="https://unpkg.com/@phosphor-icons/web"></script>
 </head>
 <body>
 <div class="app-container">
 
-    <!-- ================= BARRA LATERAL (SIDEBAR) ================= -->
+    <!-- ================= BARRA LATERAL (PADRÃO DASHBOARD) ================= -->
     <aside class="sidebar">
         <div class="logo-area">
             <i class="ph-fill ph-buildings"></i>
@@ -28,18 +27,17 @@
 
         <nav class="menu">
             <ul>
-                <li><a href="http://localhost:8080/encontrar-dashboard">Dashboard</a></li>
-                <li><a href="http://localhost:8080/encontrar-funcionarios">Funcionários</a></li>
-                <li><a class="active" href="http://localhost:8080/encontrar-departamentos">Departamentos</a></li>
-                <li><a href="http://localhost:8080/encontrar-cargos">Cargos</a></li>
-                <li><a href="http://localhost:8080/encontrar-pontos">Ponto</a></li>
-                <li><a href="http://localhost:8080/encontrar-ferias">Férias</a></li>
-
+                <li><a href="http://localhost:8080/encontrar-dashboard"><i class="ph ph-chart-bar"></i> Dashboard</a></li>
+                <li><a href="http://localhost:8080/encontrar-funcionarios"><i class="ph ph-users"></i> Funcionários</a></li>
+                <li class="active"><a href="http://localhost:8080/encontrar-departamentos"><i class="ph ph-buildings"></i> Departamentos</a></li>
+                <li><a href="http://localhost:8080/encontrar-cargos"><i class="ph ph-briefcase"></i> Cargos</a></li>
+                <li><a href="http://localhost:8080/encontrar-pontos"><i class="ph ph-clock"></i> Ponto</a></li>
+                <li><a href="http://localhost:8080/encontrar-ferias"><i class="ph ph-airplane-tilt"></i> Férias</a></li>
             </ul>
         </nav>
 
         <div class="sidebar-footer">
-            <a href="../login/index.html" class="logout-btn">
+            <a href="/logout" class="logout-btn">
                 <i class="ph ph-sign-out"></i> Sair
             </a>
         </div>
@@ -48,32 +46,28 @@
     <!-- ================= ÁREA DE CONTEÚDO ================= -->
     <main class="main-content">
 
-        <!-- Cabeçalho Superior -->
+        <!-- ================= CABEÇALHO SUPERIOR (PADRÃO DASHBOARD) ================= -->
         <header class="top-header">
-            <div class="breadcrumb">
-                <span>PAINEL CORPORATIVO</span> / <strong>DEPARTAMENTOS</strong>
+            <div class="title-area">
+                <h1>Departamentos</h1>
+                <p>Estruturação de unidades corporativas, dimensionamento de equipes e controle departamental</p>
             </div>
 
             <div class="user-area">
-                <div class="profile-text">
-                    <strong>Administrador</strong>
-                    <span>admin@sistema.corp</span>
-                </div>
-                <div class="avatar">
-                    AD
-                    <span class="status-dot"></span>
+                <span class="status-badge"><i class="ph-fill ph-circle"></i> Painel Online</span>
+                <div class="profile-info">
+                    <div class="profile-text">
+                        <strong>Administrador Geral</strong>
+                        <span>admin@empresa.com</span>
+                    </div>
+                    <div class="avatar">AD</div>
                 </div>
             </div>
         </header>
 
-        <!-- Título da Página e Indicadores -->
+        <!-- Indicadores (Título movido para o header, mantemos só os status) -->
         <section class="page-heading">
-            <div class="heading-title">
-                <h1>Departamentos <span class="badge">Cadastro e Gestão de Departamentos</span></h1>
-                <p>Estruturação de unidades corporativas, dimensionamento de equipes e controle departamental.</p>
-            </div>
             <div class="heading-stats">
-
                 <div class="stat-pill"><i class="ph ph-buildings"></i> Total: <strong>${fn:length(departamentos)}</strong></div>
                 <div class="stat-pill"><i class="ph ph-users"></i> Colaboradores: <strong>${totalColaboradoresGeral}</strong></div>
             </div>
