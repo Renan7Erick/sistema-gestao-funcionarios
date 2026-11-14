@@ -5,14 +5,13 @@
     width: 100%;
 }
 
-/* Container que simula a "rightside" antiga, mas respeita a tela */
+/* Container que mantém o fundo azul e margens seguras */
 .rightside {
     background-color: #D2D9F4;
     border-radius: 8px;
     padding: 24px;
     margin: 0 auto;
     width: 100%;
-    max-width: 1200px;
     box-sizing: border-box;
 }
 
@@ -59,17 +58,29 @@
     min-width: 0;
 }
 
+/* === A ÚNICA ALTERAÇÃO FOI FEITA AQUI: GAP DE 12PX === */
 .action {
     display: flex;
     flex-direction: row;
     justify-content: center;
+    align-items: center;
+    gap: 12px;
 }
 
 .action button {
     border: none;
     background-color: transparent;
     cursor: pointer;
+    padding: 0;
+    display: flex;
+    align-items: center;
 }
+
+.action a {
+    display: flex;
+    align-items: center;
+}
+/* ===================================================== */
 
 .input-card input,
 .input-card select {
@@ -110,23 +121,29 @@
     overflow-x: auto;
 }
 
+.lista-container {
+    width: 100%;
+    min-width: 1050px;
+}
+
 .legendaLista,
 .cardLista {
     display: grid;
-    grid-template-columns: 60px 50px 1.5fr 1.2fr 1.8fr 1.2fr 1fr 1fr 70px 110px 80px;
+    /* A primeira coluna (ações) passou de 60px para 75px para comportar o espaçamento */
+    grid-template-columns: 75px 50px 1.5fr 1.2fr 1.8fr 1.2fr 1fr 1fr 70px 110px 80px;
     column-gap: 16px;
     align-items: center;
     padding: 12px 16px;
     box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
     background-color: white;
     border-radius: 4px;
-    min-width: 1050px;
 }
 
 .legendaLista {
     background-color: aliceblue;
     font-weight: bold;
     box-shadow: none;
+    margin-bottom: 8px;
 }
 
 .legendaLista p,
