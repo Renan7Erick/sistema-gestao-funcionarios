@@ -7,12 +7,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Acesso ao sistema - RH</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="/pages/login/style.css">
 </head>
 <body>
     <div class="login-container">
         <form action="/login" method="post" class="login-card">
-            <span>${requestScope.message}</span>
+            <c:if test="${not empty requestScope.message}">
+                <div class="mensagem-erro" role="alert">
+                    <c:out value="${requestScope.message}"/>
+                </div>
+            </c:if>
             <h2>Acesso ao sistema</h2>
             
             <div class="input-group">

@@ -31,7 +31,7 @@ public class LoginServlet extends HttpServlet {
                 resp.sendRedirect("/funcionario/meu-perfil");
             }
         }else {
-            req.setAttribute("message", "E-mail ou senha inválidos!");
+            req.setAttribute("message", "E-mail ou senha inválidos. Verifique os dados e tente novamente.");
             req.getRequestDispatcher("/pages/login/login.jsp").forward(req, resp);
         }
 
