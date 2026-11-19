@@ -73,7 +73,7 @@
                     <div class="input-row">
                         <div class="input-card">
                             <label>Email</label>
-                            <input name="email" placeholder="Ex: colaborador@empresa.com" id="email" value="${param.email}" required>
+                            <input type= "email" name="email" placeholder="Ex: colaborador@empresa.com" id="email" value="${param.email}" required>
                         </div>
                         <div class="input-card">
                             <label> ${empty param.id ? 'Senha' : ''} </label>
@@ -123,8 +123,9 @@
                         <div class="input-card">
                             <label>Perfil</label>
                             <select name="perfil" id="perfil">
+                            <option value="FUNCIONARIO" ${param.perfil == "FUNCIONARIO" ? 'selected' : ''}>FUNCIONARIO</option>
                                 <option value="ADMIN" ${param.perfil == "ADMIN" ? 'selected' : ''}>ADMIN</option>
-                                <option value="FUNCIONARIO" ${param.perfil == "FUNCIONARIO" ? 'selected' : ''}>FUNCIONARIO</option>
+
                             </select>
                         </div>
                     </div>
@@ -141,16 +142,12 @@
 
                 <section class="areaLista">
                     <div class="input-row">
-                        <div class="input-card"><input placeholder="Buscar por nome, cargo ou matrícula"></div>
-                        <div class="input-card">
-                            <select id="departamentoFiltro">
-                                <option value="1">Administrativo</option>
-                                <option value="2">Financeiro</option>
-                                <option value="3">TI</option>
-                                <option value="4">RH</option>
-                                <option value="5">Comercial</option>
-                            </select>
-                        </div>
+
+                    <form action="/encontrar-funcionarios-nome" method="get">
+                        <div class="input-pesquisar" ><input name="nomeBusca" value="${param.nomeBusca}"  placeholder="Buscar por nome"> <button type="submit" class="botao-pesquisar"> <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 14 14" fill="none">
+                                                                                                                           <path d="M12.45 13.5L7.725 8.775C7.35 9.075 6.91875 9.3125 6.43125 9.4875C5.94375 9.6625 5.425 9.75 4.875 9.75C3.5125 9.75 2.35938 9.27813 1.41562 8.33438C0.471875 7.39063 0 6.2375 0 4.875C0 3.5125 0.471875 2.35938 1.41562 1.41562C2.35938 0.471875 3.5125 0 4.875 0C6.2375 0 7.39063 0.471875 8.33438 1.41562C9.27813 2.35938 9.75 3.5125 9.75 4.875C9.75 5.425 9.6625 5.94375 9.4875 6.43125C9.3125 6.91875 9.075 7.35 8.775 7.725L13.5 12.45L12.45 13.5V13.5M4.875 8.25C5.8125 8.25 6.60938 7.92188 7.26562 7.26562C7.92188 6.60938 8.25 5.8125 8.25 4.875C8.25 3.9375 7.92188 3.14062 7.26562 2.48438C6.60938 1.82812 5.8125 1.5 4.875 1.5C3.9375 1.5 3.14062 1.82812 2.48438 2.48438C1.82812 3.14062 1.5 3.9375 1.5 4.875C1.5 5.8125 1.82812 6.60938 2.48438 7.26562C3.14062 7.92188 3.9375 8.25 4.875 8.25V8.25" fill="#1A2332"/>
+                                                                                                                            </svg> </button> </div>
+</form>
                     </div>
 
                     <!-- NOVA DIV PARA CONTER A LISTA E EVITAR O ESTOURO DA PÁGINA -->

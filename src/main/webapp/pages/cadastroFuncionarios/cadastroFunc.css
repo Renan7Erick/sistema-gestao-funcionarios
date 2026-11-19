@@ -56,6 +56,7 @@
     flex-direction: column;
     flex: 1;
     min-width: 0;
+
 }
 
 /* === A ÚNICA ALTERAÇÃO FOI FEITA AQUI: GAP DE 12PX === */
@@ -85,7 +86,7 @@
 .input-card input,
 .input-card select {
     background-color: white;
-    border: 1px solid gray;
+    border: none;
     width: 100%;
     height: 40px;
     padding: 9px 14px;
@@ -94,6 +95,38 @@
     border-radius: 4px;
 }
 
+.input-pesquisar {
+display: flex;
+    flex-direction: row;
+    border: none;
+}
+
+.input-pesquisar input,
+.input-pesquisar select {
+    background-color: white;
+    border: none;
+    width: 100%;
+    height: 40px;
+    padding: 9px 14px;
+    font-size: 14px;
+    box-sizing: border-box;
+    border-radius: 4px 0px 4px 4px;
+}
+.form-cadastro button {
+    border-radius: 8px;
+    border: transparent;
+    background-color: white;
+    color: #0F1E36;
+    min-height: 40px;
+    width: 200px;
+    cursor: pointer;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.form-cadastro button:hover {
+    background-color: #0F1E36;
+    color: white;
+}
 .form-cadastro button {
     border-radius: 8px;
     border: transparent;
@@ -119,6 +152,22 @@
     box-sizing: border-box;
     border-radius: 0 0 8px 8px;
     overflow-x: auto;
+}
+
+.botao-pesquisar{
+ border-radius: 0px 4px 0px 0px;
+    border: transparent;
+    background-color: white;
+    color: #0F1E36;
+    min-height: 40px;
+    width: 200px;
+    cursor: pointer;
+    border-left: 1px solid black
+
+}
+.botao-pesquisar button:hover{
+   background-color: #0F1E36;
+     color: white;
 }
 
 .lista-container {

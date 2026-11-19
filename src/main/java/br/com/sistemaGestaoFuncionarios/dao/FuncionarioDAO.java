@@ -51,7 +51,7 @@ public List<Funcionario> encontrarFuncionarios(){
             "       d.nome AS departamento_nome\n" +
             "FROM funcionario f\n" +
             "INNER JOIN cargo c ON f.cargo_id = c.id\n" +
-            "INNER JOIN departamento d ON f.departamento_id = d.id"; // inner join para mostrar o cargo e departamento de respectivo id
+            "INNER JOIN departamento d ON f.departamento_id = d.id" ; // inner join para mostrar o cargo e departamento de respectivo id
 
     try {
 
@@ -101,6 +101,70 @@ public List<Funcionario> encontrarFuncionarios(){
         return Collections.emptyList();
     }
 }
+
+    public List<Funcionario> encontrarFuncionariosPeloNome(String nome){
+        String SQL = "SELECT\n" +
+                "    FUNCIONARIO.*,\n" +
+                "    c.nome AS cargo_nome,\n" +
+                "    d.nome AS departamento_nome\n" +
+                "FROM FUNCIONARIO\n" +
+                "INNER JOIN cargo c\n" +
+                "    ON FUNCIONARIO.cargo_id = c.id\n" +
+                "INNER JOIN departamento d\n" +
+                "    ON FUNCIONARIO.departamento_id = d.id\n" +
+                "WHERE LOWER(FUNCIONARIO.nome) LIKE LOWER(?)" ; // inner join para mostrar o cargo e departamento de respectivo id e buscar pelo nome
+        //o lower transforma o nome do funcionario em lower para receber valores mesmo com maisuculas variadas
+
+        try {
+
+            Connection connection = DriverManager.getConnection("jdbc:h2:~/test", "sa", "sa");
+            PreparedStatement preparedStatement = connection.prepareStatement(SQL);
+            preparedStatement.setString(1, "%" + nome + "%");
+
+            System.out.println("conecto");
+
+            ResultSet resultSet = preparedStatement.executeQuery();
+
+
+            List<Funcionario> funcionarios = new ArrayList<>();
+
+            while (resultSet.next()){
+                int funcionarioId = resultSet.getInt("id");
+                String funcinarioNome = resultSet.getString("nome");
+                String funcionarioCpf = resultSet.getString("cpf");
+                String funcionarioEmail = resultSet.getString("email");
+                String funcionarioSenha = resultSet.getString("senha");
+                String funcionarioTelefone = resultSet.getString("telefone");
+                Date funcionarioDataNasc = resultSet.getDate("data_nascimento");
+                Date funcionarioDataCont = resultSet.getDate("data_contratacao");
+                String status = resultSet.getString("status");
+                String perfil = resultSet.getString("perfil");
+                int cargoId = resultSet.getInt("cargo_id");
+                String cargoNome = resultSet.getString("cargo_nome");
+                int departamentoId = resultSet.getInt("departamento_id");
+                String departamentoNome = resultSet.getString("departamento_nome");
+
+
+                Funcionario funcionario = new Funcionario(funcionarioId, funcinarioNome, funcionarioCpf, funcionarioEmail, funcionarioSenha, funcionarioTelefone,  funcionarioDataNasc, funcionarioDataCont, status, perfil, cargoId, cargoNome, departamentoId, departamentoNome);
+
+                funcionarios.add(funcionario);
+            }
+            System.out.println("cosnuilta realizadda");
+
+            connection.close();
+
+            return funcionarios;
+
+
+
+
+        }catch (Exception e) {
+
+            System.out.println("Erro ao consultar os dados no DB" + e.getMessage());
+
+            return Collections.emptyList();
+        }
+    }
 
     public void deleteFuncionarioById(String funcionarioId){
 
