@@ -13,7 +13,7 @@ import java.io.IOException;
 import java.sql.Date;
 import java.sql.Time;
 
-@WebServlet("/create-ponto")
+@WebServlet("/funcionario/create-ponto")
 public class CreatePontoServlet extends HttpServlet {
 
 
@@ -27,10 +27,13 @@ public class CreatePontoServlet extends HttpServlet {
 
         ponto.setFuncionarioId(funcionarioLogado.getId());
 
-        new PontoDAO().createPonto(ponto);
+        String erro = new PontoDAO().createPonto(ponto);
 
-        resp.sendRedirect("/funcionario/meu-ponto");
-
+        if (erro == null){
+            resp.sendRedirect("/funcionario/meu-ponto");
+        } else {
+            resp.sendRedirect("/funcionario/meu-ponto?erro=" + erro);
+        }
 
     }
 }

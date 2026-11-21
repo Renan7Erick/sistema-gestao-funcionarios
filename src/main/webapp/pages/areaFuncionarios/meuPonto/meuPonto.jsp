@@ -49,7 +49,18 @@
                     <p>O primeiro registro do dia marca a entrada. O seguinte marca a saída.</p>
                 </div>
 
-                <form action="/create-ponto" method="post">
+
+                    <c:if test="${param.erro == 'LIMITE'}">
+                        <div class="mensagem-erro">Você já registrou entrada e saída hoje.</div>
+                    </c:if>
+                    <c:if test="${param.erro == 'FERIAS'}">
+                        <div class="mensagem-erro">Você está em período de férias aprovado.</div>
+                    </c:if>
+                    <c:if test="${param.erro == 'ERRO'}">
+                        <div class="mensagem-erro">Não foi possível registrar o ponto. Tente novamente.</div>
+                    </c:if>
+
+                <form action="/funcionario/create-ponto" method="post" onsubmit="return confirm('Deseja realmente registrar o ponto agora?');">
                     <button type="submit" class="btn btn-primario">+ Registrar Ponto (Entrada/Saída)</button>
                 </form>
             </div>

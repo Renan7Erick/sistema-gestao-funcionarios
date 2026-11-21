@@ -10,50 +10,61 @@ import java.util.List;
 public class PontoDAO {
 
 
-    public void createPonto(Ponto ponto){
+    public String createPonto(Ponto ponto){
+
+        String SQL = "SELECT COUNT(*) FROM FERIAS WHERE FUNCIONARIO_ID = ? AND STATUS = 'APROVADA' " +
+                "AND CURRENT_DATE BETWEEN DATA_INICIO AND DATA_FIM"; //busca se o usuário está de férias na data atual para bloquear o ponto
 
         try {
             Connection connection = DriverManager.getConnection("jdbc:h2:~/test", "sa","sa");
 
-            String SQL = "SELECT * FROM PONTO WHERE FUNCIONARIO_ID = ? AND DATA = CURRENT_DATE ORDER BY ID DESC"; // lista a data e o id do funcioanrio, para os horarios,  precisa ser atualizado 1 vez, um de entrada e um de saída
-// é organizado por id para o resultSet.next() encontrar o ultimo registro dee saida
-
-            System.out.println("conecto");
 
             PreparedStatement preparedStatement = connection.prepareStatement(SQL);
-
-            preparedStatement.setInt(1, ponto.getFuncionarioId()); // vai ser pego pelo usuario logado
-
+            preparedStatement.setInt(1, ponto.getFuncionarioId());
             ResultSet resultSet = preparedStatement.executeQuery();
+            resultSet.next();
 
-            if(resultSet.next() && resultSet.getTime("saida") == null){ //verifica se ja tem um registro, se sim, cadastra uma saída
-                SQL = "UPDATE PONTO SET SAIDA = CURRENT_TIME WHERE ID = ?"; // é um update, pois ele atualiza o cadastro para cadastrar a saída
+            if (resultSet.getInt(1) > 0){
+                connection.close();
+                return "FERIAS"; // esse if significa se ele encontrar um registro de férias ele bloqueia o ponto e encerra a função
+            }
 
-                preparedStatement = connection.prepareStatement(SQL);
-                preparedStatement.setInt(1, resultSet.getInt("id"));
-                preparedStatement.executeUpdate();
+            //senão estiver de ferias ele segue pro registro e outras verificações
 
-                System.out.println("registro de saída");
-            } else { // se nao, cadastra uma entrada
+            SQL = "SELECT * FROM PONTO WHERE FUNCIONARIO_ID = ? AND DATA = CURRENT_DATE ORDER BY ID DESC";
+            preparedStatement = connection.prepareStatement(SQL);
+            preparedStatement.setInt(1, ponto.getFuncionarioId());
+            resultSet = preparedStatement.executeQuery(); //busca os pontos de hoje, se tiver
 
+            if (resultSet.next()){
+                if (resultSet.getTime("saida") == null){
+                    // saída em aberto: registra a saída
+                    SQL = "UPDATE PONTO SET SAIDA = CURRENT_TIME WHERE ID = ?";
+                    preparedStatement = connection.prepareStatement(SQL);
+                    preparedStatement.setInt(1, resultSet.getInt("id"));
+                    preparedStatement.executeUpdate();
+                }else {
+                    // já tem entrada e saída hoje
+                    connection.close();
+                    return "LIMITE";
+                }
+
+            }else{
+                // nenhum registro hoje: registra a entrada
                 SQL = "INSERT INTO PONTO (FUNCIONARIO_ID, DATA, ENTRADA) VALUES (?, CURRENT_DATE, CURRENT_TIME)";
-
                 preparedStatement = connection.prepareStatement(SQL);
                 preparedStatement.setInt(1, ponto.getFuncionarioId());
                 preparedStatement.executeUpdate();
-
-                System.out.println("Entrada Registrada");
-
             }
 
-            System.out.println("inserido");
 
             connection.close();
-
+            return null;
 
         } catch (Exception e) {
 
             System.out.println("fail in database connection" + e.getMessage());
+            return "ERRO";
 
         }
     }
