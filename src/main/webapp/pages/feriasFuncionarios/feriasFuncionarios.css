@@ -1,145 +1,17 @@
-/* Estilos gerais da página */
-
+/* ==========================================
+   GARANTIA DE LARGURA TOTAL DO LAYOUT
+   ========================================== */
 body {
-    margin: 0;
-    background-color: #F3F5FA;
-    color: #1F2937;
-    font-family: Arial, sans-serif;
-    display: flex;
-}
-
-/* Menu lateral */
-.sidebar {
-    width: 240px;
-    height: 100vh;
-    padding: 24px 16px;
-    background-color: white;
-    border-right: 1px solid #E5E7EB;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-}
-
-.logo {
-    display: flex;
-    align-items: center;
-    padding: 0 8px 20px;
-    margin-bottom: 16px;
-    border-bottom: 1px solid #E5E7EB;
-}
-
-.logo-icone {
-    width: 40px;
-    height: 40px;
-    margin-right: 12px;
-    background-color: #0F1E36;
-    color: white;
-    border-radius: 8px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 18px;
-}
-
-.logo-texto strong {
     display: block;
-    color: #0F1E36;
-    font-size: 15px;
 }
 
-.logo-texto span {
-    display: block;
-    color: #6B7280;
-    font-size: 11px;
+.app-container {
+    width: 100%;
 }
 
-.menu {
-    margin: 0;
-    padding: 0;
-    list-style: none;
-}
-
-.menu a {
-    display: block;
-    padding: 10px 12px;
-    color: #4B5563;
-    border-radius: 6px;
-    font-size: 14px;
-    text-decoration: none;
-}
-
-.menu a:hover {
-    background-color: #F3F4F6;
-}
-
-.menu a.ativo {
-    background-color: #0F1E36;
-    color: white;
-    font-weight: bold;
-}
-
-.sair {
-    padding: 14px 12px 0;
-    border-top: 1px solid #E5E7EB;
-    color: #DC2626;
-    font-size: 14px;
-    font-weight: bold;
-    text-decoration: none;
-}
-
-/* Conteúdo principal */
-.conteudo {
-    flex: 1;
-}
-
-.topbar {
-    height: 56px;
-    padding: 0 32px;
-    background-color: white;
-    border-bottom: 1px solid #E5E7EB;
-    color: #6B7280;
-    font-size: 12px;
-    font-weight: bold;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-}
-
-.selo {
-    padding: 3px 10px;
-    background-color: #DCFCE7;
-    color: #166534;
-    border-radius: 20px;
-    font-size: 11px;
-}
-
-main {
-    padding: 32px;
-}
-
-.cabecalho {
-    margin-bottom: 24px;
-}
-
-.trilha {
-    color: #6B7280;
-    font-size: 12px;
-    text-transform: uppercase;
-}
-
-.cabecalho h1 {
-    margin: 6px 0 4px;
-    color: #0F1E36;
-    font-size: 28px;
-}
-
-.cabecalho p {
-    margin: 0;
-    color: #6B7280;
-    font-size: 14px;
-}
-
-/* Cartões */
+/* ==========================================
+   CARTÕES
+   ========================================== */
 .card {
     margin-bottom: 24px;
     padding: 24px;
@@ -172,7 +44,13 @@ main {
     font-size: 13px;
 }
 
-/* Tabelas */
+/* ==========================================
+   TABELAS
+   ========================================== */
+.tabela-wrap {
+    overflow-x: auto;
+}
+
 table {
     width: 100%;
     border-collapse: collapse;
@@ -203,7 +81,9 @@ td {
     text-align: center;
 }
 
-/* Status */
+/* ==========================================
+   STATUS
+   ========================================== */
 .badge {
     display: inline-block;
     padding: 3px 10px;
@@ -227,7 +107,9 @@ td {
     color: #991B1B;
 }
 
-/* Formulários e botões */
+/* ==========================================
+   FORMULÁRIOS E BOTÕES
+   ========================================== */
 .form-linha {
     display: flex;
 }
