@@ -1,12 +1,12 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Meu Ponto</title>
-    <link rel="stylesheet" href="/pages/areaFuncionarios/meuPonto/meuPonto.css")>
+    <link rel="stylesheet" href="/pages/areaFuncionarios/meuPonto/meuPonto.css">
 </head>
 <body>
 
@@ -21,14 +21,13 @@
         </div>
 
         <ul class="menu">
-            <a href="/funcionario/meu-perfil">📊 Meu perfil</a>
-            <a class="ativo" href="/meu-ponto">🕐 Meu Ponto</a>
-            <a href="/funcionario/minhas-ferias">🦥 Minhas Férias</a>
-            <a href="http://localhost:8080/"> sair </a>
+            <li><a href="/funcionario/meu-perfil">Meu Perfil</a></li>
+            <li><a href="/funcionario/meu-ponto" class="ativo">Meu Ponto</a></li>
+            <li><a href="/funcionario/minhas-ferias">Minhas Férias</a></li>
         </ul>
     </div>
 
-    <a href="#" class="sair">Sair</a>
+    <a href="/logout" class="sair">Sair</a>
 </aside>
 
 <div class="conteudo">
@@ -75,18 +74,14 @@
                     </tr>
                     </thead>
                     <tbody>
-
-<c:forEach var="ponto" items="${pontos}">
-                    <tr>
-                        <td>${ponto.id}</td>
-                        <td>${ponto.data}</td>
-                        <td>${ponto.entrada}</td>
-                        <td>${ponto.saida}</td>
-                    </tr>
-</c:forEach>
-
-
-
+                    <c:forEach var="ponto" items="${pontos}">
+                        <tr>
+                            <td>${ponto.id}</td>
+                            <td>${ponto.data}</td>
+                            <td>${ponto.entrada}</td>
+                            <td>${ponto.saida}</td>
+                        </tr>
+                    </c:forEach>
                     </tbody>
                 </table>
             </div>
