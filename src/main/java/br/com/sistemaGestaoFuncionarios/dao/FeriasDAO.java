@@ -5,6 +5,7 @@ import br.com.sistemaGestaoFuncionarios.model.Ponto;
 
 import java.sql.*;
 import java.time.LocalDate;
+import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -30,7 +31,38 @@ public class FeriasDAO {
 			System.out.println("fail in database connection" + e.getMessage());
 		}
 	}
-	public void createFerias(Ferias ferias) {
+	public String createFerias(Ferias ferias) {
+
+        LocalDate inicio = ferias.getDataInicio();
+        LocalDate fim = ferias.getDataFim();
+
+
+        // Verifica se as datas estão preenchidas e se o inicio e antes do fim, senao for e data inválida
+        if (inicio == null || fim == null || !inicio.isBefore(fim)){
+            return "DATA_INVALIDA";
+        }
+
+        // As férias não podem começar no passado
+        if (inicio.isBefore(LocalDate.now())){
+            return "PASSADO";
+        }
+
+
+        // função que conta quantos dias existem entre a data de inicio e fim
+        long dias = ChronoUnit.DAYS.between(inicio, fim) + 1;
+
+
+        // se for mais q 30 bloqueia por limite de dias
+        if (dias > 30){
+            return "LIMITE_DIAS";
+        }
+
+
+        if (hasFeriasAtivas(ferias.getFuncionarioId(), inicio, fim)) {
+            return "SOBREPOSTO";
+        }
+
+
         String SQL = "INSERT INTO FERIAS (FUNCIONARIO_ID, DATA_INICIO, DATA_FIM, STATUS) VALUES (?, ?, ?, ?)";
         
         try {
@@ -44,10 +76,13 @@ public class FeriasDAO {
             
             preparedStatement.execute();
             System.out.println("Férias registradas com sucesso no banco H2.");
-            
+
             connection.close();
+
+            return null;
         } catch (Exception e) {
             System.out.println("Falha na conexão com banco ao salvar férias: " + e.getMessage());
+            return "ERRO";
         }
     }
 	public java.util.List<Ferias> findAllFerias() {
@@ -130,15 +165,20 @@ public class FeriasDAO {
             System.out.println("Erro ao atualizar status: " + e.getMessage());
         }
     }
-	public boolean hasFeriasAtivas(int funcionarioId) {
+
+    public boolean hasFeriasAtivas(int funcionarioId, LocalDate inicio, LocalDate fim) {
         boolean temAtiva = false;
-        String SQL = "SELECT COUNT(*) FROM FERIAS WHERE FUNCIONARIO_ID = ? AND UPPER(STATUS) IN ('PENDENTE', 'APROVADA')";
-        
+        String SQL = "SELECT COUNT(*) FROM FERIAS WHERE FUNCIONARIO_ID = ? " +
+                "AND STATUS IN ('PENDENTE', 'APROVADA') " +
+                "AND DATA_INICIO <= ? AND DATA_FIM >= ?";
+
         try {
             java.sql.Connection connection = java.sql.DriverManager.getConnection("jdbc:h2:~/test", "sa", "sa");
             java.sql.PreparedStatement ps = connection.prepareStatement(SQL);
             ps.setInt(1, funcionarioId);
-            
+            ps.setDate(2, java.sql.Date.valueOf(fim));      // existente começa antes (ou no dia) do fim novo
+            ps.setDate(3, java.sql.Date.valueOf(inicio));   // existente termina depois (ou no dia) do início novo
+
             java.sql.ResultSet rs = ps.executeQuery();
             if (rs.next()) {
                 temAtiva = rs.getInt(1) > 0;

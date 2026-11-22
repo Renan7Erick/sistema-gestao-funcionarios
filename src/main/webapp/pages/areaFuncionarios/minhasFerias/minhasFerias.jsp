@@ -29,7 +29,7 @@
         </ul>
     </div>
 
-    <a href="/" class="sair">Sair</a>
+    <a href="/logout" class="sair">Sair</a>
 </aside>
 
 <div class="conteudo">
@@ -53,21 +53,28 @@
                 <span class="badge Pendente">Status inicial: PENDENTE</span>
             </div>
 
-            <!-- O formulário aponta para o Servlet que cria as férias no H2 -->
-            <!-- Alerta de Erro (Bloqueio) -->
-            <c:if test="${not empty erroBloqueio}">
+            <!-- Alerta de Erro -->
+            <c:if test="${not empty param.erro}">
                 <div style="background-color: #f8d7da; color: #721c24; padding: 12px; border-radius: 4px; margin-bottom: 15px; border: 1px solid #f5c6cb; font-weight: bold;">
-                    ⚠️ ${erroBloqueio}
+                    ⚠️
+                    <c:choose>
+                        <c:when test="${param.erro == 'ATIVAS'}">Ação negada: Você já possui uma solicitação de férias em andamento ou aprovada.</c:when>
+                        <c:when test="${param.erro == 'DATA_INVALIDA'}">A data de início deve ser anterior à data de fim.</c:when>
+                        <c:when test="${param.erro == 'PASSADO'}">A data de início não pode ser anterior a hoje.</c:when>
+                        <c:when test="${param.erro == 'LIMITE_DIAS'}">O período de férias não pode ultrapassar 30 dias.</c:when>
+                        <c:when test="${param.erro == 'SOBREPOSTO'}">Você já tem uma solicitação pendente ou aprovada nesse período.</c:when>
+                        <c:otherwise>Não foi possível salvar a solicitação. Tente novamente.</c:otherwise>
+                    </c:choose>
                 </div>
             </c:if>
 
             <!-- Alerta de Sucesso -->
-            <c:if test="${not empty mensagemSucesso}">
+            <c:if test="${param.sucesso == '1'}">
                 <div style="background-color: #d4edda; color: #155724; padding: 12px; border-radius: 4px; margin-bottom: 15px; border: 1px solid #c3e6cb; font-weight: bold;">
-                    ✅ ${mensagemSucesso}
+                    ✅ Solicitação submetida com sucesso! Acompanhe o protocolo no histórico abaixo e aguarde o retorno do administrador.
                 </div>
             </c:if>
-            <form action="/create-ferias" method="POST">
+            <form action="/funcionario/solicitar-ferias" method="POST">
                 <div class="form-linha">
 
                     <div class="campo">
