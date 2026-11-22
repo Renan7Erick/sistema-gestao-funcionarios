@@ -52,3 +52,14 @@
     color: #0f172a;
     font-weight: 500;
 }
+
+.tag-ferias {
+    display: inline-block;
+    padding: 4px 12px;
+    border-radius: 999px;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.tag-ferias.verde { background: #d1fae5; color: #065f46; }
+.tag-ferias.azul  { background: #dbeafe; color: #1e40af; }

@@ -114,16 +114,19 @@
                 </h1>
 
                 <div class="blocosinfo">
-                    <div class="blocosCard">
-                        <p>Saldo de Férias</p>
-                        <div class="info">30 dias disponíveis</div>
-                    </div>
+                        <div class="blocosCard">
+                            <p>Situação</p>
+                            <div class="info">
+                                <span class="tag-ferias ${emFerias ? 'azul' : 'verde'}">${emFerias ? 'Em férias' : 'Em atividade'}</span>
+                            </div>
+                        </div>
 
-                    <div class="blocosCard">
-                        <p>Próximo Período Aquisitivo</p>
-                        <div class="info">14/03/2026</div>
-                    </div>
-                </div>
+                        <c:if test="${emFerias}">
+                            <div class="blocosCard">
+                                <p>Dias Restantes</p>
+                                <div class="info">${diasRestantes} dia(s)</div>
+                            </div>
+                        </c:if>
             </section>
 
         </section>
