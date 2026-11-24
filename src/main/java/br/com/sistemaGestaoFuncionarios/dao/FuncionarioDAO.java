@@ -326,6 +326,37 @@ public List<Funcionario> encontrarFuncionarios(){
 
     }
 
+    public String alterarSenha(int id, String senhaAtual, String novaSenha){
+        String SELECT = "SELECT senha FROM funcionario WHERE id = ?";
+        String UPDATE = "UPDATE funcionario SET senha = ? WHERE id = ?";
+
+        try {
+            Connection connection = DriverManager.getConnection("jdbc:h2:~/test", "sa", "sa");
+            PreparedStatement preparedStatement = connection.prepareStatement(SELECT);
+
+            preparedStatement.setInt(1, id);
+            ResultSet resultSet = preparedStatement.executeQuery();
+
+            //verifica se a senha q ele digitou realmente e a senha do usuário
+            if (!resultSet.next() || !resultSet.getString("senha").equals(senhaAtual)){
+                return "SENHA_ATUAL";
+            }
+
+            PreparedStatement preparedStatementUpdt = connection.prepareStatement(UPDATE);
+
+            preparedStatementUpdt.setString(1, novaSenha);
+            preparedStatementUpdt.setInt(2, id);
+            preparedStatementUpdt.executeUpdate();
+
+            return null;
+
+        } catch (Exception e) {
+            System.out.println("Erro: " + e.getMessage());
+            return "ERRO";
+        }
+
+    }
+
 
 
 }

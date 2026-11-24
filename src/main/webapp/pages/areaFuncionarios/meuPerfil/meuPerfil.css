@@ -63,3 +63,31 @@
 
 .tag-ferias.verde { background: #d1fae5; color: #065f46; }
 .tag-ferias.azul  { background: #dbeafe; color: #1e40af; }
+
+.bloco-senha {
+    min-width: 340px;
+}
+
+.bloco-senha form {
+    width: 100%;
+}
+
+.alerta {
+    margin-bottom: 16px;
+    padding: 12px;
+    border-radius: 6px;
+    font-size: 13px;
+    font-weight: bold;
+}
+
+.alerta.erro {
+    background-color: #FEE2E2;
+    color: #991B1B;
+    border: 1px solid #FCA5A5;
+}
+
+.alerta.sucesso {
+    background-color: #DCFCE7;
+    color: #166534;
+    border: 1px solid #86EFAC;
+}

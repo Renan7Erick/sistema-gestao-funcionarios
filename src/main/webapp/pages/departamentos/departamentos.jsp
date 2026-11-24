@@ -115,14 +115,7 @@
                             <p>Visão consolidada de todas as divisões ativas</p>
                         </div>
                     </div>
-                    <div class="table-actions">
-                        <div class="search-box">
-                            <i class="ph ph-magnifying-glass"></i>
-                            <input type="text" placeholder="Buscar departamento...">
-                        </div>
-                        <button class="btn-action"><i class="ph ph-arrows-clockwise"></i> Atualizar</button>
-                        <button class="btn-action"><i class="ph ph-export"></i> Exportar</button>
-                    </div>
+
                 </div>
 
                 <div class="table-responsive">
@@ -176,14 +169,7 @@
                     </table>
                 </div>
 
-                <div class="table-footer">
-                    <span>Mostrando <strong>6</strong> de <strong>6</strong> departamentos</span>
-                    <div class="pagination">
-                        <button class="page-btn" disabled>Anterior</button>
-                        <button class="page-btn active">1</button>
-                        <button class="page-btn" disabled>Próximo</button>
-                    </div>
-                </div>
+
             </div>
 
         </section>

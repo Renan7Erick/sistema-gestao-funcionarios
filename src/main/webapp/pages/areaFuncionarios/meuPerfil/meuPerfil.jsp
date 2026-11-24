@@ -129,6 +129,62 @@
                         </c:if>
             </section>
 
+                        <section class="blocos bloco-senha">
+                            <h1>
+                                <svg width="19" height="20" viewBox="0 0 24 24" fill="none" stroke="#D97706"
+                                     stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                                     xmlns="http://www.w3.org/2000/svg">
+                                    <rect x="3" y="11" width="18" height="11" rx="2" />
+                                    <path d="M7 11V7a5 5 0 0 1 10 0v4" />
+                                </svg>
+                                Alterar Senha
+                            </h1>
+
+                            <c:if test="${param.senhaOk == '1'}">
+                                <div class="alerta sucesso"> Senha alterada com sucesso.</div>
+                            </c:if>
+
+                            <c:if test="${not empty param.senhaErro}">
+                                <div class="alerta erro">
+
+                                    <c:choose>
+                                        <c:when test="${param.senhaErro == 'SENHA_ATUAL'}">A senha atual está incorreta.</c:when>
+                                        <c:when test="${param.senhaErro == 'CURTA'}">A nova senha precisa ter pelo menos 6 caracteres.</c:when>
+                                        <c:when test="${param.senhaErro == 'CONFIRMACAO'}">A confirmação não confere com a nova senha.</c:when>
+                                        <c:when test="${param.senhaErro == 'IGUAL'}">A nova senha deve ser diferente da atual.</c:when>
+                                        <c:otherwise>Não foi possível alterar a senha. Tente novamente.</c:otherwise>
+                                    </c:choose>
+                                </div>
+                            </c:if>
+
+                            <form action="/funcionario/alterar-senha" method="POST">
+                                <div class="blocosinfo">
+                                    <div class="campo">
+                                        <label for="senhaAtual">Senha atual</label>
+                                        <input type="password" id="senhaAtual" name="senhaAtual"
+                                               autocomplete="current-password" required>
+                                    </div>
+
+                                    <div class="campo">
+                                        <label for="novaSenha">Nova senha</label>
+                                        <input type="password" id="novaSenha" name="novaSenha"
+                                               minlength="6" autocomplete="new-password" required>
+                                    </div>
+
+                                    <div class="campo">
+                                        <label for="confirmacao">Confirmar nova senha</label>
+                                        <input type="password" id="confirmacao" name="confirmacao"
+                                               minlength="6" autocomplete="new-password" required>
+                                    </div>
+                                </div>
+
+                                <div class="form-rodape">
+                                    <span class="dica">Mínimo de 6 caracteres.</span>
+                                    <button type="submit" class="btn btn-primario">Salvar senha</button>
+                                </div>
+                            </form>
+                        </section>
+
         </section>
     </main>
 </div>

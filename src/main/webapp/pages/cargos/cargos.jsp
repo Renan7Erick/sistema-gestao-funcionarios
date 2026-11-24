@@ -67,38 +67,7 @@
 
         <div id="area-pagina">
 
-            <!-- Indicadores (Movidos para a direita já que o título está no cabeçalho superior) -->
-            <div id="cabecalho-pagina" style="justify-content: flex-end;">
-                <div id="resumos">
-                    <div class="caixa-resumo">
-                        <div class="icone-resumo">
-                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                <rect x="2" y="5" width="20" height="14" rx="2"/>
-                                <circle cx="9" cy="11" r="2"/>
-                                <path d="M6 16c.5-1.5 1.5-2 3-2s2.5.5 3 2M15 10h4M15 14h4"/>
-                            </svg>
-                        </div>
-                        <div>
-                            <span class="resumo-rotulo">Total</span>
-                            <span class="resumo-valor">12 Cargos</span>
-                        </div>
-                    </div>
 
-                    <div class="caixa-resumo">
-                        <div class="icone-resumo">
-                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                <path d="m12 2 10 5-10 5L2 7z"/>
-                                <path d="m2 17 10 5 10-5"/>
-                                <path d="m2 12 10 5 10-5"/>
-                            </svg>
-                        </div>
-                        <div>
-                            <span class="resumo-rotulo">Níveis</span>
-                            <span class="resumo-valor">3 (Jr, Pl, Sr)</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
 
             <!-- Duas colunas: formulário e tabela -->
             <div id="colunas">

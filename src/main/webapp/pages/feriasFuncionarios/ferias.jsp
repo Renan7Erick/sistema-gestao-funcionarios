@@ -91,7 +91,7 @@
                     <tbody>
                         <c:forEach var="feria" items="${ferias}">
                             <tr>
-                                <td><strong>#FER-${feria.id}</strong></td>
+                                <td><strong>${feria.id}</strong></td>
                                 <td class="mudo">${feria.funcionarioId}</td>
                                 <td>${feria.dataInicio}</td>
                                 <td>${feria.dataFim}</td>
