@@ -28,6 +28,8 @@
                 <label for="senha">Senha</label>
                 <input name="senha" type="password" id="senha" placeholder="••••••••" required>
             </div>
+
+            <a  class="btn-inicio btn-contorno"  href = "/index.html"> Retornar ao início </a>
             
             <button type="submit">Entrar</button>
         </form>

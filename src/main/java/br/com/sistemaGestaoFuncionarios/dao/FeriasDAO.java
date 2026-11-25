@@ -86,7 +86,9 @@ public class FeriasDAO {
         }
     }
 	public java.util.List<Ferias> findAllFerias() {
-        String SQL = "SELECT * FROM FERIAS";
+        String SQL = "SELECT f.*, fu.nome AS funcionario_nome " +
+                "FROM FERIAS f " +
+                "INNER JOIN FUNCIONARIO fu ON f.funcionario_id = fu.id";
         java.util.List<Ferias> ferias = new java.util.ArrayList<>();
         try {
             java.sql.Connection connection = java.sql.DriverManager.getConnection("jdbc:h2:~/test", "sa", "sa");
@@ -101,6 +103,8 @@ public class FeriasDAO {
                     resultSet.getDate("DATA_FIM").toLocalDate(),
                     resultSet.getString("STATUS")
                 );
+
+                f.setFuncionarioNome(resultSet.getString("funcionario_nome"));
                 ferias.add(f);
             }
             connection.close();

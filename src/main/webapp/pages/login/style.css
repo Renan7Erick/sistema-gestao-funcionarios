@@ -90,3 +90,8 @@ button:hover {
     font-size: 14px;
     font-weight: 500;
 }
+
+.btn-inicio {
+    color: #0F1E36;
+    text-decoration: none;
+}

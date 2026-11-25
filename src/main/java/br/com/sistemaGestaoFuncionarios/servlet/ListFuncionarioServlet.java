@@ -21,9 +21,11 @@ public class ListFuncionarioServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        Funcionario funcionarioLogado = (Funcionario) req.getSession().getAttribute("funcionarioLogado");
+
 
         FuncionarioDAO funcDao = new FuncionarioDAO();
-
+        Funcionario funcionario = funcDao.findById(funcionarioLogado.getId());
         CargoDAO cargoDAO = new CargoDAO(); // criados para integrar os cadastros de cada dado do banco de dados, ao cadastro de funcionario
                                             // para poder usar o select, com opcoes do banco de dados.
 
@@ -38,6 +40,7 @@ public class ListFuncionarioServlet extends HttpServlet {
         List<Departamento> listaDeparamentos = departamentoDAO.findAllDepartamentos();
 
         req.setAttribute("funcionarios", funcionarioList);
+        req.setAttribute("funcionario", funcionario);
         req.setAttribute("cargos", listaCargos);
         req.setAttribute("departamentos", listaDeparamentos);
 

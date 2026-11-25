@@ -11,6 +11,8 @@ public class Ponto {
     private Date data;
     private Time entrada;
     private Time saida;
+    private String funcionarioNome;
+
 
     public Ponto(int id, int funcionarioId, Date data, Time entrada, Time saida) {
         this.id = id;
@@ -24,6 +26,13 @@ public class Ponto {
 
     }
 
+    public String getFuncionarioNome() {
+        return funcionarioNome;
+    }
+
+    public void setFuncionarioNome(String funcionarioNome) {
+        this.funcionarioNome = funcionarioNome;
+    }
 
     public int getId() {
         return id;

@@ -70,7 +70,9 @@ public class PontoDAO {
     }
 
     public List<Ponto> encontrarPontos(){
-        String SQL = "SELECT * FROM PONTO";
+        String SQL = "SELECT p.*, fu.nome AS funcionario_nome " +
+                "FROM PONTO p " +
+                "INNER JOIN FUNCIONARIO fu ON p.funcionario_id = fu.id";
 
         try {
 
@@ -89,8 +91,11 @@ public class PontoDAO {
                 Time entrada = resultSet.getTime("entrada");
                 Time saida = resultSet.getTime("saida");
                 int funcionario_Id = resultSet.getInt("funcionario_id");
+                String funcionarioNome = resultSet.getString("funcionario_nome");
 
                 Ponto ponto = new Ponto(pontoId,funcionario_Id, data, entrada,saida);
+
+                ponto.setFuncionarioNome(funcionarioNome);
 
                 pontos.add(ponto);
             }

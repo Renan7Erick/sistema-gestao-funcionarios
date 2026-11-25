@@ -72,11 +72,11 @@
                 </div>
                 
                 <div class="user-area">
-                    <span class="status-badge"><i class="ph-fill ph-circle"></i> Painel Online</span>
+
                     <div class="profile-info">
                         <div class="profile-text">
-                            <strong>Administrador Geral</strong>
-                            <span>admin@empresa.com</span>
+                            <strong>${funcionario.nome}</strong>
+                            <span>${funcionario.email}</span>
                         </div>
                         <div class="avatar">AD</div>
                     </div>

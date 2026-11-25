@@ -10,7 +10,10 @@ public class Ferias {
     private LocalDate dataInicio;
     private LocalDate dataFim;
     private String status;
-    
+    private String funcionarioNome;
+
+
+
     public Ferias() {
     }
     
@@ -20,6 +23,14 @@ public class Ferias {
         this.dataInicio = dataInicio;
         this.dataFim = dataFim;
         this.status = status;
+    }
+
+    public String getFuncionarioNome() {
+        return funcionarioNome;
+    }
+
+    public void setFuncionarioNome(String funcionarioNome) {
+        this.funcionarioNome = funcionarioNome;
     }
 
     public int getFuncionarioId() {

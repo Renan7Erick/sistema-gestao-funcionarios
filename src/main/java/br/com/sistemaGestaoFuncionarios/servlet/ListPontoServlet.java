@@ -1,7 +1,9 @@
 package br.com.sistemaGestaoFuncionarios.servlet;
 
 
+import br.com.sistemaGestaoFuncionarios.dao.FuncionarioDAO;
 import br.com.sistemaGestaoFuncionarios.dao.PontoDAO;
+import br.com.sistemaGestaoFuncionarios.model.Funcionario;
 import br.com.sistemaGestaoFuncionarios.model.Ponto;
 
 import javax.servlet.ServletException;
@@ -17,9 +19,15 @@ public class ListPontoServlet extends HttpServlet{
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        Funcionario funcionarioLogado = (Funcionario) req.getSession().getAttribute("funcionarioLogado");
+
+
+        FuncionarioDAO funcDao = new FuncionarioDAO();
+        Funcionario funcionario = funcDao.findById(funcionarioLogado.getId());
 
         List<Ponto> pontos = new PontoDAO().encontrarPontos();
 
+        req.setAttribute("funcionario", funcionario);
         req.setAttribute("pontos", pontos);
 
         req.getRequestDispatcher("/pages/pontoFuncionarios/pontoFuncionarios.jsp").forward(req,resp);
