@@ -5,6 +5,10 @@
     box-sizing: border-box;
 }
 
+html {
+    scroll-behavior: smooth;
+}
+
 body {
     font-family: Arial, Helvetica, sans-serif;
     color: #1a1a2e;
@@ -89,6 +93,7 @@ body {
 }
 
 .botao-acesso-colaborador {
+    text-decoration: none;
     background-color: #1a1a2e;
     color: #ffffff;
     border: none;
@@ -153,6 +158,7 @@ body {
 }
 
 .botao-acessar-sistema {
+    text-decoration: none;
     display: inline-flex;
     align-items: center;
     background-color: #1a1a2e;
@@ -447,4 +453,191 @@ body {
 .rodape-esquerda {
     display: flex;
     align-items: center;
+}
+
+
+/* ===== NOVOS ESTILOS ===== */
+
+/* Cabeçalho fixo ao rolar */
+.cabecalho {
+    position: sticky;
+    top: 0;
+    z-index: 10;
+}
+
+.secao-inicial,
+.secao-sobre,
+.secao-departamentos {
+    scroll-margin-top: 80px;
+}
+
+/* Botão secundário do hero */
+.botao-secundario {
+    display: inline-flex;
+    align-items: center;
+    padding: 13px 25px;
+    border: 1px solid #1a1a2e;
+    color: #1a1a2e;
+    font-size: 15px;
+    text-decoration: none;
+}
+
+.botao-secundario:hover {
+    background-color: #e6e6f5;
+}
+
+/* Fluxo em 3 passos */
+.fluxo {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-bottom: 40px;
+}
+
+.passo {
+    width: 300px;
+    padding: 20px;
+    background-color: #ffffff;
+    border: 1px solid #e0e0e0;
+}
+
+.numero-passo {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 28px;
+    height: 28px;
+    margin-bottom: 12px;
+    background-color: #1a1a2e;
+    color: #ffffff;
+    font-size: 13px;
+    font-weight: bold;
+}
+
+.passo h3 {
+    font-size: 16px;
+    margin-bottom: 6px;
+}
+
+.passo p {
+    font-size: 13px;
+    color: #555555;
+    line-height: 1.5;
+}
+
+/* Perfis: colaborador e administrador */
+.cartoes-perfis {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.cartao-perfil {
+    width: 400px;
+    max-width: 100%;
+    padding: 25px;
+    background-color: #ffffff;
+    border: 1px solid #e0e0e0;
+}
+
+.cartao-perfil .lista-departamento {
+    margin-bottom: 0;
+}
+
+/* Regras do sistema */
+.grade-regras {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    flex-wrap: wrap;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.item-regra {
+    width: 430px;
+    max-width: 100%;
+    padding: 20px;
+    background-color: #f2f2fa;
+}
+
+.item-regra h3 {
+    font-size: 15px;
+    margin-bottom: 6px;
+}
+
+.item-regra p {
+    font-size: 13px;
+    color: #555555;
+    line-height: 1.5;
+}
+
+/* Departamentos (home) */
+.grade-deptos {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    flex-wrap: wrap;
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+.cartao-depto {
+    width: 200px;
+    padding: 20px;
+    background-color: #ffffff;
+    border: 1px solid #e0e0e0;
+}
+
+.cartao-depto .icone-cartao-departamento {
+    margin-bottom: 14px;
+}
+
+.cartao-depto h3 {
+    font-size: 17px;
+    margin-bottom: 6px;
+}
+
+.cartao-depto p {
+    font-size: 13px;
+    color: #555555;
+    line-height: 1.5;
+}
+
+/* Rodapé quebra linha em telas menores */
+.rodape {
+    gap: 8px 24px;
+    flex-wrap: wrap;
+}
+
+/* Telas pequenas */
+@media (max-width: 768px) {
+    .cabecalho,
+    .rodape {
+        padding: 16px 20px;
+    }
+
+    .menu-navegacao {
+        display: none;
+    }
+
+    .secao-sobre,
+    .secao-departamentos {
+        padding: 40px 20px;
+    }
+
+    .titulo-principal {
+        font-size: 28px;
+    }
+
+    .botoes-inicial {
+        flex-direction: column;
+        gap: 12px;
+    }
+
+    .botao-acessar-sistema {
+        margin-right: 0;
+    }
 }
