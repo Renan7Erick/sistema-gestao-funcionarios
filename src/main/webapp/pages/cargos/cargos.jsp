@@ -106,12 +106,13 @@
 
                         <label for="departamento-cargo">DEPARTAMENTO (DEPARTAMENTO_ID) <span class="obrigatorio">*</span></label>
                         <select id="departamento-cargo" name="departamento_id" required>
+
+
                             <option value="">Selecione um departamento</option>
-                            <option value="1" ${param.departamento_id == '1' ? 'selected' : ''}>Administrativo</option>
-                            <option value="2" ${param.departamento_id == '2' ? 'selected' : ''}>Financeiro</option>
-                            <option value="3" ${param.departamento_id == '3' ? 'selected' : ''}>TI</option>
-                            <option value="4" ${param.departamento_id == '4' ? 'selected' : ''}>RH</option>
-                            <option value="5" ${param.departamento_id == '5' ? 'selected' : ''}>Comercial</option>
+
+                            <c:forEach var="departamento" items="${departamentos}">
+                                <option value="${departamento.id}" ${param.departamento_id == departamento.id ? 'selected' : ''}>${departamento.nome}</option>
+                            </c:forEach>
                         </select>
 
 

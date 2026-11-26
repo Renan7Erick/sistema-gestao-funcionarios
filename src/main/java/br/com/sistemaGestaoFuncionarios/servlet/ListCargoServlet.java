@@ -1,8 +1,10 @@
 package br.com.sistemaGestaoFuncionarios.servlet;
 
 import br.com.sistemaGestaoFuncionarios.dao.CargoDAO;
+import br.com.sistemaGestaoFuncionarios.dao.DepartamentoDAO;
 import br.com.sistemaGestaoFuncionarios.dao.FuncionarioDAO;
 import br.com.sistemaGestaoFuncionarios.model.Cargo;
+import br.com.sistemaGestaoFuncionarios.model.Departamento;
 import br.com.sistemaGestaoFuncionarios.model.Funcionario;
 
 import javax.servlet.ServletException;
@@ -21,12 +23,14 @@ public class ListCargoServlet extends HttpServlet {
 
         FuncionarioDAO funcDao = new FuncionarioDAO();
         Funcionario funcionario = funcDao.findById(funcionarioLogado.getId());
-
+        DepartamentoDAO departamentoDAO = new DepartamentoDAO();
+        List<Departamento> departamentoList = departamentoDAO.findAllDepartamentos();
 
         CargoDAO dao = new CargoDAO();
         List<Cargo> cargosList = dao.encontrarCargos();
 
         req.setAttribute("cargos", cargosList);
+        req.setAttribute("departamentos", departamentoList);
         req.setAttribute("funcionario", funcionario);
         req.getRequestDispatcher("/pages/cargos/cargos.jsp").forward(req, resp);
     }
