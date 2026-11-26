@@ -5,49 +5,91 @@
     width: 100%;
 }
 
-/* Container que mantém o fundo azul e margens seguras */
+/* Container dos dois cartões (formulário e lista) */
 .rightside {
-    background-color: #D2D9F4;
-    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+    background-color: transparent;
     padding: 24px;
     margin: 0 auto;
     width: 100%;
     box-sizing: border-box;
 }
 
+/* ===== CARTÃO DO FORMULÁRIO ===== */
 .form-cadastro {
     display: flex;
     flex-direction: column;
-    background-color: #E7EBF3;
+    background-color: #FFFFFF;
+    border: 1px solid #E8EBF2;
     padding: 32px;
-    gap: 16px;
+    gap: 20px;
     box-sizing: border-box;
-    border-radius: 8px 8px 0 0;
+    border-radius: 12px;
+}
+
+.cabecalho-form {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 16px;
+    flex-wrap: wrap;
+    margin-bottom: 12px;
+}
+
+.titulo-form {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+}
+
+.titulo-form i {
+    font-size: 20px;
+    margin-top: 2px;
+    color: #0F1E36;
+}
+
+.titulo-form h3 {
+    margin: 0;
+    font-size: 15px;
+    font-weight: 600;
+    color: #0F1E36;
+}
+
+.titulo-form p {
+    margin: 0;
+    font-size: 15px;
+    color: #0F1E36;
+}
+
+.rotulo-form {
+    font-size: 15px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: #0F1E36;
 }
 
 .form-cadastro label {
-    color: #2D2F2B;
-    font-size: 14px;
+    color: #0F1E36;
+    font-size: 15px;
     font-style: normal;
     font-weight: 600;
     line-height: 20px;
-    letter-spacing: 0.35px;
     margin-bottom: 8px;
 }
 
-.form-buttons {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    margin-top: 24px;
-    gap: 20px;
+/* Asterisco nos campos obrigatórios */
+.input-card:has(input:required) label::after,
+.input-card:has(select) label::after {
+    content: " *";
 }
 
 .input-row {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    gap: 16px;
+    gap: 20px;
     width: 100%;
 }
 
@@ -56,10 +98,99 @@
     flex-direction: column;
     flex: 1;
     min-width: 0;
-
 }
 
-/* === A ÚNICA ALTERAÇÃO FOI FEITA AQUI: GAP DE 12PX === */
+.input-card-largo {
+    flex: 2;
+}
+
+.input-card input,
+.input-card select {
+    background-color: #FFFFFF;
+    border: 1px solid #E3E6EE;
+    width: 100%;
+    height: 40px;
+    padding: 9px 14px;
+    font-size: 15px;
+    color: #0F1E36;
+    box-sizing: border-box;
+    border-radius: 4px;
+    outline: none;
+}
+
+.input-card input::placeholder {
+    color: #8A8FA0;
+}
+
+.input-card input:focus,
+.input-card select:focus {
+    border-color: #0F1E36;
+}
+
+.input-card input[readonly] {
+    font-weight: 600;
+}
+
+.input-card select {
+    appearance: none;
+    -webkit-appearance: none;
+    padding-right: 36px;
+    text-overflow: ellipsis;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%230F1E36' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 12px center;
+    background-size: 16px;
+}
+
+/* Botões do formulário */
+.form-buttons {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: center;
+    margin-top: 8px;
+    padding-top: 16px;
+    border-top: 1px solid #EEF0F5;
+    gap: 16px;
+}
+
+.form-cadastro button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    width: auto;
+    min-height: 40px;
+    padding: 0 24px;
+    border: none;
+    border-radius: 4px;
+    background-color: transparent;
+    color: #0F1E36;
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+    box-shadow: none;
+}
+
+.form-cadastro button[type="reset"]:hover {
+    background-color: #EEF0F5;
+}
+
+.form-cadastro button[type="submit"] {
+    background-color: #0F1E36;
+    color: #FFFFFF;
+}
+
+.form-cadastro button[type="submit"]:hover {
+    background-color: #1C3256;
+}
+
+.form-cadastro button svg {
+    width: 16px;
+    height: 16px;
+}
+
+/* ===== AÇÕES DA LINHA ===== */
 .action {
     display: flex;
     flex-direction: row;
@@ -81,95 +212,76 @@
     display: flex;
     align-items: center;
 }
-/* ===================================================== */
 
-.input-card input,
-.input-card select {
-    background-color: white;
-    border: none;
-    width: 100%;
-    height: 40px;
-    padding: 9px 14px;
-    font-size: 14px;
+/* ===== CARTÃO DA LISTA ===== */
+.areaLista {
+    display: flex;
+    flex-direction: column;
+    background-color: #F3F5F9;
+    border: 1px solid #E8EBF2;
+    padding: 28px 0 0;
+    gap: 0;
     box-sizing: border-box;
-    border-radius: 4px;
+    border-radius: 12px;
+    overflow-x: auto;
 }
 
+.cabecalho-lista {
+    align-items: center;
+    padding: 0 24px 24px;
+    box-sizing: border-box;
+}
+
+.titulo-lista {
+    display: flex;
+    align-items: baseline;
+    gap: 40px;
+}
+
+.titulo-lista h3,
+.titulo-lista span {
+    margin: 0;
+    font-size: 15px;
+    font-weight: 600;
+    color: #0F1E36;
+}
+
+/* Busca */
 .input-pesquisar {
-display: flex;
+    display: flex;
     flex-direction: row;
     border: none;
 }
 
 .input-pesquisar input,
 .input-pesquisar select {
-    background-color: white;
-    border: none;
-    width: 100%;
+    background-color: #FFFFFF;
+    border: 1px solid #CFD5E0;
+    border-right: none;
+    width: 280px;
     height: 40px;
     padding: 9px 14px;
-    font-size: 14px;
+    font-size: 15px;
     box-sizing: border-box;
-    border-radius: 4px 0px 4px 4px;
+    border-radius: 4px 0 0 4px;
+    outline: none;
 }
-.form-cadastro button {
-    border-radius: 8px;
-    border: transparent;
-    background-color: white;
+
+.botao-pesquisar {
+    border-radius: 0 4px 4px 0;
+    border: 1px solid #CFD5E0;
+    background-color: #FFFFFF;
     color: #0F1E36;
     min-height: 40px;
-    width: 200px;
+    width: 44px;
     cursor: pointer;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
 }
 
-.form-cadastro button:hover {
-    background-color: #0F1E36;
-    color: white;
-}
-.form-cadastro button {
-    border-radius: 8px;
-    border: transparent;
-    background-color: white;
-    color: #0F1E36;
-    min-height: 40px;
-    width: 200px;
-    cursor: pointer;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+.botao-pesquisar:hover {
+    background-color: #EEF0F5;
 }
 
-.form-cadastro button:hover {
-    background-color: #0F1E36;
-    color: white;
-}
-
-.areaLista {
-    display: flex;
-    flex-direction: column;
-    background-color: #E7EBF3;
-    padding: 32px;
-    gap: 16px;
-    box-sizing: border-box;
-    border-radius: 0 0 8px 8px;
-    overflow-x: auto;
-}
-
-.botao-pesquisar{
- border-radius: 0px 4px 0px 0px;
-    border: transparent;
-    background-color: white;
-    color: #0F1E36;
-    min-height: 40px;
-    width: 200px;
-    cursor: pointer;
-    border-left: 1px solid black
-
-}
-.botao-pesquisar button:hover{
-   background-color: #0F1E36;
-     color: white;
-}
-
+/* Tabela */
 .lista-container {
     width: 100%;
     min-width: 1050px;
@@ -182,17 +294,23 @@ display: flex;
     grid-template-columns: 75px 50px 1.5fr 1.2fr 1.8fr 1.2fr 1fr 1fr 70px 110px 80px;
     column-gap: 16px;
     align-items: center;
-    padding: 12px 16px;
-    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
-    background-color: white;
-    border-radius: 4px;
+    padding: 24px 16px;
+    box-sizing: border-box;
+    background-color: transparent;
+    border-bottom: 1px solid #E6E9F0;
+    font-size: 15px;
+    color: #0F1E36;
 }
 
 .legendaLista {
-    background-color: aliceblue;
-    font-weight: bold;
-    box-shadow: none;
-    margin-bottom: 8px;
+    padding: 18px 16px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+}
+
+.cardLista p:nth-child(2),
+.cardLista p:nth-child(3) {
+    font-weight: 600;
 }
 
 .legendaLista p,
@@ -201,4 +319,20 @@ display: flex;
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
+}
+
+/* Telas pequenas */
+@media (max-width: 768px) {
+    .input-row {
+        flex-direction: column;
+    }
+
+    .form-cadastro {
+        padding: 20px;
+    }
+
+    .cabecalho-lista {
+        flex-direction: column;
+        align-items: flex-start;
+    }
 }
