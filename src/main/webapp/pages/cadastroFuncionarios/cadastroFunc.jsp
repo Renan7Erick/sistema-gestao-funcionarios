@@ -78,7 +78,7 @@
                         </div>
                         <div class="input-card input-card-largo">
                             <label>Nome Completo</label>
-                            <input type="text" id="nome" name="nome" placeholder="Ex: pedro gameplays" value="${param.nome}" required>
+                            <input type="text" id="nome" name="nome" placeholder="Ex: Rodrigo Melo" value="${param.nome}" required>
                         </div>
                         <div class="input-card">
                             <label>CPF</label>

@@ -64,10 +64,17 @@ body {
 }
 
 .logo-quadrado {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
     width: 20px;
     height: 20px;
     background-color: #1a1a2e;
     margin-right: 10px;
+    color: #FFFFFF;
+    padding: 15px;
+    border-radius: 8px;
 }
 
 .logo-titulo {
